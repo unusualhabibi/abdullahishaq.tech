@@ -9,11 +9,13 @@
   <meta property="og:title" content="AI Center — Abdullah Ishaq">
   <meta property="og:description" content="I build AI systems that handle your operations, content, and customers — so you can focus on growth.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abdullahishaq.tech">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://abdullahishaq.tech">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    /* ── TOKENS ──────────────────────────────────────────────────────────── */
     :root {
       --w:       #FAFAF8;
       --b:       #0C0C0B;
@@ -29,6 +31,11 @@
       --syne:    'Syne', sans-serif;
       --mono:    'DM Mono', monospace;
       --ease:    cubic-bezier(0.16,1,0.3,1);
+      /* Cushy brand */
+      --cushy-orange: #E8621A;
+      --cushy-green:  #4A6741;
+      --cushy-cream:  #F5F0DC;
+      --cushy-gold:   #F5D66A;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,71 +54,48 @@
       cursor: none;
     }
 
-    /* ── CURSOR ──────────────────────────────────────────────────────────── */
+    /* ── CURSOR ── */
     .cursor {
-      position: fixed; top: 0; left: 0;
-      width: 8px; height: 8px;
-      background: var(--gold); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transition: transform 0.15s var(--ease), opacity 0.2s;
-      transform: translate(-50%, -50%);
+      position: fixed; top: 0; left: 0; width: 8px; height: 8px;
+      background: var(--gold); border-radius: 50%; pointer-events: none;
+      z-index: 9999; transition: transform 0.15s var(--ease), opacity 0.2s;
+      transform: translate(-50%,-50%);
     }
     .cursor-ring {
-      position: fixed; top: 0; left: 0;
-      width: 32px; height: 32px;
-      border: 1px solid var(--gold); border-radius: 50%;
-      pointer-events: none; z-index: 9998;
-      transition: transform 0.35s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.2s;
-      transform: translate(-50%, -50%); opacity: 0.5;
+      position: fixed; top: 0; left: 0; width: 32px; height: 32px;
+      border: 1px solid var(--gold); border-radius: 50%; pointer-events: none;
+      z-index: 9998; transition: transform 0.35s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.2s;
+      transform: translate(-50%,-50%); opacity: 0.5;
     }
 
-    /* ── GRAIN ───────────────────────────────────────────────────────────── */
+    /* ── GRAIN ── */
     body::after {
-      content: '';
-      position: fixed; inset: 0;
+      content: ''; position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none; z-index: 9990; opacity: 0.35; mix-blend-mode: multiply;
     }
 
-    /* ── SCROLL PROGRESS ─────────────────────────────────────────────────── */
-    #spb {
-      position: fixed; top: 0; left: 0;
-      height: 2px; width: 0%;
-      background: var(--gold); z-index: 9997;
-      transition: width 0.1s linear;
-    }
+    /* ── SCROLL PROGRESS ── */
+    #spb { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--gold); z-index: 9997; transition: width 0.1s linear; }
 
-    /* ── PAGE TRANSITION ─────────────────────────────────────────────────── */
-    #page-root {
-      opacity: 1;
-      transition: opacity 0.25s ease;
-    }
+    /* ── PAGE TRANSITION ── */
+    #page-root { opacity: 1; transition: opacity 0.25s ease; }
     #page-root.fade-out { opacity: 0; }
 
-    /* ── NAV ─────────────────────────────────────────────────────────────── */
+    /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 900; height: 58px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px;
-      background: rgba(250,250,248,0.88);
-      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--g5);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 58px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 48px;
+      background: rgba(250,250,248,0.9); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--g5); transition: background 0.3s, border-color 0.3s;
     }
-    nav.dark {
-      background: rgba(12,12,11,0.92);
-      border-bottom: 1px solid var(--g2);
-    }
+    nav.dark { background: rgba(12,12,11,0.92); border-bottom-color: var(--g2); }
     .nav-logo {
       font-family: var(--syne); font-size: 15px; font-weight: 800;
-      letter-spacing: -0.02em; color: var(--b);
-      display: flex; align-items: center; gap: 6px;
+      letter-spacing: -0.02em; color: var(--b); display: flex; align-items: center; gap: 6px;
     }
     nav.dark .nav-logo { color: var(--w); }
-    .nav-logo-dot {
-      width: 7px; height: 7px; background: var(--gold);
-      border-radius: 50%; animation: blink 3s ease-in-out infinite;
-    }
+    .nav-logo-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: blink 3s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
@@ -120,55 +104,38 @@
     }
     nav.dark .nav-links a { color: var(--g4); }
     nav.dark .nav-links a:hover { color: var(--w); }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -2px; left: 0;
-      width: 0; height: 1px; background: var(--gold);
-      transition: width 0.25s var(--ease);
-    }
+    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.25s var(--ease); }
     .nav-links a:hover { color: var(--b); }
     .nav-links a:hover::after { width: 100%; }
     .nav-cta {
-      font-family: var(--mono); font-size: 12px; font-weight: 500;
-      letter-spacing: 0.06em; color: var(--b) !important;
-      background: var(--gold); padding: 9px 20px; border: none;
+      font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--b) !important; background: var(--gold); padding: 9px 20px; border: none;
       transition: background 0.2s, transform 0.2s;
     }
     .nav-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
     .nav-cta::after { display: none !important; }
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; background: none; border: none; padding: 4px;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 22px; height: 1px; background: var(--b); transition: transform 0.3s var(--ease), opacity 0.3s; }
     nav.dark .hamburger span { background: var(--w); }
     .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
     .mobile-menu {
-      display: none; position: fixed; inset: 58px 0 0 0;
-      background: var(--w); z-index: 800;
-      flex-direction: column; padding: 40px 32px; gap: 32px;
+      display: none; position: fixed; inset: 58px 0 0 0; background: var(--w);
+      z-index: 800; flex-direction: column; padding: 40px 32px; gap: 32px;
       border-top: 1px solid var(--g5);
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--syne); font-size: 28px; font-weight: 700;
-      letter-spacing: -0.03em; color: var(--b); transition: color 0.2s;
-    }
+    .mobile-menu a { font-family: var(--syne); font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: var(--b); transition: color 0.2s; }
     .mobile-menu a:hover { color: var(--gold); }
 
-    /* ── REVEAL ──────────────────────────────────────────────────────────── */
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
-    }
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.2s; }
-    .reveal-d3 { transition-delay: 0.3s; }
-    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d1 { transition-delay: 0.1s; } .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; } .reveal-d4 { transition-delay: 0.4s; }
 
-    /* ── SECTION WRAPPER ─────────────────────────────────────────────────── */
+    /* ── SECTION WRAPPER ── */
     section { padding: 120px 48px; }
     .inner { max-width: 1100px; margin: 0 auto; }
     .sec-label {
@@ -177,33 +144,17 @@
       display: flex; align-items: center; gap: 10px;
     }
     .sec-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold); }
-    .sec-title {
-      font-family: var(--syne); font-size: clamp(32px,4.5vw,56px); font-weight: 800;
-      letter-spacing: -0.04em; line-height: 1.08; color: var(--b); margin-bottom: 20px;
-    }
+    .sec-title { font-family: var(--syne); font-size: clamp(32px,4.5vw,56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.08; color: var(--b); margin-bottom: 20px; }
     .sec-title em { color: var(--gold); font-style: normal; }
     .sec-sub { font-size: 15px; line-height: 1.75; color: var(--g3); max-width: 540px; }
 
-    /* ── HERO ────────────────────────────────────────────────────────────── */
-    #home {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 0 48px; position: relative; overflow: hidden;
-      border-bottom: 1px solid var(--g5);
-    }
+    /* ── HERO ── */
+    #home { min-height: 100vh; display: flex; align-items: center; padding: 0 48px; position: relative; overflow: hidden; border-bottom: 1px solid var(--g5); }
     .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; padding-top: 80px; }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold);
-      padding: 6px 14px; margin-bottom: 40px;
-      animation: fadeUp 0.8s var(--ease) 0.1s both;
-    }
+    .hero-tag { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 6px 14px; margin-bottom: 40px; animation: fadeUp 0.8s var(--ease) 0.1s both; }
     .hero-tag-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-    .hero-headline {
-      font-family: var(--syne); font-size: clamp(52px,9vw,130px); font-weight: 800;
-      letter-spacing: -0.05em; line-height: 0.95; color: var(--b); margin-bottom: 40px;
-    }
+    .hero-headline { font-family: var(--syne); font-size: clamp(52px,9vw,130px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.95; color: var(--b); margin-bottom: 40px; }
     .hero-headline .line { display: block; overflow: hidden; }
     .hero-headline .line span { display: block; animation: slideUp 0.9s var(--ease) both; }
     .hero-headline .line:nth-child(1) span { animation-delay: 0.2s; }
@@ -211,87 +162,39 @@
     .hero-headline .line:nth-child(3) span { animation-delay: 0.5s; }
     @keyframes slideUp { from{transform:translateY(110%)} to{transform:translateY(0)} }
     .hero-headline em { color: var(--gold); font-style: normal; }
-    .hero-sub {
-      font-size: clamp(15px,1.6vw,18px); line-height: 1.7; color: var(--g3);
-      max-width: 520px; margin-bottom: 48px;
-      animation: fadeUp 0.8s var(--ease) 0.65s both;
-    }
-    .hero-actions {
-      display: flex; gap: 16px; flex-wrap: wrap;
-      animation: fadeUp 0.8s var(--ease) 0.8s both;
-    }
-    .btn-fill {
-      font-family: var(--mono); font-size: 13px; font-weight: 500;
-      letter-spacing: 0.04em; padding: 15px 32px;
-      background: var(--b); color: var(--w); border: 1px solid var(--b);
-      cursor: pointer; transition: background 0.2s, color 0.2s, transform 0.2s;
-      display: inline-block;
-    }
+    .hero-sub { font-size: clamp(15px,1.6vw,18px); line-height: 1.7; color: var(--g3); max-width: 520px; margin-bottom: 48px; animation: fadeUp 0.8s var(--ease) 0.65s both; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.8s var(--ease) 0.8s both; }
+    .btn-fill { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.04em; padding: 15px 32px; background: var(--b); color: var(--w); border: 1px solid var(--b); cursor: pointer; transition: background 0.2s, color 0.2s, transform 0.2s; display: inline-block; }
     .btn-fill:hover { background: var(--gold); border-color: var(--gold); color: var(--b); transform: translateY(-2px); }
-    .btn-ghost {
-      font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em;
-      padding: 15px 32px; background: transparent; color: var(--b);
-      border: 1px solid var(--g5); cursor: pointer;
-      transition: border-color 0.2s, transform 0.2s; display: inline-block;
-    }
+    .btn-ghost { font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; padding: 15px 32px; background: transparent; color: var(--b); border: 1px solid var(--g5); cursor: pointer; transition: border-color 0.2s, transform 0.2s; display: inline-block; }
     .btn-ghost:hover { border-color: var(--b); transform: translateY(-2px); }
-    .hero-deco {
-      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
-      width: 500px; height: 500px;
-      animation: fadeUp 1s var(--ease) 0.5s both; pointer-events: none;
-    }
-    .hero-deco-ring {
-      position: absolute; border: 1px solid var(--g5); border-radius: 50%;
-      animation: spin linear infinite;
-    }
+    .hero-deco { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 500px; height: 500px; animation: fadeUp 1s var(--ease) 0.5s both; pointer-events: none; }
+    .hero-deco-ring { position: absolute; border: 1px solid var(--g5); border-radius: 50%; animation: spin linear infinite; }
     .hero-deco-ring:nth-child(1) { inset: 0; animation-duration: 40s; }
     .hero-deco-ring:nth-child(2) { inset: 60px; animation-duration: 30s; animation-direction: reverse; }
     .hero-deco-ring:nth-child(3) { inset: 130px; animation-duration: 20s; border-color: var(--gold); border-style: dashed; }
     .hero-deco-ring:nth-child(4) { inset: 200px; animation-duration: 15s; animation-direction: reverse; }
     @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
     .hero-deco-center { position: absolute; inset: 210px; background: var(--gold); border-radius: 50%; opacity: 0.15; }
-    .hero-stats {
-      display: flex; gap: 0; margin-top: 64px;
-      border-top: 1px solid var(--g5); padding-top: 40px;
-      animation: fadeUp 0.8s var(--ease) 0.9s both;
-    }
+    .hero-stats { display: flex; margin-top: 64px; border-top: 1px solid var(--g5); padding-top: 40px; animation: fadeUp 0.8s var(--ease) 0.9s both; }
     .hero-stat { flex: 1; padding-right: 40px; border-right: 1px solid var(--g5); margin-right: 40px; }
     .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-    .stat-num {
-      font-family: var(--syne); font-size: clamp(28px,3.5vw,44px); font-weight: 800;
-      letter-spacing: -0.04em; color: var(--b); line-height: 1; margin-bottom: 6px;
-    }
+    .stat-num { font-family: var(--syne); font-size: clamp(28px,3.5vw,44px); font-weight: 800; letter-spacing: -0.04em; color: var(--b); line-height: 1; margin-bottom: 6px; }
     .stat-num em { color: var(--gold); font-style: normal; }
     .stat-label { font-size: 12px; color: var(--g3); line-height: 1.5; }
 
-    /* ── MARQUEE ─────────────────────────────────────────────────────────── */
-    .marquee-wrap {
-      border-top: 1px solid var(--g5); border-bottom: 1px solid var(--g5);
-      padding: 18px 0; overflow: hidden; background: var(--g6);
-    }
+    /* ── MARQUEE ── */
+    .marquee-wrap { border-top: 1px solid var(--g5); border-bottom: 1px solid var(--g5); padding: 18px 0; overflow: hidden; background: var(--g6); }
     .marquee-track { display: flex; animation: marquee 28s linear infinite; white-space: nowrap; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    .marquee-item {
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--g4); padding: 0 32px;
-      display: flex; align-items: center; gap: 32px; flex-shrink: 0;
-    }
+    .marquee-item { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g4); padding: 0 32px; display: flex; align-items: center; gap: 32px; flex-shrink: 0; }
     .marquee-item::after { content: ''; display: inline-block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
-    /* ── SERVICES ────────────────────────────────────────────────────────── */
+    /* ── SERVICES ── */
     #services { border-bottom: 1px solid var(--g5); }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(2,1fr); gap: 0;
-      margin-top: 64px; border: 1px solid var(--g5);
-    }
-    .service-card {
-      padding: 48px 40px; border-right: 1px solid var(--g5); border-bottom: 1px solid var(--g5);
-      transition: background 0.25s; position: relative; overflow: hidden;
-    }
-    .service-card::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 0; height: 2px; background: var(--gold); transition: width 0.4s var(--ease);
-    }
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; margin-top: 64px; border: 1px solid var(--g5); }
+    .service-card { padding: 48px 40px; border-right: 1px solid var(--g5); border-bottom: 1px solid var(--g5); transition: background 0.25s; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s var(--ease); }
     .service-card:hover { background: var(--g6); }
     .service-card:hover::before { width: 100%; }
     .service-card:nth-child(2n) { border-right: none; }
@@ -301,19 +204,12 @@
     .service-title { font-family: var(--syne); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--b); margin-bottom: 14px; line-height: 1.2; }
     .service-desc { font-size: 13px; line-height: 1.75; color: var(--g3); }
     .service-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
-    .tool-chip {
-      font-size: 10px; letter-spacing: 0.06em; color: var(--g3);
-      border: 1px solid var(--g5); padding: 3px 10px; background: var(--w);
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .tool-chip { font-size: 10px; letter-spacing: 0.06em; color: var(--g3); border: 1px solid var(--g5); padding: 3px 10px; background: var(--w); transition: border-color 0.2s, color 0.2s; }
     .service-card:hover .tool-chip { border-color: var(--gold); color: var(--gold); }
 
-    /* ── WORK ────────────────────────────────────────────────────────────── */
+    /* ── WORK ── */
     #work { border-bottom: 1px solid var(--g5); background: var(--b); }
-    .work-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-      margin-top: 64px; background: var(--g2); border: 1px solid var(--g2);
-    }
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 64px; background: var(--g2); border: 1px solid var(--g2); }
     .work-card { background: var(--g1); padding: 48px 40px; transition: background 0.25s; position: relative; overflow: hidden; }
     .work-card:hover { background: var(--g2); }
     .work-card-full { grid-column: 1 / -1; }
@@ -324,17 +220,12 @@
     .work-stat-item { display: flex; flex-direction: column; gap: 4px; }
     .work-stat-num { font-family: var(--syne); font-size: 28px; font-weight: 800; letter-spacing: -0.04em; color: var(--gold); line-height: 1; }
     .work-stat-label { font-size: 11px; color: var(--g4); }
-    .work-link {
-      font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--w);
-      display: inline-flex; align-items: center; gap: 10px;
-      border-bottom: 1px solid var(--g2); padding-bottom: 2px;
-      transition: border-color 0.2s, color 0.2s; cursor: pointer;
-    }
+    .work-link { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--w); display: inline-flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--g2); padding-bottom: 2px; transition: border-color 0.2s, color 0.2s; cursor: pointer; }
     .work-link:hover { color: var(--gold); border-color: var(--gold); }
     .work-link-arrow { display: inline-block; transition: transform 0.2s var(--ease); }
     .work-link:hover .work-link-arrow { transform: translateX(4px); }
 
-    /* ── BLOG ────────────────────────────────────────────────────────────── */
+    /* ── BLOG ── */
     #blog { border-bottom: 1px solid var(--g5); }
     .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
     .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--g5); border: 1px solid var(--g5); }
@@ -350,16 +241,13 @@
     .blog-arrow { font-size: 12px; color: var(--g4); transition: color 0.2s, transform 0.2s; }
     .blog-card:hover .blog-arrow { color: var(--gold); transform: translateX(4px); }
 
-    /* ── LABS ────────────────────────────────────────────────────────────── */
+    /* ── LABS ── */
     #labs { border-bottom: 1px solid var(--g5); background: var(--g6); }
     .labs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
     .labs-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
     .lab-card { background: var(--w); border: 1px solid var(--g5); padding: 36px 32px; transition: border-color 0.25s, transform 0.25s; position: relative; display: block; }
     .lab-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-    .lab-status {
-      display: inline-block; font-size: 9px; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; padding: 3px 10px; margin-bottom: 20px; font-family: var(--mono);
-    }
+    .lab-status { display: inline-block; font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 20px; font-family: var(--mono); }
     .lab-status.live { background: var(--gold); color: var(--b); }
     .lab-status.beta { background: var(--g5); color: var(--g2); }
     .lab-status.soon { background: var(--g6); color: var(--g4); border: 1px solid var(--g5); }
@@ -370,7 +258,7 @@
     .lab-cta.disabled { color: var(--g4); cursor: default; }
     .lab-cta.disabled:hover { border-color: var(--g5); background: transparent; }
 
-    /* ── FRAMEWORKS ──────────────────────────────────────────────────────── */
+    /* ── FRAMEWORKS ── */
     #frameworks { border-bottom: 1px solid var(--g5); }
     .fw-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
     .fw-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--g5); border: 1px solid var(--g5); }
@@ -384,7 +272,7 @@
     .fw-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
     .fw-link:hover { gap: 12px; }
 
-    /* ── ABOUT ───────────────────────────────────────────────────────────── */
+    /* ── ABOUT ── */
     #about { border-bottom: 1px solid var(--g5); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 64px; }
     .about-text p { font-size: 15px; line-height: 1.85; color: var(--g2); margin-bottom: 24px; }
@@ -413,7 +301,7 @@
     .timeline-org { font-size: 12px; color: var(--gold); margin-bottom: 4px; }
     .timeline-note { font-size: 12px; color: var(--g3); line-height: 1.5; }
 
-    /* ── CONTACT ─────────────────────────────────────────────────────────── */
+    /* ── CONTACT ── */
     #contact { background: var(--b); border-bottom: none; }
     #contact .sec-label { color: var(--g3); }
     #contact .sec-label::before { background: var(--gold); }
@@ -442,12 +330,8 @@
     .form-submit { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; padding: 16px; background: var(--gold); color: var(--b); border: none; cursor: pointer; transition: background 0.2s; width: 100%; }
     .form-submit:hover { background: var(--gold-lt); }
 
-    /* ── FOOTER ──────────────────────────────────────────────────────────── */
-    footer {
-      background: var(--g1); border-top: 1px solid var(--g2);
-      padding: 32px 48px; display: flex;
-      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
-    }
+    /* ── FOOTER ── */
+    footer { background: var(--g1); border-top: 1px solid var(--g2); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
     .footer-left { display: flex; flex-direction: column; gap: 6px; }
     .footer-brand { font-family: var(--syne); font-size: 14px; font-weight: 800; letter-spacing: -0.02em; color: var(--w); }
     .footer-brand em { color: var(--gold); font-style: normal; }
@@ -456,127 +340,104 @@
     .footer-links a { font-size: 12px; color: var(--g3); transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
 
-    /* ── SUB-PAGE SHARED ─────────────────────────────────────────────────── */
-    .page-hero {
-      padding: 140px 48px 80px;
-      border-bottom: 1px solid var(--g5);
-      background: var(--w);
-    }
-    .page-hero.dark {
-      background: var(--b);
-      border-bottom-color: var(--g2);
-    }
+    /* ── PAGE HERO (sub-pages) ── */
+    .page-hero { padding: 140px 48px 80px; border-bottom: 1px solid var(--g5); background: var(--w); }
+    .page-hero.dark { background: var(--b); border-bottom-color: var(--g2); }
     .page-hero .inner { max-width: 900px; }
-    .back-link {
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--g4);
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-bottom: 40px; transition: color 0.2s;
-      cursor: pointer;
-    }
+    .back-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g4); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; transition: color 0.2s; cursor: pointer; }
     .back-link:hover { color: var(--gold); }
     .back-link::before { content: '←'; }
-    .page-title {
-      font-family: var(--syne); font-size: clamp(36px,6vw,72px); font-weight: 800;
-      letter-spacing: -0.05em; line-height: 0.95; margin-bottom: 28px;
-    }
+    .page-title { font-family: var(--syne); font-size: clamp(36px,6vw,72px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.95; margin-bottom: 28px; }
     .page-title em { color: var(--gold); font-style: normal; }
-    .page-meta {
-      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
-      color: var(--g4); margin-top: 32px;
-    }
-    .page-meta span { display: flex; align-items: center; gap: 6px; }
+    .page-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--g4); margin-top: 32px; }
     .page-meta-dot { width: 3px; height: 3px; background: var(--gold); border-radius: 50%; }
 
-    /* Article body */
-    .article-body {
-      padding: 80px 48px;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-    .article-body h2 {
-      font-family: var(--syne); font-size: 24px; font-weight: 700;
-      letter-spacing: -0.03em; color: var(--b);
-      margin: 56px 0 20px;
-    }
-    .article-body h3 {
-      font-family: var(--syne); font-size: 18px; font-weight: 700;
-      letter-spacing: -0.02em; color: var(--b); margin: 36px 0 14px;
-    }
+    /* ── ARTICLE BODY ── */
+    .article-body { padding: 80px 48px; max-width: 760px; margin: 0 auto; }
+    .article-body h2 { font-family: var(--syne); font-size: 24px; font-weight: 700; letter-spacing: -0.03em; color: var(--b); margin: 56px 0 20px; }
+    .article-body h3 { font-family: var(--syne); font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--b); margin: 36px 0 14px; }
     .article-body p { font-size: 15px; line-height: 1.85; color: var(--g2); margin-bottom: 24px; }
     .article-body strong { color: var(--b); font-weight: 500; }
     .article-body em { color: var(--gold); font-style: normal; }
     .article-body ul { margin: 0 0 24px 0; padding: 0; list-style: none; }
-    .article-body ul li {
-      font-size: 15px; line-height: 1.75; color: var(--g2);
-      padding: 10px 0 10px 24px; border-bottom: 1px solid var(--g6);
-      position: relative;
-    }
+    .article-body ul li { font-size: 15px; line-height: 1.75; color: var(--g2); padding: 10px 0 10px 24px; border-bottom: 1px solid var(--g6); position: relative; }
     .article-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
-    .article-callout {
-      border-left: 2px solid var(--gold); padding: 20px 28px; margin: 40px 0;
-      background: var(--g6); font-size: 16px; line-height: 1.7; color: var(--b);
-      font-style: italic;
-    }
+    .article-callout { border-left: 2px solid var(--gold); padding: 20px 28px; margin: 40px 0; background: var(--g6); font-size: 16px; line-height: 1.7; color: var(--b); font-style: italic; }
+    .article-actions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--g5); display: flex; gap: 16px; flex-wrap: wrap; }
 
-    /* Case study metrics bar */
-    .case-metrics {
-      display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
-      border: 1px solid var(--g5); margin: 64px 0;
-    }
-    .case-metric {
-      padding: 32px 28px; border-right: 1px solid var(--g5);
-      text-align: center;
-    }
+    /* ── CASE STUDY ── */
+    .case-metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--g5); margin: 64px 0; }
+    .case-metric { padding: 32px 28px; border-right: 1px solid var(--g5); text-align: center; }
     .case-metric:last-child { border-right: none; }
     .case-metric-num { font-family: var(--syne); font-size: 36px; font-weight: 800; letter-spacing: -0.05em; color: var(--gold); line-height: 1; margin-bottom: 8px; }
     .case-metric-label { font-size: 12px; color: var(--g3); line-height: 1.4; }
-    .case-stack {
-      display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0;
+    .case-stack { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0; }
+    .case-chip { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--b); border: 1px solid var(--g5); padding: 6px 14px; background: var(--g6); }
+
+    /* ── CUSHY BRAND HERO (CSS visual) ── */
+    .cushy-visual {
+      background: var(--cushy-cream); border: 1px solid var(--g5);
+      padding: 48px 40px; margin: 48px 0;
+      position: relative; overflow: hidden;
     }
-    .case-chip {
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
-      color: var(--b); border: 1px solid var(--g5); padding: 6px 14px;
-      background: var(--g6);
+    .cushy-visual-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+    }
+    .cushy-brand-mark {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .cushy-logo-circle {
+      width: 72px; height: 72px; background: var(--cushy-orange);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: var(--syne); font-size: 22px; font-weight: 800; color: white;
+      letter-spacing: -0.02em;
+    }
+    .cushy-brand-name {
+      font-family: var(--syne); font-size: 28px; font-weight: 800;
+      color: var(--cushy-green); letter-spacing: -0.03em; line-height: 1.1;
+    }
+    .cushy-brand-tagline {
+      font-family: var(--mono); font-size: 12px; color: var(--cushy-orange);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .cushy-menu-preview {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .cushy-menu-item {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--cushy-orange); padding: 10px 16px;
+    }
+    .cushy-menu-price {
+      font-family: var(--syne); font-size: 14px; font-weight: 800;
+      color: var(--cushy-gold); min-width: 60px;
+    }
+    .cushy-menu-name {
+      font-family: var(--mono); font-size: 12px; color: white; letter-spacing: 0.04em;
+    }
+    .cushy-delivery-badge {
+      background: var(--cushy-green); color: white; padding: 10px 16px;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-top: 8px; text-align: center;
     }
 
-    /* ── READINESS SCORE TOOL ────────────────────────────────────────────── */
+    /* ── QUIZ ── */
     .quiz-wrap { padding: 80px 48px; max-width: 760px; margin: 0 auto; }
-    .quiz-progress-bar {
-      width: 100%; height: 2px; background: var(--g5); margin-bottom: 64px; position: relative;
-    }
+    .quiz-progress-bar { width: 100%; height: 2px; background: var(--g5); margin-bottom: 64px; }
     .quiz-progress-fill { height: 100%; background: var(--gold); transition: width 0.4s var(--ease); }
     .quiz-q-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--g4); margin-bottom: 12px; }
     .quiz-question { font-family: var(--syne); font-size: clamp(22px,3vw,32px); font-weight: 700; letter-spacing: -0.03em; color: var(--b); line-height: 1.2; margin-bottom: 40px; }
     .quiz-options { display: flex; flex-direction: column; gap: 12px; }
-    .quiz-option {
-      border: 1px solid var(--g5); padding: 18px 24px; cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-      font-size: 14px; color: var(--g2); line-height: 1.5;
-      display: flex; align-items: center; gap: 16px;
-    }
+    .quiz-option { border: 1px solid var(--g5); padding: 18px 24px; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-size: 14px; color: var(--g2); line-height: 1.5; display: flex; align-items: center; gap: 16px; }
     .quiz-option:hover { border-color: var(--gold); background: var(--g6); }
     .quiz-option.selected { border-color: var(--gold); background: var(--gold-d); color: var(--b); }
-    .quiz-option-letter {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-      color: var(--gold); flex-shrink: 0; width: 20px;
-    }
+    .quiz-option-letter { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); flex-shrink: 0; width: 20px; }
     .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; }
-    .quiz-btn {
-      font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
-      padding: 14px 28px; cursor: pointer; transition: all 0.2s;
-      border: 1px solid var(--g5); background: transparent; color: var(--b);
-    }
+    .quiz-btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; padding: 14px 28px; cursor: pointer; transition: all 0.2s; border: 1px solid var(--g5); background: transparent; color: var(--b); }
     .quiz-btn.primary { background: var(--b); color: var(--w); border-color: var(--b); }
     .quiz-btn.primary:hover { background: var(--gold); border-color: var(--gold); color: var(--b); }
-    .quiz-btn:hover { border-color: var(--b); }
+    .quiz-btn:hover:not(.primary) { border-color: var(--b); }
     .quiz-result { text-align: center; padding: 40px 0; }
-    .quiz-score-ring {
-      width: 160px; height: 160px; border-radius: 50%;
-      border: 2px solid var(--gold); margin: 0 auto 32px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
+    .quiz-score-ring { width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--gold); margin: 0 auto 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .quiz-score-num { font-family: var(--syne); font-size: 48px; font-weight: 800; letter-spacing: -0.05em; color: var(--b); line-height: 1; }
     .quiz-score-denom { font-family: var(--mono); font-size: 12px; color: var(--g4); }
     .quiz-result-title { font-family: var(--syne); font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: var(--b); margin-bottom: 16px; }
@@ -587,7 +448,7 @@
     .quiz-rec-item:last-child { border-bottom: none; }
     .quiz-rec-num { font-family: var(--mono); font-size: 10px; color: var(--gold); flex-shrink: 0; padding-top: 2px; }
 
-    /* ── FRAMEWORK PAGE ──────────────────────────────────────────────────── */
+    /* ── FRAMEWORK DOC ── */
     .fw-doc { padding: 80px 48px; max-width: 900px; margin: 0 auto; }
     .fw-doc h2 { font-family: var(--syne); font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--b); margin: 56px 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--g5); }
     .fw-doc h3 { font-family: var(--syne); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: var(--b); margin: 32px 0 12px; }
@@ -595,42 +456,19 @@
     .fw-doc ul { margin: 0 0 20px 0; padding: 0; list-style: none; }
     .fw-doc ul li { font-size: 14px; line-height: 1.7; color: var(--g2); padding: 8px 0 8px 22px; position: relative; border-bottom: 1px solid var(--g6); }
     .fw-doc ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 12px; }
-    .fw-step {
-      border: 1px solid var(--g5); margin-bottom: 16px;
-      display: grid; grid-template-columns: 56px 1fr; gap: 0;
-    }
+    .fw-step { border: 1px solid var(--g5); margin-bottom: 16px; display: grid; grid-template-columns: 56px 1fr; gap: 0; }
     .fw-step-num { background: var(--b); display: flex; align-items: center; justify-content: center; font-family: var(--syne); font-size: 20px; font-weight: 800; color: var(--gold); }
     .fw-step-body { padding: 24px 28px; }
     .fw-step-title { font-family: var(--syne); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--b); margin-bottom: 8px; }
     .fw-step-desc { font-size: 13px; line-height: 1.7; color: var(--g3); }
-    .fw-download-bar {
-      position: sticky; bottom: 0; background: var(--b); padding: 20px 48px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid var(--g2); z-index: 100;
-    }
+    .fw-download-bar { position: sticky; bottom: 0; background: var(--b); padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--g2); z-index: 100; }
     .fw-download-label { font-family: var(--mono); font-size: 12px; color: var(--g4); }
     .fw-download-btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; padding: 12px 24px; background: var(--gold); color: var(--b); border: none; cursor: pointer; transition: background 0.2s; }
     .fw-download-btn:hover { background: var(--gold-lt); }
 
-    /* ── DATA PROTECTION PAGE ────────────────────────────────────────────── */
-    .dp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--g5); border: 1px solid var(--g5); margin: 64px 0; }
-    .dp-card { background: var(--w); padding: 36px 32px; }
-    .dp-card:hover { background: var(--g6); }
-    .dp-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .dp-card-title { font-family: var(--syne); font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--b); margin-bottom: 10px; }
-    .dp-card-desc { font-size: 13px; line-height: 1.7; color: var(--g3); }
-
-    /* ── BLOG LISTING PAGE ───────────────────────────────────────────────── */
-    .blog-listing-grid {
-      display: grid; grid-template-columns: 1fr; gap: 0;
-      border: 1px solid var(--g5); margin-top: 64px;
-    }
-    .blog-listing-item {
-      padding: 36px 40px; border-bottom: 1px solid var(--g5);
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 24px; align-items: center; transition: background 0.2s;
-      cursor: pointer;
-    }
+    /* ── BLOG LISTING ── */
+    .blog-listing-grid { display: grid; grid-template-columns: 1fr; gap: 0; border: 1px solid var(--g5); margin-top: 64px; }
+    .blog-listing-item { padding: 36px 40px; border-bottom: 1px solid var(--g5); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; transition: background 0.2s; cursor: pointer; }
     .blog-listing-item:last-child { border-bottom: none; }
     .blog-listing-item:hover { background: var(--g6); }
     .blog-listing-item.disabled { opacity: 0.5; cursor: default; pointer-events: none; }
@@ -640,13 +478,19 @@
     .blog-listing-meta { font-family: var(--mono); font-size: 11px; color: var(--g4); text-align: right; white-space: nowrap; }
     .blog-listing-arrow { font-size: 20px; color: var(--gold); margin-top: 8px; display: block; }
 
-    /* ── LABS LISTING PAGE ───────────────────────────────────────────────── */
-    .labs-full-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 64px; }
+    /* ── DATA PROTECTION ── */
+    .dp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--g5); border: 1px solid var(--g5); margin: 64px 0; }
+    .dp-card { background: var(--w); padding: 36px 32px; transition: background 0.2s; }
+    .dp-card:hover { background: var(--g6); }
+    .dp-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .dp-card-title { font-family: var(--syne); font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--b); margin-bottom: 10px; }
+    .dp-card-desc { font-size: 13px; line-height: 1.7; color: var(--g3); }
 
-    /* ── FRAMEWORKS LISTING ──────────────────────────────────────────────── */
-    .fw-full-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--g5); border: 1px solid var(--g5); margin-top: 64px; }
+    /* ── READING PROGRESS (articles) ── */
+    .reading-bar { position: fixed; top: 58px; left: 0; right: 0; height: 2px; background: var(--g5); z-index: 800; }
+    .reading-bar-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.1s linear; }
 
-    /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
@@ -663,8 +507,8 @@
       .work-grid { grid-template-columns: 1fr; }
       .work-card-full { grid-column: 1; }
       .blog-grid { grid-template-columns: 1fr; }
-      .labs-grid, .labs-full-grid { grid-template-columns: 1fr; }
-      .fw-grid, .fw-full-grid { grid-template-columns: 1fr 1fr; }
+      .labs-grid { grid-template-columns: 1fr; }
+      .fw-grid { grid-template-columns: 1fr 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-portrait { height: 280px; }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -673,17 +517,16 @@
       .article-body, .quiz-wrap, .fw-doc { padding: 60px 24px; }
       .case-metrics { grid-template-columns: 1fr 1fr; }
       .case-metric:nth-child(2) { border-right: none; }
-      .case-metric:nth-child(3) { border-right: 1px solid var(--g5); }
       .dp-grid { grid-template-columns: 1fr; }
-      .fw-download-bar { padding: 16px 24px; }
+      .cushy-visual-inner { grid-template-columns: 1fr; }
       .blog-listing-item { grid-template-columns: 1fr; }
       .blog-listing-meta { text-align: left; }
+      .fw-download-bar { padding: 16px 24px; }
     }
     @media (max-width: 560px) {
-      .fw-grid, .fw-full-grid { grid-template-columns: 1fr; }
+      .fw-grid { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; }
       .btn-fill, .btn-ghost { width: 100%; text-align: center; }
-      .case-metrics { grid-template-columns: 1fr 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -697,7 +540,6 @@
   <div class="cursor-ring" id="cursorRing"></div>
   <div id="spb"></div>
 
-  <!-- NAV -->
   <nav id="main-nav">
     <a href="/" class="nav-logo" data-route="/">
       <span>AI Center</span>
@@ -717,7 +559,6 @@
     </button>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="/#services" data-anchor="services" class="mm-link">Services</a>
     <a href="/#work" data-anchor="work" class="mm-link">Work</a>
@@ -728,14 +569,12 @@
     <a href="/#contact" data-anchor="contact" class="mm-link" style="color:var(--gold)">Book a Call</a>
   </div>
 
-  <!-- PAGE ROOT -->
   <div id="page-root"></div>
 
-  <!-- FOOTER -->
   <footer id="main-footer">
     <div class="footer-left">
       <span class="footer-brand">AI <em>Center</em></span>
-      <span class="footer-copy">&#169; 2026 Abdullah Ishaq &middot; abdullahishaq.tech</span>
+      <span class="footer-copy">&#169; 2026 Abdullah Ishaq &middot; abdullahishaq.tech &middot; hello@abdullahishaq.tech</span>
     </div>
     <ul class="footer-links">
       <li><a href="/#services" data-anchor="services">Services</a></li>
@@ -750,51 +589,85 @@
   </footer>
 
 <script>
-/* ═══════════════════════════════════════════════════════════════════════════
-   ROUTER
-═══════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   ROUTER — with GitHub Pages 404 fix
+═══════════════════════════════════════════════ */
+// Read redirect from sessionStorage (set by 404.html)
+(function() {
+  const redirect = sessionStorage.getItem('spa_redirect');
+  if (redirect) {
+    sessionStorage.removeItem('spa_redirect');
+    window.history.replaceState(null, null, redirect);
+  }
+})();
+
 const root = document.getElementById('page-root');
 const nav  = document.getElementById('main-nav');
 
-function navigate(path, push = true) {
-  if (push && window.location.pathname !== path) {
-    history.pushState({}, '', path);
+function navigate(path, push) {
+  if (push === undefined) push = true;
+  const cleanPath = path.split('?')[0].split('#')[0];
+  if (push && window.location.pathname !== cleanPath) {
+    history.pushState({}, '', cleanPath);
   }
   root.classList.add('fade-out');
-  setTimeout(() => {
-    renderPage(path);
+  // Remove reading bar if exists
+  const rb = document.getElementById('reading-bar');
+  if (rb) rb.remove();
+
+  setTimeout(function() {
+    renderPage(cleanPath);
     root.classList.remove('fade-out');
     window.scrollTo(0, 0);
     initReveal();
-    updateNav(path);
+    updateNav(cleanPath);
+    initReadingBar(cleanPath);
   }, 250);
 }
 
 function updateNav(path) {
-  if (path === '/') {
+  if (path === '/' || path === '') {
     nav.classList.remove('dark');
   } else {
     nav.classList.remove('dark');
   }
 }
 
+function initReadingBar(path) {
+  const articlePaths = ['/blog/automation-readiness', '/blog/make-vs-zapier', '/cushy-cuisine', '/flora-scents', '/framework-whatsapp', '/framework-discovery'];
+  if (articlePaths.includes(path)) {
+    const bar = document.createElement('div');
+    bar.id = 'reading-bar';
+    bar.className = 'reading-bar';
+    bar.innerHTML = '<div class="reading-bar-fill" id="rbf"></div>';
+    document.body.appendChild(bar);
+    window.addEventListener('scroll', updateReadingBar, { passive: true });
+  }
+}
+
+function updateReadingBar() {
+  const rbf = document.getElementById('rbf');
+  if (!rbf) { window.removeEventListener('scroll', updateReadingBar); return; }
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  rbf.style.width = Math.min(pct, 100) + '%';
+}
+
 function scrollToAnchor(id) {
   if (window.location.pathname !== '/') {
     navigate('/');
-    setTimeout(() => {
+    setTimeout(function() {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 350);
+    }, 400);
   } else {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
-document.addEventListener('click', e => {
+document.addEventListener('click', function(e) {
   const routeEl = e.target.closest('[data-route]');
   const anchorEl = e.target.closest('[data-anchor]');
-
   if (routeEl) {
     e.preventDefault();
     navigate(routeEl.dataset.route);
@@ -809,29 +682,38 @@ document.addEventListener('click', e => {
   }
 });
 
-window.addEventListener('popstate', () => navigate(window.location.pathname, false));
+window.addEventListener('popstate', function() {
+  navigate(window.location.pathname, false);
+});
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   PAGE TEMPLATES
-═══════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   PAGE RENDERERS
+═══════════════════════════════════════════════ */
 function renderPage(path) {
-  const pages = {
-    '/': renderHome,
-    '/cushy-cuisine': renderCushyCuisine,
-    '/blog': renderBlog,
+  var pages = {
+    '/':                        renderHome,
+    '/cushy-cuisine':           renderCushyCuisine,
+    '/flora-scents':            renderFloraSc,
+    '/blog':                    renderBlog,
     '/blog/automation-readiness': renderAutomationReadiness,
-    '/labs': renderLabs,
-    '/lab-readiness-score': renderReadinessScore,
-    '/frameworks': renderFrameworks,
-    '/framework-whatsapp': renderWhatsAppFramework,
-    '/data-protection': renderDataProtection,
+    '/blog/make-vs-zapier':     renderMakeVsZapier,
+    '/labs':                    renderLabs,
+    '/lab-readiness-score':     renderReadinessScore,
+    '/lab-content-audit':       renderContentAudit,
+    '/frameworks':              renderFrameworks,
+    '/framework-whatsapp':      renderWhatsAppFramework,
+    '/framework-discovery':     renderDiscoveryFramework,
+    '/data-protection':         renderDataProtection,
   };
-  const fn = pages[path] || renderHome;
+  var fn = pages[path] || renderHome;
   root.innerHTML = fn();
   if (path === '/lab-readiness-score') initQuiz();
+  if (path === '/lab-content-audit') initContentAudit();
 }
 
-/* ── HOME ── */
+/* ═══════════════════════════════════════════════
+   HOME
+═══════════════════════════════════════════════ */
 function renderHome() {
   return `
   <section id="home">
@@ -895,7 +777,7 @@ function renderHome() {
           <div class="service-num">01</div>
           <svg class="service-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="1" stroke="var(--gold)" stroke-width="1"/><path d="M12 20h16M12 15h8M12 25h12" stroke="var(--b)" stroke-width="1"/></svg>
           <div class="service-title">AI Business Setup</div>
-          <div class="service-desc">Full operational infrastructure — order systems, customer intake, inventory tracking, and delivery management. All connected. All automated. Built for your exact business, not a template.</div>
+          <div class="service-desc">Full operational infrastructure — order systems, customer intake, inventory tracking, and delivery management. All connected. All automated.</div>
           <div class="service-tools"><span class="tool-chip">Make.com</span><span class="tool-chip">Tally.so</span><span class="tool-chip">Google Sheets</span><span class="tool-chip">Notion</span></div>
         </div>
         <div class="service-card reveal reveal-d2">
@@ -916,7 +798,7 @@ function renderHome() {
           <div class="service-num">04</div>
           <svg class="service-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="14" height="14" stroke="var(--gold)" stroke-width="1"/><rect x="22" y="4" width="14" height="14" stroke="var(--b)" stroke-width="1"/><rect x="4" y="22" width="14" height="14" stroke="var(--b)" stroke-width="1"/><rect x="22" y="22" width="14" height="14" stroke="var(--gold)" stroke-width="1"/></svg>
           <div class="service-title">Notion Operating Systems</div>
-          <div class="service-desc">A custom Notion workspace that runs your entire business — client management, finance tracking, content calendars, SOPs, and team wikis.</div>
+          <div class="service-desc">A custom Notion workspace that runs your entire business — client management, finance tracking, content calendars, and team SOPs.</div>
           <div class="service-tools"><span class="tool-chip">Notion</span><span class="tool-chip">Google Drive</span><span class="tool-chip">Make.com</span></div>
         </div>
       </div>
@@ -934,7 +816,7 @@ function renderHome() {
         <div class="work-card work-card-full">
           <div class="work-tag">Case Study 01 — OAU Campus, Nigeria</div>
           <div class="work-title">Flora Scents — From WhatsApp chaos to fully automated operation.</div>
-          <div class="work-desc">Flora Scents is a perfume vendor at OAU campus running over 200 products. Every order was manual — DMs, mental tracking, handwritten notes. I built a complete business infrastructure across all 200+ SKUs, automated order intake, 12 WhatsApp quick replies, receipt generator, and scent catalogue. The owner now does three things: verify payment, answer escalations, hand orders to the rider.</div>
+          <div class="work-desc">A perfume vendor running over 200 products. Every order was manual. I built a complete business infrastructure: inventory across all 200+ SKUs, automated order intake, 12 WhatsApp quick replies, receipt generator, scent catalogue, and a 30-caption content bank. The owner now does three things.</div>
           <div class="work-stats">
             <div class="work-stat-item"><div class="work-stat-num">200+</div><div class="work-stat-label">SKUs tracked automatically</div></div>
             <div class="work-stat-item"><div class="work-stat-num">0</div><div class="work-stat-label">Manual order logs</div></div>
@@ -945,8 +827,8 @@ function renderHome() {
         </div>
         <div class="work-card">
           <div class="work-tag">Case Study 02 — Ile-Ife, Nigeria</div>
-          <div class="work-title">Cushy Cuisine — Telegram Bot with digital wallet and automated ordering.</div>
-          <div class="work-desc">A fast-growing restaurant brand delivering comfort food across Ile-Ife. I built a fully automated Telegram Bot handling ordering, wallet management, and customer logging. Orders go from 3 minutes to 30 seconds.</div>
+          <div class="work-title">Cushy Cuisine — Telegram Bot with digital wallet.</div>
+          <div class="work-desc">Fully automated Telegram Bot handling digital ordering, wallet management, and customer logging. Orders go from 3 minutes of back-and-forth to 30 seconds. Every customer auto-logged for retargeting.</div>
           <div class="work-stats">
             <div class="work-stat-item"><div class="work-stat-num">85%</div><div class="work-stat-label">Reduction in order friction</div></div>
             <div class="work-stat-item"><div class="work-stat-num">0%</div><div class="work-stat-label">Manual entry errors</div></div>
@@ -961,7 +843,7 @@ function renderHome() {
         <div class="work-card">
           <div class="work-tag">Project 03 — In Progress</div>
           <div class="work-title">AI Center — This website, built in one session.</div>
-          <div class="work-desc">A complete personal brand website with 8 sections, a live lab tool, a deployable framework document, a published blog article, and a data protection career page — all built and deployed to a custom domain in a single working session.</div>
+          <div class="work-desc">A complete personal brand website with 8 sections, live lab tools, deployable framework documents, published blog articles, and a data protection profile — built and deployed to a custom domain in a single working session.</div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
             <span class="tool-chip" style="border-color:var(--g2);color:var(--g4);background:transparent;">HTML/CSS/JS</span>
             <span class="tool-chip" style="border-color:var(--g2);color:var(--g4);background:transparent;">GitHub Pages</span>
@@ -986,31 +868,31 @@ function renderHome() {
         <a href="/blog/automation-readiness" data-route="/blog/automation-readiness" class="blog-card reveal">
           <div class="blog-cat">Explainer</div>
           <div class="blog-title">5 Signs Your Business Is Ready for Automation (And 3 Signs It Is Not)</div>
-          <div class="blog-excerpt">Most people asking about automation are not ready for it. Here are the honest signals.</div>
+          <div class="blog-excerpt">Most people asking about automation are not ready for it. Here are the honest signals that tell you whether to build now or fix your operations first.</div>
           <div class="blog-meta"><span class="blog-time">4 min read</span><span class="blog-arrow">&#8594;</span></div>
         </a>
-        <div class="blog-card reveal reveal-d1" style="opacity:0.6;pointer-events:none;">
+        <a href="/blog/make-vs-zapier" data-route="/blog/make-vs-zapier" class="blog-card reveal reveal-d1">
+          <div class="blog-cat">Comparison</div>
+          <div class="blog-title">Make.com vs Zapier: Which One Actually Works for African Businesses?</div>
+          <div class="blog-excerpt">Both tools promise automation. Only one is built for the budget, the workflow, and the constraints of a small business in Nigeria.</div>
+          <div class="blog-meta"><span class="blog-time">6 min read</span><span class="blog-arrow">&#8594;</span></div>
+        </a>
+        <div class="blog-card reveal reveal-d2" style="opacity:0.6;pointer-events:none;">
           <div class="blog-cat" style="color:var(--g4)">Guide — Coming Soon</div>
           <div class="blog-title">The WhatsApp Automation Stack: How to Turn Your DMs Into a Sales Machine</div>
-          <div class="blog-excerpt">A step-by-step breakdown of the exact tools and logic behind a WhatsApp automation system.</div>
+          <div class="blog-excerpt">A step-by-step breakdown of the exact tools and logic behind a WhatsApp automation system that runs without the owner touching their phone.</div>
           <div class="blog-meta"><span class="blog-time">8 min read</span><span class="blog-arrow" style="color:var(--g5)">&#8594;</span></div>
-        </div>
-        <div class="blog-card reveal reveal-d2" style="opacity:0.6;pointer-events:none;">
-          <div class="blog-cat" style="color:var(--g4)">Comparison — Coming Soon</div>
-          <div class="blog-title">Make.com vs Zapier: Which One Actually Works for African Businesses?</div>
-          <div class="blog-excerpt">Both tools promise automation. Only one is built for the budget and constraints of Nigerian small business.</div>
-          <div class="blog-meta"><span class="blog-time">6 min read</span><span class="blog-arrow" style="color:var(--g5)">&#8594;</span></div>
         </div>
         <div class="blog-card reveal reveal-d1" style="opacity:0.6;pointer-events:none;">
           <div class="blog-cat" style="color:var(--g4)">Guide — Coming Soon</div>
           <div class="blog-title">The Notion Operating System: How to Run Your Entire Business From One Page</div>
-          <div class="blog-excerpt">Clients, revenue, content, tasks, SOPs — all in one place, all connected.</div>
+          <div class="blog-excerpt">Clients, revenue, content, tasks, SOPs — all in one place, all connected. This is how I build Notion workspaces that people actually use.</div>
           <div class="blog-meta"><span class="blog-time">7 min read</span><span class="blog-arrow" style="color:var(--g5)">&#8594;</span></div>
         </div>
         <div class="blog-card reveal reveal-d2" style="opacity:0.6;pointer-events:none;">
           <div class="blog-cat" style="color:var(--g4)">Playbook — Coming Soon</div>
           <div class="blog-title">The African Business Automation Playbook: Start Here</div>
-          <div class="blog-excerpt">A complete roadmap for small business owners in Nigeria and across Africa.</div>
+          <div class="blog-excerpt">A complete roadmap for small business owners in Nigeria and across Africa who want to automate without a technical background or a big budget.</div>
           <div class="blog-meta"><span class="blog-time">10 min read</span><span class="blog-arrow" style="color:var(--g5)">&#8594;</span></div>
         </div>
         <div class="blog-card reveal reveal-d3" style="opacity:0.6;pointer-events:none;">
@@ -1040,17 +922,17 @@ function renderHome() {
           <div class="lab-desc">Answer 10 questions about your business. Get a score out of 30, a personalised diagnosis, and a recommended first step. Takes 3 minutes.</div>
           <span class="lab-cta">Launch Tool &#8594;</span>
         </a>
-        <div class="lab-card reveal reveal-d1">
+        <a href="/lab-content-audit" data-route="/lab-content-audit" class="lab-card reveal reveal-d1">
+          <span class="lab-status live">Live</span>
+          <div class="lab-title">Content Automation Potential Audit</div>
+          <div class="lab-desc">Find out exactly how much of your content production can be automated. Answer 8 questions about how you create and publish content today.</div>
+          <span class="lab-cta">Launch Audit &#8594;</span>
+        </a>
+        <div class="lab-card reveal reveal-d2">
           <span class="lab-status beta">Beta</span>
           <div class="lab-title">WhatsApp Automation Simulator</div>
           <div class="lab-desc">An interactive walkthrough of how a WhatsApp automation system works — step through a real customer conversation handled entirely by the bot.</div>
           <span class="lab-cta disabled">In Development</span>
-        </div>
-        <div class="lab-card reveal reveal-d2">
-          <span class="lab-status soon">Coming Soon</span>
-          <div class="lab-title">Notion Template Generator</div>
-          <div class="lab-desc">Describe your business in plain English. Get a Notion workspace structure generated for you in seconds.</div>
-          <span class="lab-cta disabled">Notify Me</span>
         </div>
         <div class="lab-card reveal reveal-d3">
           <span class="lab-status soon">Coming Soon</span>
@@ -1079,9 +961,14 @@ function renderHome() {
           <div class="fw-desc">The exact flow, quick reply structure, Tally form setup, and Make.com scenario I use to build WhatsApp sales systems.</div>
           <span class="fw-link">Read framework &#8594;</span>
         </a>
+        <a href="/framework-discovery" data-route="/framework-discovery" class="fw-card">
+          <span class="fw-badge free">Free</span>
+          <div class="fw-title">The Automation Discovery Framework</div>
+          <div class="fw-desc">The exact questionnaire and process I use in every client discovery session — adapted for anyone to use when mapping a business for automation.</div>
+          <span class="fw-link">Read framework &#8594;</span>
+        </a>
         <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Notion Business OS Template</div><div class="fw-desc">A complete Notion workspace covering client management, revenue tracking, content calendar, and task management.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
         <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The AI Content Pipeline Blueprint</div><div class="fw-desc">End-to-end workflow for building an AI content system — from prompt engineering to scheduling.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
-        <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Automation Discovery Framework</div><div class="fw-desc">The exact questionnaire and process I use in every client discovery session — adapted for anyone.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
         <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Google Sheets Business Tracker</div><div class="fw-desc">A zero-formula-knowledge spreadsheet system covering order tracking, inventory, customer records, and income logging.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
         <div class="fw-card"><span class="fw-badge premium">Premium</span><div class="fw-title">The Make.com Starter Scenario Pack</div><div class="fw-desc">Five production-ready Make.com scenarios covering order intake, payment confirmation, inventory update, customer logging, and follow-up.</div><a href="/#contact" data-anchor="contact" class="fw-link">Get Access &#8594;</a></div>
       </div>
@@ -1120,7 +1007,7 @@ function renderHome() {
             <div class="about-timeline-title">Current &amp; Active</div>
             <div class="timeline-item"><div class="timeline-dot active"></div><div class="timeline-content"><div class="timeline-role">Founder — AI Center</div><div class="timeline-org">abdullahishaq.tech</div><div class="timeline-note">Building AI automation systems for African small businesses.</div></div></div>
             <div class="timeline-item"><div class="timeline-dot active"></div><div class="timeline-content"><div class="timeline-role">Law Student</div><div class="timeline-org">Nigeria</div><div class="timeline-note">Studying law with a focus on technology law, data protection, and digital rights.</div></div></div>
-            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-role">Data Protection Practitioner</div><div class="timeline-org">In Progress</div><div class="timeline-note">Building expertise in NDPA 2023 compliance, AI governance, and digital rights.</div></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-role">Data Protection Practitioner</div><div class="timeline-org">In Progress</div><div class="timeline-note">Building expertise in NDPA 2023 compliance and AI governance.</div></div></div>
           </div>
           <div style="margin-top:28px;"><a href="/data-protection" data-route="/data-protection" class="btn-ghost" style="display:inline-block">Data Protection Profile &#8594;</a></div>
         </div>
@@ -1171,25 +1058,123 @@ function renderHome() {
   </section>`;
 }
 
-/* ── CUSHY CUISINE CASE STUDY ── */
+/* ═══════════════════════════════════════════════
+   FLORA SCENTS CASE STUDY
+═══════════════════════════════════════════════ */
+function renderFloraSc() {
+  return `
+  <div class="page-hero">
+    <div class="inner">
+      <div class="back-link" onclick="navigate('/')">Home</div>
+      <div class="sec-label">Case Study 01 — OAU Campus, Nigeria</div>
+      <h1 class="page-title">Flora Scents:<br>200+ products,<br><em>zero manual logs.</em></h1>
+      <div class="page-meta">
+        <span>Perfume Vendor</span><span class="page-meta-dot"></span>
+        <span>OAU Campus, Ile-Ife</span><span class="page-meta-dot"></span>
+        <span>Delivered in 5 days</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <div class="case-metrics">
+      <div class="case-metric"><div class="case-metric-num">200+</div><div class="case-metric-label">SKUs tracked automatically</div></div>
+      <div class="case-metric"><div class="case-metric-num">0</div><div class="case-metric-label">Manual order logs after delivery</div></div>
+      <div class="case-metric"><div class="case-metric-num">3</div><div class="case-metric-label">Things the owner does manually</div></div>
+      <div class="case-metric"><div class="case-metric-num">5</div><div class="case-metric-label">Days to build and deliver</div></div>
+    </div>
+
+    <h2>The Situation</h2>
+    <p>Flora Scents is a perfume business operating from Moremi Hall, OAU campus. The owner — Esther — sells over 200 products: sprays, high-end perfumes, perfume oils, roll-ons, body mists, and diffusers. She serves students and off-campus customers across Ile-Ife, with delivery by rider across multiple zones.</p>
+    <p>Every single part of the business ran through Esther's head and her WhatsApp chats. Orders came in via DM. She confirmed availability from memory. She tracked stock mentally. Receipts were typed manually. Customer questions — "is this available?", "what does it smell like?", "how much is delivery?" — arrived constantly and each one required a fresh response. Her entire operational day was absorbed by tasks a system could handle.</p>
+
+    <div class="article-callout">"I was replying the same messages every day. Same questions. Same prices. Same thank-yous. I knew something had to change but I didn't know what to build."</div>
+
+    <h2>The Discovery Process</h2>
+    <p>Before building anything, I ran a full discovery session with Esther. I asked her to walk me through every step of a typical order — from the first customer message to the rider leaving. I asked what data she currently tracked, what questions she answered most often, where things most commonly went wrong, and what a good day versus a bad day looked like.</p>
+    <p>What emerged was a clear picture: the problems were not unique or complicated. They were the standard problems of a business with real volume and zero infrastructure. The solutions were known. The implementation was the work.</p>
+
+    <h2>What Was Built</h2>
+    <h3>1. Full Inventory System — Google Sheets</h3>
+    <p>Every product organised across six categorised sheets: Sprays (35 SKUs), High-End Perfumes (17 SKUs), Roll-Ons (7 SKUs), Body Mists (15 SKUs), Perfume Oils (33 SKUs), and Others (115 SKUs). Each product has a stock count, price, restock alert threshold, gender tag, and scent profile. The dashboard tab shows live totals — total SKUs, low-stock items, total inventory value in ₦, and orders logged today — all pulling automatically from the category sheets. Conditional formatting turns any item red when stock falls below Esther's set threshold.</p>
+
+    <h3>2. Order Log with Auto-Calculations</h3>
+    <p>A structured order log captures every transaction: date, customer name, phone, items ordered, delivery zone, delivery fee, gift bag (₦1,500 upsel), total (auto-calculated), and payment status. The log updates to green on payment confirmation and amber on pending. Every order is timestamped. Nothing lives in WhatsApp chat history anymore.</p>
+
+    <h3>3. WhatsApp Business Quick Reply System</h3>
+    <p>Twelve saved quick replies covering every common customer interaction: catalogue (/cat), price range (/price), order intake (/order), payment details (/pay), order confirmation (/confirm), delivery zones (/del), gift packaging (/gift), scent recommendation (/rec), policy (/policy), availability (/avail), working hours (/hours), and post-delivery thank you (/thanks). Each reply is written in Esther's tone — playful but cool, not overly formal.</p>
+
+    <h3>4. Scent Catalogue Document</h3>
+    <p>Every product documented with its scent profile (Sweet, Fresh, Woody, Flowery, Citrusy, Musky, or Spicy), gender recommendation, and price. The catalogue is shareable as a PDF link — one quick reply fires it to any customer asking what's available. This alone eliminated the single most common question Esther received daily.</p>
+
+    <h3>5. Receipt Generator</h3>
+    <p>A Google Sheets receipt template. Esther fills in three yellow fields (customer name, date, order number). The total calculates automatically including delivery fee and gift bag if applicable. She screenshots and sends. Professional, branded, consistent — and takes 20 seconds.</p>
+
+    <h3>6. Customer Database</h3>
+    <p>A structured customer log capturing name, WhatsApp number, hall/location, how they found Flora Scents, scent preference, favourite products, first order date, total orders, last order value, and broadcast list status. Conditional formatting highlights repeat customers and high-value orders. Eight scent preference quick-tags for consistent categorisation across all customer records.</p>
+
+    <h3>7. Caption Bank — 30 WhatsApp Status Captions</h3>
+    <p>Thirty ready-to-use status captions across six categories: New Arrivals, Promos and Deals, Engagement, Product Spotlight, Social Proof, and Reminders. Each caption written in Esther's voice. Each includes a usage tip explaining when to post it and why it works. A suggested weekly posting schedule gives her one caption per day without repetition.</p>
+
+    <div class="case-stack">
+      <span class="case-chip">Google Sheets</span><span class="case-chip">WhatsApp Business</span>
+      <span class="case-chip">Tally.so</span><span class="case-chip">Google Docs</span>
+    </div>
+
+    <h2>What Esther Does Now</h2>
+    <p>Three things. She verifies payment by checking her UBA SMS. She answers questions that required genuine judgment — custom scent recommendations, escalated issues, out-of-stock inquiries on high-end items. And she hands confirmed orders to the rider. Everything else — the FAQ responses, the catalogue shares, the receipt generation, the stock tracking, the customer logging — has a system doing it.</p>
+    <p>On a normal day, that means her operational load dropped from several hours of WhatsApp management to under 30 minutes of actual decision-making.</p>
+
+    <h2>What This Teaches</h2>
+    <p>Flora Scents was not a complicated business. The products were physical, the transactions were local, the customers were mostly students. Nothing about the business required sophisticated technology. What it required was structure — a consistent way of capturing, tracking, and responding to information that had previously lived only in Esther's head and her chat history. That structure is what a system provides. And that structure is buildable for any business at this stage, in under a week, with free tools.</p>
+
+    <div class="article-actions">
+      <a href="/#contact" data-anchor="contact" class="btn-fill">Build this for my business</a>
+      <a href="/" data-route="/" class="btn-ghost">← Back to all work</a>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   CUSHY CUISINE CASE STUDY
+═══════════════════════════════════════════════ */
 function renderCushyCuisine() {
   return `
   <div class="page-hero dark">
     <div class="inner">
-      <div class="back-link" data-route="/" onclick="navigate('/')">Home</div>
+      <div class="back-link" onclick="navigate('/')">Home</div>
       <div class="sec-label" style="color:var(--g3)">Case Study 02 — Ile-Ife, Nigeria</div>
-      <h1 class="page-title" style="color:var(--w)">Cushy Cuisine:<br><em>Telegram Bot</em> with<br>digital wallet.</h1>
-      <div class="page-meta" style="color:var(--g4)">
-        <span>Restaurant Automation</span>
-        <span class="page-meta-dot"></span>
-        <span>Ile-Ife, Nigeria</span>
-        <span class="page-meta-dot"></span>
+      <h1 class="page-title" style="color:var(--w)">Cushy Cuisine:<br><em>Telegram Bot</em><br>with digital wallet.</h1>
+      <div class="page-meta">
+        <span>Restaurant Automation</span><span class="page-meta-dot"></span>
+        <span>Ile-Ife, Nigeria</span><span class="page-meta-dot"></span>
         <span>Delivered in 7 days</span>
       </div>
     </div>
   </div>
 
   <div class="article-body">
+
+    <!-- Cushy brand visual — pure CSS, no image required -->
+    <div class="cushy-visual">
+      <div class="cushy-visual-inner">
+        <div class="cushy-brand-mark">
+          <div class="cushy-logo-circle">CC</div>
+          <div class="cushy-brand-name">CUSHY<br>CUISINE</div>
+          <div class="cushy-brand-tagline">Sweetness with all the extras</div>
+          <div style="margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--cushy-green);letter-spacing:0.06em;">Delivering within Ile-Ife &amp; Environs</div>
+        </div>
+        <div class="cushy-menu-preview">
+          <div class="cushy-menu-item"><span class="cushy-menu-price">&#8358;2,200</span><span class="cushy-menu-name">The Student Pack</span></div>
+          <div class="cushy-menu-item"><span class="cushy-menu-price">&#8358;2,900</span><span class="cushy-menu-name">The Beef Pack</span></div>
+          <div class="cushy-menu-item"><span class="cushy-menu-price">&#8358;3,000</span><span class="cushy-menu-name">Standard Chicken Pack</span></div>
+          <div class="cushy-menu-item"><span class="cushy-menu-price">&#8358;3,500</span><span class="cushy-menu-name">Premium Chicken Pack</span></div>
+          <div class="cushy-menu-item"><span class="cushy-menu-price">&#8358;4,800</span><span class="cushy-menu-name">Luxury Turkey Pack</span></div>
+          <div class="cushy-delivery-badge">+ 2348137441125 &middot; @cushycuisineng</div>
+        </div>
+      </div>
+    </div>
+
     <div class="case-metrics">
       <div class="case-metric"><div class="case-metric-num">85%</div><div class="case-metric-label">Reduction in order processing friction</div></div>
       <div class="case-metric"><div class="case-metric-num">0%</div><div class="case-metric-label">Manual data entry errors</div></div>
@@ -1198,24 +1183,28 @@ function renderCushyCuisine() {
     </div>
 
     <h2>The Problem</h2>
-    <p>Cushy Cuisine is a fast-growing comfort food brand operating in Ile-Ife. They were doing real volume — but every single order came through WhatsApp, handled manually by the owner. A customer would send a message, the owner would confirm availability, calculate the price, send account details, wait for proof of payment, confirm the order, and log the customer's details by hand. Three minutes minimum. Per order. Every day.</p>
-    <p>As the business grew, this wasn't sustainable. The owner was spending more time managing messages than managing the kitchen. Customer data was scattered across chat threads. Repeat customers weren't being tracked. There was no way to run promotions, analyse order patterns, or handle peak demand without the owner being glued to their phone.</p>
+    <p>Cushy Cuisine is a comfort food brand operating in Ile-Ife. They deliver Fried rice, Jollof rice, Fried plantains, and protein options at five clear price points — from the ₦2,200 Student Pack to the ₦4,800 Luxury Turkey Pack. The menu is consistent, the prices are fixed, and the product is excellent. The operational problem was the order intake.</p>
+    <p>Every single order came through WhatsApp. A customer would message, the owner would confirm availability, explain the menu, calculate the total, send account details, wait for payment proof, confirm the order, log the customer's name somewhere, and coordinate with the kitchen. Three minutes minimum — per order — every single day. On a busy day that manual process was the owner's entire morning.</p>
+    <p>Customer data was scattered across chat threads. Repeat customers were not being tracked. There was no way to run promotions, analyse which packs were most popular, or handle high volume without the owner being present and responsive. The business had outgrown its operational infrastructure.</p>
 
-    <div class="article-callout">"Before this, I spent two hours a day just replying to order messages. Now I check a dashboard in the morning and start cooking."</div>
+    <div class="article-callout">"Before this, I spent two hours every morning just replying to order messages. Now I check a dashboard and start cooking."</div>
 
-    <h2>The Solution</h2>
-    <p>I built a fully automated Telegram Bot that handles the entire order lifecycle — from menu browsing to payment confirmation to order logging — without any manual input from the Cushy Cuisine team.</p>
+    <h2>Why Telegram</h2>
+    <p>The natural instinct for many businesses is to stay on WhatsApp. But Telegram's Bot API gives developers capabilities that WhatsApp Business simply does not have at this price point — inline button menus, persistent user state, webhook-based real-time triggers, and a structured messaging environment that can guide a customer through a multi-step order flow without any typing required. For a fixed menu with clear pricing, Telegram was the right tool. Customers download it once and reorder with two taps.</p>
 
+    <h2>What Was Built</h2>
     <h3>Digital Ordering Flow</h3>
-    <p>Customers interact with the bot via a simple command interface. They browse the menu (which updates in real time from a Google Sheet), select their items, confirm their order, and receive a payment prompt — all inside Telegram. The experience is clean, fast, and requires no training from the customer side.</p>
+    <p>The bot presents the full Cushy Cuisine menu through inline keyboard buttons — no typing required from the customer. They tap their pack, tap their protein extras if desired, confirm their delivery address, and receive a complete order summary with the total before any payment is requested. The experience is faster and clearer than any WhatsApp back-and-forth could be.</p>
 
     <h3>Digital Wallet System</h3>
-    <p>Repeat customers can load credit into their Cushy Wallet — a balance stored against their Telegram user ID. When they place an order, the amount is deducted automatically. This reduced payment friction dramatically for regular customers and created a built-in loyalty mechanism the business had never had before.</p>
+    <p>Repeat customers can load credit into a Cushy Wallet — a balance stored against their Telegram user ID in Google Sheets. When they place an order, the amount is deducted automatically and a transaction record is logged. This reduced payment friction dramatically for regular customers and created a built-in loyalty mechanism. Customers with wallet balances reorder significantly faster than those without.</p>
 
     <h3>Automated Customer Database</h3>
-    <p>Every order is logged automatically to a Google Sheet with the customer's name, Telegram handle, order history, total spend, and last order date. The owner now has a live CRM they never had to build manually — it builds itself, one order at a time.</p>
+    <p>Every order is logged to a structured Google Sheet with the customer's Telegram username, display name, phone number (captured during onboarding), order history, total spend, and last order date. The owner now has a live CRM that builds itself with every transaction — without any manual input.</p>
 
-    <h3>Tech Stack</h3>
+    <h3>Kitchen Notification System</h3>
+    <p>Confirmed and paid orders trigger an automated notification to the kitchen via a separate Telegram channel. The notification includes the order details in a clean, readable format — no interpretation required. The kitchen sees exactly what to prepare before the owner has even looked at their phone.</p>
+
     <div class="case-stack">
       <span class="case-chip">Python (PythonAnywhere)</span>
       <span class="case-chip">Telegram Bot API</span>
@@ -1224,23 +1213,23 @@ function renderCushyCuisine() {
     </div>
 
     <h2>The Results</h2>
-    <p>Order processing time dropped from an average of 3 minutes of back-and-forth to a 30-second automated flow. The owner handles escalations and kitchen coordination — not order intake. The business can now run promotions with a single broadcast message to logged customers. Order volume increased because friction decreased.</p>
-    <p>The wallet system created something no restaurant of this size in Ile-Ife had built before: a digital customer relationship. Repeat customers come back more often because it is faster to reorder than to find a competitor.</p>
+    <p>Order processing time dropped from an average of 3 minutes of back-and-forth to a 30-second automated flow. The owner handles kitchen coordination and quality control — not order intake. The business can now run promotions with a single broadcast message to every customer in the database. Order volume increased because the friction of ordering decreased.</p>
+    <p>The wallet system created something no restaurant at this scale in Ile-Ife had built before: a digital customer relationship. Customers return more often because reordering is faster than finding a competitor.</p>
 
     <h2>What This Proves</h2>
-    <p>You do not need a Shopify store or a custom app to run a modern restaurant business in Nigeria. You need the right system built on the tools your customers already use. <strong>Telegram has 900 million users. Your customers are already there.</strong> The question is whether you have a system waiting for them when they arrive.</p>
+    <p>You do not need a Shopify store or a custom app to run a modern food business in Nigeria. You need the right system built on tools your customers already use. Telegram has hundreds of millions of users. The order experience is better than most restaurant apps. And the total infrastructure cost — hosted on PythonAnywhere's free tier with Google Sheets as the database — is effectively zero to run once built.</p>
+    <p>The constraint was never technology. It was the absence of someone to build the bridge between the technology and the business. That is the work AI Center does.</p>
 
-    <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--g5);display:flex;gap:16px;flex-wrap:wrap;">
-      <a href="/#contact" data-anchor="contact" class="btn-fill">Build something like this</a>
+    <div class="article-actions">
+      <a href="/#contact" data-anchor="contact" class="btn-fill">Build this for my business</a>
       <a href="/" data-route="/" class="btn-ghost">← Back to all work</a>
     </div>
   </div>`;
 }
 
-/* ── FLORA SCENTS (linked from work section) ── */
-/* Using same route pattern — will use cushy as template */
-
-/* ── BLOG LISTING ── */
+/* ═══════════════════════════════════════════════
+   BLOG LISTING
+═══════════════════════════════════════════════ */
 function renderBlog() {
   return `
   <div class="page-hero">
@@ -1251,7 +1240,6 @@ function renderBlog() {
       <p style="font-size:15px;line-height:1.75;color:var(--g3);max-width:500px;margin-top:20px;">Practical writing on AI systems, automation tools, and what it actually takes to build infrastructure for African small businesses.</p>
     </div>
   </div>
-
   <div style="max-width:900px;margin:0 auto;padding:0 48px;">
     <div class="blog-listing-grid">
       <div class="blog-listing-item" onclick="navigate('/blog/automation-readiness')">
@@ -1260,10 +1248,15 @@ function renderBlog() {
           <div class="blog-listing-title">5 Signs Your Business Is Ready for Automation (And 3 Signs It Is Not)</div>
           <div class="blog-listing-excerpt">Most people asking about automation are not ready for it. Here are the honest signals that tell you whether to build now or fix your operations first.</div>
         </div>
-        <div class="blog-listing-meta">
-          4 min read<br>
-          <span class="blog-listing-arrow">&#8594;</span>
+        <div class="blog-listing-meta">4 min read<span class="blog-listing-arrow">&#8594;</span></div>
+      </div>
+      <div class="blog-listing-item" onclick="navigate('/blog/make-vs-zapier')">
+        <div>
+          <div class="blog-listing-cat">Comparison</div>
+          <div class="blog-listing-title">Make.com vs Zapier: Which One Actually Works for African Businesses?</div>
+          <div class="blog-listing-excerpt">Both tools promise automation. Only one is built for the budget, the workflow, and the constraints of a small business in Nigeria. Here is the honest breakdown.</div>
         </div>
+        <div class="blog-listing-meta">6 min read<span class="blog-listing-arrow">&#8594;</span></div>
       </div>
       <div class="blog-listing-item disabled">
         <div>
@@ -1275,17 +1268,9 @@ function renderBlog() {
       </div>
       <div class="blog-listing-item disabled">
         <div>
-          <div class="blog-listing-cat" style="color:var(--g4)">Comparison — Coming Soon</div>
-          <div class="blog-listing-title" style="color:var(--g3)">Make.com vs Zapier: Which One Actually Works for African Businesses?</div>
-          <div class="blog-listing-excerpt">Both tools promise automation. Only one is built for the budget, the workflow, and the constraints of a small business in Nigeria.</div>
-        </div>
-        <div class="blog-listing-meta">6 min read</div>
-      </div>
-      <div class="blog-listing-item disabled">
-        <div>
           <div class="blog-listing-cat" style="color:var(--g4)">Guide — Coming Soon</div>
           <div class="blog-listing-title" style="color:var(--g3)">The Notion Operating System: How to Run Your Entire Business From One Page</div>
-          <div class="blog-listing-excerpt">Clients, revenue, content, tasks, SOPs — all in one place, all connected. This is how I build Notion workspaces that people actually use.</div>
+          <div class="blog-listing-excerpt">Clients, revenue, content, tasks, SOPs — all in one place, all connected.</div>
         </div>
         <div class="blog-listing-meta">7 min read</div>
       </div>
@@ -1301,7 +1286,7 @@ function renderBlog() {
         <div>
           <div class="blog-listing-cat" style="color:var(--g4)">Analysis — Coming Soon</div>
           <div class="blog-listing-title" style="color:var(--g3)">AI Automation and Data Protection: The Compliance Questions Nobody Is Asking</div>
-          <div class="blog-listing-excerpt">Every AI automation system processes personal data. Every WhatsApp bot, every Google Sheet with customer records — all inside a data protection framework.</div>
+          <div class="blog-listing-excerpt">Every WhatsApp bot, every Google Sheet with customer records — all inside a data protection framework most businesses don't know exists.</div>
         </div>
         <div class="blog-listing-meta">6 min read</div>
       </div>
@@ -1310,7 +1295,9 @@ function renderBlog() {
   <div style="height:80px;"></div>`;
 }
 
-/* ── AUTOMATION READINESS ARTICLE ── */
+/* ═══════════════════════════════════════════════
+   BLOG ARTICLE 1 — AUTOMATION READINESS
+═══════════════════════════════════════════════ */
 function renderAutomationReadiness() {
   return `
   <div class="page-hero">
@@ -1319,64 +1306,117 @@ function renderAutomationReadiness() {
       <div class="sec-label">Explainer</div>
       <h1 class="page-title">5 Signs Your Business<br>Is Ready for <em>Automation.</em><br>And 3 Signs It Is Not.</h1>
       <div class="page-meta">
-        <span>Abdullah Ishaq</span>
-        <span class="page-meta-dot"></span>
-        <span>4 min read</span>
-        <span class="page-meta-dot"></span>
+        <span>Abdullah Ishaq</span><span class="page-meta-dot"></span>
+        <span>4 min read</span><span class="page-meta-dot"></span>
         <span>AI Center</span>
       </div>
     </div>
   </div>
-
   <div class="article-body">
     <p>Every week someone messages me asking about automation. And every week I have to have the same honest conversation: <strong>most businesses that want automation are not ready for it.</strong> Not because they are too small. Not because the tools are too expensive. But because they have not done the one thing that makes automation possible — they have not documented how their business actually works.</p>
-
-    <p>Automation does not fix broken processes. It accelerates them. If your order intake is chaotic, automating it will give you chaotic orders faster. If your customer communication is inconsistent, a WhatsApp bot will be inconsistently annoying at scale. The tool is only as good as the system it is running on.</p>
-
-    <p>So before we talk about Make.com, Tally forms, Telegram bots, or any of it — here is the honest checklist.</p>
+    <p>Automation does not fix broken processes. It accelerates them. If your order intake is chaotic, automating it gives you chaotic orders faster. If your customer communication is inconsistent, a WhatsApp bot will be inconsistently annoying at scale. The tool is only as good as the system it is running on.</p>
+    <p>So before we talk about Make.com, Tally forms, or any of it — here is the honest checklist.</p>
 
     <h2>5 Signs You Are Ready</h2>
 
     <h3>1. You already know your process, you just hate doing it</h3>
-    <p>The best automation candidates are repetitive tasks that you do the same way every time. If someone asked you right now to write down the exact steps of how a customer orders from you — from first message to delivery — and you could answer in under two minutes, you are ready. Automation needs a process to follow. If you have one in your head but not on paper, write it down first. Then we can build it.</p>
+    <p>The best automation candidates are repetitive tasks you do the same way every time. If someone asked you to write down the exact steps of how a customer orders from you — from first message to delivery — and you could answer in under two minutes, you are ready. Automation needs a process to follow. If you have one in your head but not on paper, write it down first. Then we can build it.</p>
 
     <h3>2. You are spending more than 5 hours a week on tasks a spreadsheet could handle</h3>
-    <p>Manually logging orders. Calculating totals. Copy-pasting customer details from WhatsApp into a notepad. Sending the same "thank you for your order" message 20 times a day. If you can identify more than 5 hours per week of work that is repetitive, rule-based, and digital — you have a strong automation case. The ROI pays off in weeks, not months.</p>
+    <p>Manually logging orders. Calculating totals. Copy-pasting customer details from WhatsApp into a notepad. Sending the same "thank you for your order" message twenty times a day. If you can identify more than 5 hours per week of work that is repetitive, rule-based, and digital — you have a strong automation case. The ROI pays off in weeks, not months.</p>
 
     <h3>3. You have at least 10 customers per week</h3>
     <p>Automation has a setup cost — in time, money, and learning curve. Below 10 customers per week, manual operations are actually more efficient. Above 10, you start to feel the weight. Above 30, manual operations become your biggest growth constraint. If you are handling volume, even moderate volume, the infrastructure investment is worth it.</p>
 
     <h3>4. You know exactly what data you need to capture</h3>
-    <p>Order forms, customer intake, payment confirmation — all of these require knowing what information you actually need from a customer. Name. Phone. Address. Order details. Size. Colour. Quantity. If you can list every field you need to capture, in every transaction, without thinking too hard — you are ready to build a form that captures it automatically.</p>
+    <p>Order forms, customer intake, payment confirmation — all of these require knowing what information you actually need from a customer. Name. Phone. Address. Order details. Quantity. If you can list every field you need to capture in every transaction without thinking too hard — you are ready to build a form that captures it automatically.</p>
 
     <h3>5. You are willing to change how you work, not just add a tool on top</h3>
-    <p>This one eliminates more people than any other. Automation is not a layer on top of how you currently operate. It requires you to change your inputs and outputs. If you are not willing to direct customers to a Tally form instead of taking orders by voice note, the system will not hold. If you are not willing to stop answering order questions manually once a bot is doing it, you will undo the automation within a week. The tool requires commitment to the new process.</p>
+    <p>This one eliminates more people than any other. Automation is not a layer on top of how you currently operate. It requires you to change your inputs and outputs. If you are not willing to direct customers to a Tally form instead of taking orders by voice note, the system will not hold. The tool requires commitment to the new process.</p>
 
     <div class="article-callout">Automation is not a layer on top of how you operate. It is a replacement for part of how you operate. The businesses that get this make it work. The ones that do not end up with expensive tools nobody uses.</div>
 
     <h2>3 Signs You Are Not Ready</h2>
 
     <h3>1. You do not have a consistent product or service offering</h3>
-    <p>If your prices change week to week, your menu changes daily, or your services are entirely bespoke every time — automation cannot help you yet. The tools require consistency to function. A bot cannot quote a price that does not exist. A form cannot capture a field you have not defined. Get your offering stable first. Then systematise it.</p>
+    <p>If your prices change week to week, your menu changes daily, or your services are entirely bespoke every time — automation cannot help you yet. The tools require consistency to function. A bot cannot quote a price that does not exist. Get your offering stable first. Then systematise it.</p>
 
     <h3>2. You handle every customer differently</h3>
-    <p>Some businesses run on relationships and individual treatment. A personal stylist, a bespoke tailor, a high-end events planner. If every customer gets a genuinely different experience because that is the nature of the product — automation will commoditise what makes you valuable. Know what part of your process is the relationship, and protect it. Automate the logistics around it, not the relationship itself.</p>
+    <p>Some businesses run on relationships and individual treatment. If every customer gets a genuinely different experience because that is the nature of the product — automation will commoditise what makes you valuable. Know what part of your process is the relationship, and protect it. Automate the logistics around it, not the relationship itself.</p>
 
     <h3>3. You have not solved the problem manually first</h3>
-    <p>The most dangerous automation project is one that is trying to solve a problem the owner has not actually tried to solve by hand first. If you do not know how a working order intake process feels in practice — because you have never had one — you will not be able to evaluate whether the automated version is working. Do it manually for one month. Log everything. Then automate what you have proven works.</p>
+    <p>The most dangerous automation project is one trying to solve a problem the owner has not actually tried to solve by hand. If you do not know how a working order intake process feels in practice — because you have never had one — you will not be able to evaluate whether the automated version is working. Do it manually for one month. Log everything. Then automate what you have proven works.</p>
 
     <h2>Where to Go From Here</h2>
-    <p>If you read the five green signs and recognised your business — you are ready. The next step is mapping your process: writing down every step, every input, every output, every decision point in your operations. Once that map exists, the automation build is mostly technical execution.</p>
+    <p>If you read the five green signs and recognised your business — you are ready. The next step is mapping your process: writing down every step, every input, every output, every decision point. Once that map exists, the automation build is mostly technical execution.</p>
     <p>If you read the three red signs and felt called out — that is not a failure. It is information. It tells you what to fix before you build. A business that spends six weeks getting operationally clear before touching any tool will get ten times more value from automation than one that rushes in.</p>
 
-    <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--g5);display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+    <div class="article-actions">
       <a href="/lab-readiness-score" data-route="/lab-readiness-score" class="btn-fill">Take the Readiness Quiz</a>
       <a href="/blog" data-route="/blog" class="btn-ghost">← All Articles</a>
     </div>
   </div>`;
 }
 
-/* ── LABS LISTING ── */
+/* ═══════════════════════════════════════════════
+   BLOG ARTICLE 2 — MAKE VS ZAPIER
+═══════════════════════════════════════════════ */
+function renderMakeVsZapier() {
+  return `
+  <div class="page-hero">
+    <div class="inner">
+      <div class="back-link" onclick="navigate('/blog')">All Articles</div>
+      <div class="sec-label">Comparison</div>
+      <h1 class="page-title">Make.com vs Zapier:<br>Which One Actually<br><em>Works</em> for African<br>Businesses?</h1>
+      <div class="page-meta">
+        <span>Abdullah Ishaq</span><span class="page-meta-dot"></span>
+        <span>6 min read</span><span class="page-meta-dot"></span>
+        <span>AI Center</span>
+      </div>
+    </div>
+  </div>
+  <div class="article-body">
+    <p>If you have spent any time researching automation tools, you have encountered both of these names. Zapier is older, more established, and has better brand recognition. Make.com (formerly Integromat) is younger, more technical, and significantly more powerful per dollar. Both promise to connect your tools and automate your workflows. Only one of them makes sense for most small businesses in Nigeria.</p>
+    <p>I use Make.com for every client I build for. Here is the honest reason why — and the cases where Zapier might actually be the right answer.</p>
+
+    <h2>The Core Difference</h2>
+    <p>Zapier is built for simplicity. The interface is extremely intuitive, the setup is fast, and the learning curve is minimal. You can build a basic two-step workflow in ten minutes with no technical knowledge. That is genuinely valuable for non-technical users.</p>
+    <p>Make.com is built for power. The visual canvas lets you build complex multi-branch scenarios with conditional logic, error handling, data transformation, and iteration. The same workflow that might require three separate Zapier "Zaps" can be handled in a single Make.com scenario. The learning curve is steeper, but the ceiling is dramatically higher.</p>
+    <p>For African small businesses with limited budgets and complex operational needs, that distinction matters more than it might in other contexts.</p>
+
+    <h2>The Price Reality</h2>
+    <p>This is where the comparison becomes very direct. Zapier's free tier gives you 100 tasks per month across five Zaps. That sounds reasonable until you realise that a single order intake workflow — form submission, WhatsApp notification, Sheets row, email alert — uses four tasks per order. At 100 tasks per month, you are limited to 25 orders before you hit the ceiling. The first paid Zapier plan is $19.99/month for 750 tasks. That is roughly ₦30,000 per month at current rates.</p>
+    <p>Make.com's free tier gives you 1,000 operations per month across two active scenarios. The same four-operation order flow gives you 250 free orders per month — ten times more than Zapier's free tier. The Core plan is $9/month. Half the price of Zapier's entry plan, with significantly more power.</p>
+
+    <div class="article-callout">At ₦30,000 per month for Zapier's starter plan versus roughly ₦14,000 for Make.com's Core plan — and Make.com's free tier covering most businesses just starting out — the financial case for Make.com is clear.</div>
+
+    <h2>The Capability Gap</h2>
+    <p>Zapier's strength is also its limitation. The linear "trigger → action" model is easy to understand but breaks down when your workflow requires any complexity. If you want to send one message when a customer orders a specific product and a different message when they order something else — Zapier requires a separate Zap for each condition. Make.com handles this with a single Router module that branches based on any condition you define.</p>
+    <p>For the kind of systems I build — order intake that auto-calculates delivery fees based on location, sends different confirmation messages based on payment method, logs data to multiple sheets, and sends a summary to the business owner — Make.com handles all of it in one scenario. On Zapier, that would require multiple Zaps, each consuming your task limit separately.</p>
+
+    <h2>The Data Transformation Question</h2>
+    <p>One of the most common needs in African business automation is taking data from one format and converting it to another. A customer fills in a Tally form with their name, phone number, and order. You need to send them a WhatsApp message that reads naturally, log a structured row to Google Sheets, and send yourself a brief summary. Each of these outputs needs the data formatted differently.</p>
+    <p>Make.com has built-in text functions, date functions, math operations, and JSON parsing. You can transform data within the scenario without needing a separate tool. Zapier's data transformation is significantly more limited on the free and starter plans, often requiring paid add-ons for tasks Make.com handles natively.</p>
+
+    <h2>When Zapier Is Actually the Right Answer</h2>
+    <p>I am not making a blanket argument against Zapier. There are real cases where it wins. If your entire automation need is connecting two popular SaaS tools — say, adding new Mailchimp subscribers to a Google Sheet — Zapier's simplicity is genuinely valuable. The interface is friendlier. The documentation for common workflows is excellent. If you have a non-technical team member who needs to maintain the automation themselves without support, Zapier's learning curve advantage is real.</p>
+    <p>Zapier also has a larger library of app integrations — over 6,000 versus Make.com's approximately 1,500. For very specific niche tools, Zapier might have a native integration that Make.com does not. In those cases, the integration availability can override the cost and capability comparison.</p>
+
+    <h2>My Recommendation</h2>
+    <p>For African small businesses building their first automation infrastructure: start with Make.com's free tier. The 1,000 operations per month will handle most early-stage operational needs. As you grow and need more capacity, the Core plan at $9/month scales reasonably. The visual canvas is more intuitive than it initially appears — especially if you spend an hour with the tutorials before building your first scenario.</p>
+    <p>If you are building a simple one-trigger-one-action workflow, do not need conditional logic, and have a team member who needs to maintain it independently with minimal training — Zapier's simplicity might justify the cost premium. But for the operational complexity that African businesses typically face — multiple zones, variable pricing, multi-step communication flows, cross-platform data logging — Make.com gives you the tools to build it correctly without a monthly subscription that eats into your margins.</p>
+    <p>The automation tool is not the point. The system is the point. Build the right system with whatever tool serves it best. For most of the systems I build, that tool is Make.com.</p>
+
+    <div class="article-actions">
+      <a href="/framework-whatsapp" data-route="/framework-whatsapp" class="btn-fill">See a Make.com system in action</a>
+      <a href="/blog" data-route="/blog" class="btn-ghost">← All Articles</a>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   LABS LISTING
+═══════════════════════════════════════════════ */
 function renderLabs() {
   return `
   <div class="page-hero" style="background:var(--g6);">
@@ -1384,92 +1424,53 @@ function renderLabs() {
       <div class="back-link" onclick="navigate('/')">Home</div>
       <div class="sec-label">AI Center Labs</div>
       <h1 class="page-title">Where ideas<br><em>get built.</em></h1>
-      <p style="font-size:15px;line-height:1.75;color:var(--g3);max-width:500px;margin-top:20px;">Live experiments, tools, and prototypes — built in public. Every tool here is something I built because I needed it or because I saw a gap that wasn't being filled for African small businesses.</p>
+      <p style="font-size:15px;line-height:1.75;color:var(--g3);max-width:500px;margin-top:20px;">Live experiments, tools, and prototypes — built in public. Every tool here exists because I needed it or saw a gap that was not being filled for African small businesses.</p>
     </div>
   </div>
-
   <div style="max-width:1100px;margin:0 auto;padding:80px 48px;">
-    <div class="labs-full-grid">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <a href="/lab-readiness-score" data-route="/lab-readiness-score" class="lab-card">
         <span class="lab-status live">Live</span>
         <div class="lab-title">Business Automation Readiness Score</div>
-        <div class="lab-desc">Answer 10 questions about your business. Get a score out of 30, a personalised diagnosis of where you are in the automation journey, and a specific recommended first step. Built to replace the vague "are you ready?" question with something honest and useful. Takes 3 minutes.</div>
+        <div class="lab-desc">Answer 10 questions about your business. Get a score out of 30, a personalised diagnosis of where you are in the automation journey, and a specific recommended first step. Takes 3 minutes. Used by business owners across Nigeria.</div>
         <span class="lab-cta">Launch Tool &#8594;</span>
+      </a>
+      <a href="/lab-content-audit" data-route="/lab-content-audit" class="lab-card">
+        <span class="lab-status live">Live</span>
+        <div class="lab-title">Content Automation Potential Audit</div>
+        <div class="lab-desc">Find out exactly how much of your content production can be automated. 8 questions about how you create and publish today. Get a percentage score and a specific action plan for automating your content workflow.</div>
+        <span class="lab-cta">Launch Audit &#8594;</span>
       </a>
       <div class="lab-card">
         <span class="lab-status beta">Beta</span>
         <div class="lab-title">WhatsApp Automation Simulator</div>
-        <div class="lab-desc">An interactive walkthrough of how a WhatsApp automation system actually works — step through a full customer conversation handled entirely by the bot. You play the customer. The bot plays itself. Built so business owners can see what automation feels like before committing to building it. Currently in development with real bot logic.</div>
+        <div class="lab-desc">An interactive walkthrough of how a WhatsApp automation system actually works — step through a full customer conversation handled entirely by the bot. You play the customer. The bot plays itself. See automation before you commit to building it.</div>
         <span class="lab-cta disabled">In Development</span>
       </div>
       <div class="lab-card">
         <span class="lab-status soon">Coming Soon</span>
-        <div class="lab-title">Notion Template Generator</div>
-        <div class="lab-desc">Describe your business in plain English — what you sell, how many people work there, what you track. Get a Notion workspace structure generated for you in seconds, with the right databases, views, and linked properties for your specific operations. No Notion knowledge required to use it.</div>
-        <span class="lab-cta disabled">Notify Me</span>
-      </div>
-      <div class="lab-card">
-        <span class="lab-status soon">Coming Soon</span>
         <div class="lab-title">The Make.com Scenario Library</div>
-        <div class="lab-desc">A searchable library of Make.com scenarios built specifically for African business use cases — order intake, payment confirmation, customer logging, inventory updates, and follow-up sequences. Copy the scenario, connect your accounts, configure the fields, and you are live. No prior Make.com knowledge needed.</div>
+        <div class="lab-desc">A searchable library of Make.com scenarios built specifically for African business use cases — order intake, payment confirmation, customer logging, inventory updates, and follow-up sequences. Copy, customise, deploy.</div>
         <span class="lab-cta disabled">Notify Me</span>
       </div>
     </div>
   </div>`;
 }
 
-/* ── READINESS SCORE QUIZ ── */
-const QUESTIONS = [
-  {
-    q: "How do customers currently place orders with you?",
-    opts: ["By voice note or phone call every time", "Via WhatsApp messages but with no standard format", "Through a form, link, or structured process"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "Do you track your customers anywhere?",
-    opts: ["No — they exist only in chat threads", "I have a rough list somewhere", "Yes, in a spreadsheet or system that I actually use"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "How consistent is your product or service offering?",
-    opts: ["It changes a lot — prices, items, or services shift regularly", "Mostly consistent, with occasional custom orders", "Fully consistent — same products, same prices, clearly documented"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "How long does it take to process a single order from first contact to confirmation?",
-    opts: ["More than 5 minutes of back-and-forth", "2–5 minutes", "Under 2 minutes, or it is already partly automated"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "How many hours per week do you spend on repetitive admin tasks?",
-    opts: ["Less than 2 hours — admin is minimal", "2–5 hours — it is noticeable but manageable", "More than 5 hours — admin is eating into my time significantly"],
-    scores: [0, 2, 3]
-  },
-  {
-    q: "Do you have standard responses for common customer questions?",
-    opts: ["No — I write every reply fresh", "I reuse some phrases but nothing is formalised", "Yes — I have a set of replies I use consistently"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "Is your pricing fully documented and consistent?",
-    opts: ["No — I quote based on feel or negotiation each time", "Mostly, but there are exceptions and custom deals", "Yes — all prices are fixed, documented, and communicated clearly"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "How many customer transactions do you handle per week?",
-    opts: ["Fewer than 5", "Between 5 and 20", "More than 20"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "Have you ever tried to solve your biggest operational problem manually before looking for a tool?",
-    opts: ["No — I am hoping automation will figure it out", "Partially — I have tried some things but not committed", "Yes — I have a process that works, I just need it to run without me"],
-    scores: [0, 1, 3]
-  },
-  {
-    q: "Are you willing to change how customers interact with you to make automation work?",
-    opts: ["Not really — my customers expect to DM me directly", "I am open to it but nervous about the transition", "Yes — I am ready to redirect customers to a new flow if the outcome is better"],
-    scores: [0, 1, 3]
-  }
+/* ═══════════════════════════════════════════════
+   LAB 1 — READINESS SCORE QUIZ
+═══════════════════════════════════════════════ */
+var QUIZ_QUESTIONS = [
+  { q: "How do customers currently place orders with you?", opts: ["By voice note or phone call every time", "Via WhatsApp messages with no standard format", "Through a form, link, or structured process"], scores: [0, 1, 3] },
+  { q: "Do you track your customers anywhere?", opts: ["No — they exist only in chat threads", "I have a rough list somewhere", "Yes, in a spreadsheet or system I actually use"], scores: [0, 1, 3] },
+  { q: "How consistent is your product or service offering?", opts: ["It changes a lot — prices or items shift regularly", "Mostly consistent, with occasional custom orders", "Fully consistent — same products, same prices, documented"], scores: [0, 1, 3] },
+  { q: "How long does it take to process a single order from first contact to confirmation?", opts: ["More than 5 minutes of back-and-forth", "2–5 minutes", "Under 2 minutes, or it is already partly automated"], scores: [0, 1, 3] },
+  { q: "How many hours per week do you spend on repetitive admin tasks?", opts: ["Less than 2 hours — admin is minimal", "2–5 hours — it is noticeable but manageable", "More than 5 hours — admin is eating into my time significantly"], scores: [0, 2, 3] },
+  { q: "Do you have standard responses for common customer questions?", opts: ["No — I write every reply fresh", "I reuse some phrases but nothing is formalised", "Yes — I have a set of replies I use consistently"], scores: [0, 1, 3] },
+  { q: "Is your pricing fully documented and consistent?", opts: ["No — I quote based on feel or negotiation each time", "Mostly, but there are exceptions and custom deals", "Yes — all prices are fixed, documented, and communicated clearly"], scores: [0, 1, 3] },
+  { q: "How many customer transactions do you handle per week?", opts: ["Fewer than 5", "Between 5 and 20", "More than 20"], scores: [0, 1, 3] },
+  { q: "Have you ever tried to solve your biggest operational problem manually first?", opts: ["No — I am hoping automation will figure it out", "Partially — I have tried some things but not committed", "Yes — I have a process that works, I just need it to run without me"], scores: [0, 1, 3] },
+  { q: "Are you willing to change how customers interact with you to make automation work?", opts: ["Not really — my customers expect to DM me directly", "I am open to it but nervous about the transition", "Yes — I am ready to redirect customers to a new flow"], scores: [0, 1, 3] }
 ];
 
 function renderReadinessScore() {
@@ -1482,112 +1483,165 @@ function renderReadinessScore() {
       <p style="font-size:15px;line-height:1.75;color:var(--g3);max-width:500px;margin-top:20px;">10 questions. A score out of 30. A specific recommendation for where to start. Takes 3 minutes.</p>
     </div>
   </div>
-
   <div class="quiz-wrap" id="quiz-container">
-    <div class="quiz-progress-bar">
-      <div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div>
-    </div>
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div></div>
     <div id="quiz-content"></div>
   </div>`;
 }
 
 function initQuiz() {
-  const state = { current: 0, answers: [] };
-
+  var state = { current: 0, answers: [] };
   function render() {
-    const container = document.getElementById('quiz-content');
+    var container = document.getElementById('quiz-content');
     if (!container) return;
-
-    if (state.current >= QUESTIONS.length) {
-      showResult(container);
-      return;
-    }
-
-    const q = QUESTIONS[state.current];
-    const progress = ((state.current) / QUESTIONS.length) * 100;
-    document.getElementById('quiz-progress').style.width = progress + '%';
-
-    const letters = ['A', 'B', 'C'];
-    container.innerHTML = `
-      <div class="quiz-q-num">Question ${state.current + 1} of ${QUESTIONS.length}</div>
-      <div class="quiz-question">${q.q}</div>
-      <div class="quiz-options">
-        ${q.opts.map((opt, i) => `
-          <div class="quiz-option ${state.answers[state.current] === i ? 'selected' : ''}" data-idx="${i}">
-            <span class="quiz-option-letter">${letters[i]}</span>
-            <span>${opt}</span>
-          </div>
-        `).join('')}
-      </div>
-      <div class="quiz-nav">
-        <button class="quiz-btn" id="quiz-back" ${state.current === 0 ? 'style="visibility:hidden"' : ''}>← Back</button>
-        <button class="quiz-btn primary" id="quiz-next" ${state.answers[state.current] === undefined ? 'disabled style="opacity:0.4"' : ''}>
-          ${state.current === QUESTIONS.length - 1 ? 'See My Score →' : 'Next →'}
-        </button>
-      </div>`;
-
-    container.querySelectorAll('.quiz-option').forEach(opt => {
-      opt.addEventListener('click', () => {
-        state.answers[state.current] = parseInt(opt.dataset.idx);
-        render();
-      });
+    if (state.current >= QUIZ_QUESTIONS.length) { showQuizResult(container, state); return; }
+    var q = QUIZ_QUESTIONS[state.current];
+    document.getElementById('quiz-progress').style.width = (state.current / QUIZ_QUESTIONS.length * 100) + '%';
+    var letters = ['A','B','C'];
+    container.innerHTML = '<div class="quiz-q-num">Question ' + (state.current+1) + ' of ' + QUIZ_QUESTIONS.length + '</div>' +
+      '<div class="quiz-question">' + q.q + '</div>' +
+      '<div class="quiz-options">' + q.opts.map(function(opt,i) {
+        return '<div class="quiz-option' + (state.answers[state.current]===i?' selected':'') + '" data-idx="'+i+'">' +
+          '<span class="quiz-option-letter">'+letters[i]+'</span><span>'+opt+'</span></div>';
+      }).join('') + '</div>' +
+      '<div class="quiz-nav">' +
+        '<button class="quiz-btn" id="qb"' + (state.current===0?' style="visibility:hidden"':'') + '>&#8592; Back</button>' +
+        '<button class="quiz-btn primary" id="qn"' + (state.answers[state.current]===undefined?' disabled style="opacity:0.4"':'') + '>' +
+          (state.current===QUIZ_QUESTIONS.length-1?'See My Score &#8594;':'Next &#8594;') + '</button></div>';
+    container.querySelectorAll('.quiz-option').forEach(function(opt) {
+      opt.addEventListener('click', function() { state.answers[state.current]=parseInt(opt.dataset.idx); render(); });
     });
-
-    document.getElementById('quiz-next').addEventListener('click', () => {
-      if (state.answers[state.current] !== undefined) { state.current++; render(); }
+    document.getElementById('qn').addEventListener('click', function() {
+      if (state.answers[state.current]!==undefined) { state.current++; render(); }
     });
-    document.getElementById('quiz-back').addEventListener('click', () => {
-      if (state.current > 0) { state.current--; render(); }
-    });
+    var back = document.getElementById('qb');
+    if (back) back.addEventListener('click', function() { if (state.current>0){state.current--;render();} });
   }
-
-  function showResult(container) {
-    document.getElementById('quiz-progress').style.width = '100%';
-    const totalScore = state.answers.reduce((sum, ans, i) => sum + (QUESTIONS[i].scores[ans] || 0), 0);
-    const max = 30;
-
-    let tier, desc, recs;
-    if (totalScore <= 10) {
-      tier = 'Operations First.';
-      desc = 'Your business is not ready for automation yet — and that is not a problem, it is just where you are. The good news: the gap between now and ready is mostly documentation, not tools. Spend the next 30 days writing down exactly how your business works. Map every step a customer takes from first contact to fulfilled order. Once that exists, we can build on it.';
-      recs = ['Write down your complete order process — every step, every input, every output', 'Fix your pricing: make it consistent, documented, and shareable', 'Start manually logging every customer transaction in a basic spreadsheet', 'Get your product or service offering stable before automating anything'];
-    } else if (totalScore <= 20) {
-      tier = 'Ready to Start.';
-      desc = 'You have the foundations that make automation possible. Your processes are mostly consistent, your volume justifies the investment, and you are willing to change how things work. The right move now is a single, focused first project — not a complete overhaul. Pick one problem that is costing you the most time and build one system to solve it.';
-      recs = ['Pick your single biggest time drain and automate only that first', 'Build a Tally form to replace your WhatsApp order intake', 'Set up a Google Sheet with a structured customer log', 'Book a discovery call to map which system to build first'];
-    } else {
-      tier = 'Build Now.';
-      desc = 'Your operations are solid enough to support full automation. You have consistent processes, real volume, and the mindset to commit to new systems. The opportunity cost of staying manual at your level is real — every week without infrastructure is revenue and time you are not recovering. The infrastructure conversation is overdue.';
-      recs = ['Build your full order intake system (form → sheet → receipt → WhatsApp confirmation)', 'Automate your content output with an AI pipeline', 'Set up a complete customer database with retargeting logic', 'Book a call to scope the full business automation build'];
-    }
-
-    container.innerHTML = `
-      <div class="quiz-result">
-        <div class="quiz-score-ring">
-          <div class="quiz-score-num">${totalScore}</div>
-          <div class="quiz-score-denom">out of ${max}</div>
-        </div>
-        <div class="quiz-result-title">${tier}</div>
-        <div class="quiz-result-desc">${desc}</div>
-        <div class="quiz-recommendations">
-          <div class="quiz-rec-title">Your Recommended Next Steps</div>
-          ${recs.map((r, i) => `
-            <div class="quiz-rec-item">
-              <span class="quiz-rec-num">0${i+1}</span>
-              <span>${r}</span>
-            </div>`).join('')}
-        </div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
-          <a href="/#contact" data-anchor="contact" class="btn-fill">Book a Free Call</a>
-          <button class="btn-ghost" onclick="initQuiz()">Retake Quiz</button>
-        </div>
-      </div>`;
-  }
-
   render();
 }
 
-/* ── FRAMEWORKS LISTING ── */
+function showQuizResult(container, state) {
+  document.getElementById('quiz-progress').style.width='100%';
+  var total = state.answers.reduce(function(sum,ans,i){return sum+(QUIZ_QUESTIONS[i].scores[ans]||0);},0);
+  var tier, desc, recs;
+  if (total<=10) {
+    tier='Operations First.';
+    desc='Your business is not ready for automation yet — and that is not a problem. The gap between now and ready is mostly documentation, not tools. Spend the next 30 days writing down exactly how your business works.';
+    recs=['Document your complete order process — every step, input, and output','Fix your pricing: make it consistent and shareable','Start manually logging every customer transaction in a spreadsheet','Get your offering stable before automating anything'];
+  } else if (total<=20) {
+    tier='Ready to Start.';
+    desc='You have the foundations that make automation possible. Pick one problem costing you the most time and build one system to solve it. Do not try to automate everything at once.';
+    recs=['Pick your single biggest time drain and automate only that first','Build a Tally form to replace your WhatsApp order intake','Set up a Google Sheet with a structured customer log','Book a discovery call to map which system to build first'];
+  } else {
+    tier='Build Now.';
+    desc='Your operations are solid enough to support full automation. You have consistent processes, real volume, and the mindset to commit to new systems. The opportunity cost of staying manual is real.';
+    recs=['Build your full order intake system (form → sheet → receipt → confirmation)','Automate your content output with an AI pipeline','Set up a complete customer database with retargeting logic','Book a call to scope the full business automation build'];
+  }
+  container.innerHTML = '<div class="quiz-result">' +
+    '<div class="quiz-score-ring"><div class="quiz-score-num">'+total+'</div><div class="quiz-score-denom">out of 30</div></div>' +
+    '<div class="quiz-result-title">'+tier+'</div>' +
+    '<div class="quiz-result-desc">'+desc+'</div>' +
+    '<div class="quiz-recommendations"><div class="quiz-rec-title">Your Recommended Next Steps</div>' +
+    recs.map(function(r,i){return '<div class="quiz-rec-item"><span class="quiz-rec-num">0'+(i+1)+'</span><span>'+r+'</span></div>';}).join('') + '</div>' +
+    '<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:16px;">' +
+    '<a href="/#contact" data-anchor="contact" class="btn-fill">Book a Free Call</a>' +
+    '<button class="btn-ghost" onclick="initQuiz()">Retake Quiz</button></div></div>';
+}
+
+/* ═══════════════════════════════════════════════
+   LAB 2 — CONTENT AUTOMATION AUDIT
+═══════════════════════════════════════════════ */
+var AUDIT_QUESTIONS = [
+  { q: "How many pieces of content do you publish per week across all platforms?", opts: ["1–3 pieces", "4–7 pieces", "More than 7 pieces"], scores: [1, 2, 3] },
+  { q: "How long does it take you to write a single caption or post?", opts: ["Under 5 minutes — I have a clear voice and style", "5–20 minutes — I think about it but it flows", "More than 20 minutes — I often stare at a blank screen"], scores: [1, 2, 3] },
+  { q: "Do you have a documented content calendar or posting schedule?", opts: ["No — I post whenever I remember", "I have a rough plan but nothing structured", "Yes — I have specific topics and dates planned"], scores: [0, 1, 3] },
+  { q: "How consistent is your brand voice across posts?", opts: ["Very inconsistent — my tone changes a lot", "Mostly consistent but some posts feel off", "Highly consistent — my audience knows my voice"], scores: [0, 1, 3] },
+  { q: "How much of your content is variations of the same few themes?", opts: ["Almost none — every post is completely unique", "Maybe a third — some patterns repeat", "Most of it — I have 3–5 core topics I rotate through"], scores: [0, 1, 3] },
+  { q: "Do you repurpose content across platforms (e.g. Instagram post → WhatsApp status)?", opts: ["Never — each platform gets completely unique content", "Occasionally, manually", "Yes — I try to repurpose but it takes a lot of rework"], scores: [0, 1, 2] },
+  { q: "How do you currently come up with content ideas?", opts: ["Purely from inspiration — I wait until something comes to me", "I look at competitors and mix in my own thoughts", "I have a system — themes, pillars, or a swipe file"], scores: [0, 1, 3] },
+  { q: "What would you do with 5 extra hours per week if content creation was handled?", opts: ["Honestly, I am not sure", "I would spend more time engaging with my audience", "I know exactly — I have specific growth tasks waiting for that time"], scores: [1, 2, 3] }
+];
+
+function renderContentAudit() {
+  return `
+  <div class="page-hero" style="background:var(--g6);">
+    <div class="inner">
+      <div class="back-link" onclick="navigate('/labs')">Labs</div>
+      <div class="sec-label">AI Center Labs — Live Tool</div>
+      <h1 class="page-title">Content Automation<br><em>Potential Audit</em></h1>
+      <p style="font-size:15px;line-height:1.75;color:var(--g3);max-width:500px;margin-top:20px;">Find out exactly how much of your content production can be automated. 8 questions. Under 2 minutes.</p>
+    </div>
+  </div>
+  <div class="quiz-wrap" id="audit-container">
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="audit-progress" style="width:0%"></div></div>
+    <div id="audit-content"></div>
+  </div>`;
+}
+
+function initContentAudit() {
+  var state = { current: 0, answers: [] };
+  function render() {
+    var container = document.getElementById('audit-content');
+    if (!container) return;
+    if (state.current >= AUDIT_QUESTIONS.length) { showAuditResult(container, state); return; }
+    var q = AUDIT_QUESTIONS[state.current];
+    document.getElementById('audit-progress').style.width = (state.current / AUDIT_QUESTIONS.length * 100) + '%';
+    var letters = ['A','B','C'];
+    container.innerHTML = '<div class="quiz-q-num">Question ' + (state.current+1) + ' of ' + AUDIT_QUESTIONS.length + '</div>' +
+      '<div class="quiz-question">' + q.q + '</div>' +
+      '<div class="quiz-options">' + q.opts.map(function(opt,i) {
+        return '<div class="quiz-option' + (state.answers[state.current]===i?' selected':'') + '" data-idx="'+i+'">' +
+          '<span class="quiz-option-letter">'+letters[i]+'</span><span>'+opt+'</span></div>';
+      }).join('') + '</div>' +
+      '<div class="quiz-nav">' +
+        '<button class="quiz-btn" id="ab"' + (state.current===0?' style="visibility:hidden"':'') + '>&#8592; Back</button>' +
+        '<button class="quiz-btn primary" id="an"' + (state.answers[state.current]===undefined?' disabled style="opacity:0.4"':'') + '>' +
+          (state.current===AUDIT_QUESTIONS.length-1?'See My Score &#8594;':'Next &#8594;') + '</button></div>';
+    container.querySelectorAll('.quiz-option').forEach(function(opt) {
+      opt.addEventListener('click', function() { state.answers[state.current]=parseInt(opt.dataset.idx); render(); });
+    });
+    document.getElementById('an').addEventListener('click', function() {
+      if (state.answers[state.current]!==undefined){state.current++;render();}
+    });
+    var back = document.getElementById('ab');
+    if (back) back.addEventListener('click', function() { if (state.current>0){state.current--;render();} });
+  }
+  render();
+}
+
+function showAuditResult(container, state) {
+  document.getElementById('audit-progress').style.width = '100%';
+  var total = state.answers.reduce(function(sum,ans,i){return sum+(AUDIT_QUESTIONS[i].scores[ans]||0);}, 0);
+  var max = 23;
+  var pct = Math.round((total/max)*100);
+  var tier, desc, actions;
+  if (pct < 40) {
+    tier = pct + '% Automation Potential — Foundation First';
+    desc = 'Your content workflow is too inconsistent to automate effectively right now. The AI systems that power content automation need a clear voice, consistent themes, and a predictable publishing rhythm to work from. Build those first — then the automation will have something solid to run on.';
+    actions = ['Define 3–5 content themes you will repeat every month','Document your brand voice: how you speak, what you avoid, what your audience responds to','Commit to a basic posting schedule — even 3 posts per week — and hold it for 4 weeks','Come back when you have consistency'];
+  } else if (pct < 70) {
+    tier = pct + '% Automation Potential — Ready to Partially Automate';
+    desc = 'You have the foundations — a consistent voice, recurring themes, and a sense of your audience. You are ready to automate the most time-consuming parts of your content workflow, starting with ideation and caption drafting.';
+    actions = ['Build an AI caption drafting system: give the AI your themes, tone, and a brief — get 5 captions in 2 minutes','Create a content repurposing flow: one piece of content → adapted for 3 platforms automatically','Set up a content calendar template and pre-plan 2 weeks at a time','Use AI to generate post ideas from your existing high-performing content'];
+  } else {
+    tier = pct + '% Automation Potential — Full Pipeline Ready';
+    desc = 'Your content operation is mature enough to support full automation. You have a consistent voice, clear themes, a publishing rhythm, and the strategic clarity to direct AI systems effectively. A full content pipeline — from idea generation to drafting to scheduling — is within reach.';
+    actions = ['Build a full AI content pipeline: ideas → drafts → captions → scheduling in one automated flow','Set up cross-platform repurposing: one source post generates WhatsApp, Instagram, TikTok variations automatically','Create an AI-powered content brief template that generates a week of content in 15 minutes','Connect your content calendar to your business events and promotions for strategic automation'];
+  }
+  container.innerHTML = '<div class="quiz-result">' +
+    '<div class="quiz-score-ring"><div class="quiz-score-num">'+pct+'</div><div class="quiz-score-denom">%</div></div>' +
+    '<div class="quiz-result-title">'+tier+'</div>' +
+    '<div class="quiz-result-desc">'+desc+'</div>' +
+    '<div class="quiz-recommendations"><div class="quiz-rec-title">Your Action Plan</div>' +
+    actions.map(function(a,i){return '<div class="quiz-rec-item"><span class="quiz-rec-num">0'+(i+1)+'</span><span>'+a+'</span></div>';}).join('') + '</div>' +
+    '<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:16px;">' +
+    '<a href="/#contact" data-anchor="contact" class="btn-fill">Book a Free Call</a>' +
+    '<button class="btn-ghost" onclick="initContentAudit()">Retake Audit</button></div></div>';
+}
+
+/* ═══════════════════════════════════════════════
+   FRAMEWORKS LISTING
+═══════════════════════════════════════════════ */
 function renderFrameworks() {
   return `
   <div class="page-hero">
@@ -1595,233 +1649,269 @@ function renderFrameworks() {
       <div class="back-link" onclick="navigate('/')">Home</div>
       <div class="sec-label">The Frameworks Bank</div>
       <h1 class="page-title">Proven systems.<br><em>Ready to deploy.</em></h1>
-      <p style="font-size:15px;line-height:1.75;color:var(--g3);max-width:500px;margin-top:20px;">Every framework I use to build client systems — documented, explained, and available for you to use. These are not templates. They are the actual operational logic behind real systems.</p>
+      <p style="font-size:15px;line-height:1.75;color:var(--g3);max-width:500px;margin-top:20px;">Every framework I use to build client systems — documented, explained, and available for you to use. These are the actual operational logic behind real builds.</p>
     </div>
   </div>
-
   <div style="max-width:1100px;margin:0 auto;padding:80px 48px;">
-    <div class="fw-full-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--g5);border:1px solid var(--g5);">
       <a href="/framework-whatsapp" data-route="/framework-whatsapp" class="fw-card">
         <span class="fw-badge free">Free</span>
         <div class="fw-title">The WhatsApp Sales System Framework</div>
-        <div class="fw-desc">The exact flow, quick reply structure, Tally form setup, and Make.com scenario I use to build WhatsApp sales systems. Everything you need to go from manual DMs to automated order pipeline. Used in the Flora Scents and Cushy Cuisine builds.</div>
+        <div class="fw-desc">The exact flow, quick reply structure, Tally form setup, and Make.com scenario I use to build WhatsApp sales systems. Used in the Flora Scents build.</div>
         <span class="fw-link">Read framework &#8594;</span>
       </a>
-      <div class="fw-card">
-        <span class="fw-badge free">Free</span>
-        <div class="fw-title">The Notion Business OS Template</div>
-        <div class="fw-desc">A complete Notion workspace covering client management, revenue tracking, content calendar, and task management — ready to duplicate and customise for your business. Includes a setup guide for each database.</div>
-        <span class="fw-link" style="color:var(--g4)">Coming Soon</span>
-      </div>
-      <div class="fw-card">
-        <span class="fw-badge free">Free</span>
-        <div class="fw-title">The AI Content Pipeline Blueprint</div>
-        <div class="fw-desc">End-to-end workflow for building an AI content system — from prompt engineering to scheduling. Includes templates for captions, carousels, and email sequences built for African audiences.</div>
-        <span class="fw-link" style="color:var(--g4)">Coming Soon</span>
-      </div>
-      <div class="fw-card">
+      <a href="/framework-discovery" data-route="/framework-discovery" class="fw-card">
         <span class="fw-badge free">Free</span>
         <div class="fw-title">The Automation Discovery Framework</div>
-        <div class="fw-desc">The exact questionnaire and process I use in every client discovery session — adapted for anyone to use when mapping a business for automation. Start here before you touch any tool. Covers operations, volume, data flows, and bottlenecks.</div>
-        <span class="fw-link" style="color:var(--g4)">Coming Soon</span>
-      </div>
-      <div class="fw-card">
-        <span class="fw-badge free">Free</span>
-        <div class="fw-title">The Google Sheets Business Tracker</div>
-        <div class="fw-desc">A zero-formula-knowledge spreadsheet system covering order tracking, inventory management, customer records, and income logging. Works for any small business from day one. No Sheets experience required.</div>
-        <span class="fw-link" style="color:var(--g4)">Coming Soon</span>
-      </div>
-      <div class="fw-card">
-        <span class="fw-badge premium">Premium</span>
-        <div class="fw-title">The Make.com Starter Scenario Pack</div>
-        <div class="fw-desc">Five production-ready Make.com scenarios covering order intake, payment confirmation, inventory update, customer logging, and follow-up sequences. Copy-paste and configure in minutes. Includes setup documentation and a troubleshooting guide.</div>
-        <a href="/#contact" data-anchor="contact" class="fw-link">Get Access &#8594;</a>
-      </div>
+        <div class="fw-desc">The exact questionnaire and process I use in every client discovery session — adapted for anyone to use when mapping a business for automation.</div>
+        <span class="fw-link">Read framework &#8594;</span>
+      </a>
+      <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Notion Business OS Template</div><div class="fw-desc">A complete Notion workspace covering client management, revenue tracking, content calendar, and task management.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
+      <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The AI Content Pipeline Blueprint</div><div class="fw-desc">End-to-end workflow for building an AI content system — from prompt engineering to scheduling.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
+      <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Google Sheets Business Tracker</div><div class="fw-desc">A zero-formula-knowledge spreadsheet covering order tracking, inventory management, customer records, and income logging.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
+      <div class="fw-card"><span class="fw-badge premium">Premium</span><div class="fw-title">The Make.com Starter Scenario Pack</div><div class="fw-desc">Five production-ready Make.com scenarios covering order intake, payment confirmation, inventory update, customer logging, and follow-up.</div><a href="/#contact" data-anchor="contact" class="fw-link">Get Access &#8594;</a></div>
     </div>
   </div>`;
 }
 
-/* ── WHATSAPP FRAMEWORK ── */
+/* ═══════════════════════════════════════════════
+   FRAMEWORK 1 — WHATSAPP SYSTEM
+═══════════════════════════════════════════════ */
 function renderWhatsAppFramework() {
   return `
   <div class="page-hero">
     <div class="inner">
       <div class="back-link" onclick="navigate('/frameworks')">All Frameworks</div>
-      <div class="sec-label">Framework — Free</div>
+      <div class="sec-label">Framework 01 — Free</div>
       <h1 class="page-title">The WhatsApp<br><em>Sales System</em><br>Framework</h1>
       <div class="page-meta">
-        <span>Abdullah Ishaq</span>
-        <span class="page-meta-dot"></span>
-        <span>AI Center</span>
-        <span class="page-meta-dot"></span>
+        <span>Abdullah Ishaq</span><span class="page-meta-dot"></span>
+        <span>AI Center</span><span class="page-meta-dot"></span>
         <span>Tools: WhatsApp Business · Tally.so · Make.com · Google Sheets</span>
       </div>
     </div>
   </div>
-
   <div class="fw-doc">
-    <p>This is the exact framework I use to build WhatsApp sales systems for African small businesses. Every client I have delivered a WhatsApp system for — including Flora Scents — started with this structure. It is not a theory document. It is the operational logic of a working system, documented so you can build it yourself or understand what you are commissioning when you hire someone to build it for you.</p>
+    <p>This is the exact framework I use to build WhatsApp sales systems for African small businesses. Every client I have delivered a WhatsApp system for — including Flora Scents — started with this structure. It is not a theory document. It is the operational logic of a working system, documented so you can build it yourself.</p>
 
-    <h2>What This Framework Covers</h2>
-    <p>A complete WhatsApp sales system has five components. Each one does a specific job. Together, they replace the manual back-and-forth that currently lives in your DMs.</p>
+    <h2>The Five Components</h2>
+    <div class="fw-step"><div class="fw-step-num">1</div><div class="fw-step-body"><div class="fw-step-title">Entry Point — WhatsApp Business Quick Replies</div><div class="fw-step-desc">The first thing a customer sees when they message you. A menu of options presented as numbered quick replies. This replaces the "hi, I want to order" chain with a single structured starting point. Covers: view catalogue, place an order, payment details, delivery info, and contact the owner.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">2</div><div class="fw-step-body"><div class="fw-step-title">Order Capture — Tally.so Form</div><div class="fw-step-desc">When a customer selects "place an order," they receive a Tally form link. The form captures every piece of information you need in a single structured submission: name, phone, delivery address, product selection, quantity, and special instructions. One form. One submission. Everything you need to fulfil the order arrives at once.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">3</div><div class="fw-step-body"><div class="fw-step-title">Automation Layer — Make.com</div><div class="fw-step-desc">When the form is submitted, Make.com triggers immediately. The scenario logs the order to Google Sheets, sends the customer a WhatsApp confirmation with order summary and payment details, and alerts the business owner. All of this happens in under 30 seconds — without any manual action from you.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">4</div><div class="fw-step-body"><div class="fw-step-title">Database — Google Sheets Order Log</div><div class="fw-step-desc">Every order lands in a structured sheet: order ID, timestamp, customer name, phone, address, items, total, payment status, and order status. Your CRM, order management system, and analytics dashboard — all in one place that builds itself.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">5</div><div class="fw-step-body"><div class="fw-step-title">Confirmation & Closure</div><div class="fw-step-desc">Once payment is received, you mark the order confirmed in Sheets. A second Make.com scenario triggers and sends the customer a personalised receipt. This is the only step requiring manual input — and it takes 10 seconds. Everything else runs itself.</div></div></div>
 
-    <div class="fw-step">
-      <div class="fw-step-num">1</div>
-      <div class="fw-step-body">
-        <div class="fw-step-title">The Entry Point — Quick Replies</div>
-        <div class="fw-step-desc">The first thing a customer sees when they message you. A menu of options, presented as numbered quick replies. This replaces the "hi, I want to order" → "what do you want?" → "do you have X?" chain with a single, structured starting point. Your quick replies should cover: view menu, place an order, check order status, payment details, and contact the owner.</div>
-      </div>
-    </div>
-    <div class="fw-step">
-      <div class="fw-step-num">2</div>
-      <div class="fw-step-body">
-        <div class="fw-step-title">The Order Form — Tally.so</div>
-        <div class="fw-step-desc">When a customer selects "place an order," they receive a Tally form link. The form captures every piece of information you need in a single, structured submission: name, phone number, delivery address, product selection, quantity, and any special instructions. No back-and-forth. One form. One submission. Everything you need to fulfil the order arrives in one place at once.</div>
-      </div>
-    </div>
-    <div class="fw-step">
-      <div class="fw-step-num">3</div>
-      <div class="fw-step-body">
-        <div class="fw-step-title">The Automation Layer — Make.com</div>
-        <div class="fw-step-desc">When the Tally form is submitted, Make.com triggers immediately. The scenario does three things: logs the order to your Google Sheet (with timestamp, customer details, and order contents), sends the customer a confirmation message via WhatsApp with their order summary and payment details, and alerts the business owner with a brief notification. All of this happens in under 30 seconds of the form submission — without any manual action from you.</div>
-      </div>
-    </div>
-    <div class="fw-step">
-      <div class="fw-step-num">4</div>
-      <div class="fw-step-body">
-        <div class="fw-step-title">The Database — Google Sheets</div>
-        <div class="fw-step-desc">Every order lands in a structured Google Sheet with columns for: order ID (auto-generated), timestamp, customer name, customer phone, delivery address, items ordered, total value, payment status, and order status. This sheet is your CRM, your order management system, and your business analytics dashboard — all in one place. You can filter by status, sort by date, and search by customer without touching any code.</div>
-      </div>
-    </div>
-    <div class="fw-step">
-      <div class="fw-step-num">5</div>
-      <div class="fw-step-body">
-        <div class="fw-step-title">Payment Confirmation & Closure</div>
-        <div class="fw-step-desc">Once payment is received, you mark the order as confirmed in the Google Sheet. A second Make.com scenario triggers and sends the customer a personalised confirmation message with their receipt details. This is the only step that requires manual input — and it takes 10 seconds. Everything else runs itself.</div>
-      </div>
-    </div>
-
-    <h2>The Quick Reply Architecture</h2>
-    <p>Your WhatsApp Business account supports up to 50 quick replies. Here is the structure I use for every build. Adapt the specific copy to your business, but keep the logic identical.</p>
+    <h2>The 12 Quick Replies</h2>
+    <p>Set these up in WhatsApp Business under Settings → Quick Replies. Each shortcut fires the full message instantly.</p>
     <ul>
-      <li><strong>/menu</strong> — Sends your product catalogue as a formatted message or PDF link</li>
-      <li><strong>/order</strong> — Sends the Tally order form link with a brief instruction</li>
-      <li><strong>/status</strong> — Sends a message directing them to check their confirmation email or DM you directly</li>
-      <li><strong>/pay</strong> — Sends your payment details (account number, bank, name) in a formatted block</li>
-      <li><strong>/help</strong> — Sends a message offering to connect them with a human for complex questions</li>
-      <li><strong>/hours</strong> — Sends your operating hours and delivery schedule</li>
-      <li><strong>/delivery</strong> — Sends your delivery areas, timeframes, and any applicable fees</li>
+      <li><strong>/cat</strong> — Full catalogue link with price range overview</li>
+      <li><strong>/price</strong> — Price ranges with prompt to share budget for filtered recommendations</li>
+      <li><strong>/order</strong> — Tally order form link with brief instruction</li>
+      <li><strong>/pay</strong> — Bank name, account number, and account name in formatted block</li>
+      <li><strong>/confirm</strong> — Order confirmed with ETA (triggers Make.com second scenario)</li>
+      <li><strong>/del</strong> — Delivery areas, timeframes, and fees per zone</li>
+      <li><strong>/gift</strong> — Gift packaging availability, price, and upsell</li>
+      <li><strong>/rec</strong> — Recommendation flow: asks budget + preference before suggesting</li>
+      <li><strong>/policy</strong> — Full policy: no refunds, payment before delivery, no changes after payment</li>
+      <li><strong>/avail</strong> — "Checking now" — then confirm manually for specific items</li>
+      <li><strong>/hours</strong> — Operating hours and next availability if outside hours</li>
+      <li><strong>/thanks</strong> — Post-delivery thank you with invitation to return</li>
     </ul>
 
     <h2>The Make.com Scenario — Step by Step</h2>
     <h3>Trigger: Tally Form Submission</h3>
-    <p>Set your trigger to "Watch Responses" in the Tally module. Every new form submission fires the scenario immediately.</p>
-    <h3>Step 1: Format the Order Data</h3>
-    <p>Use a "Set Variable" or "Tools" module to build a formatted order summary string. This is the text that will appear in the WhatsApp confirmation and in the Google Sheet.</p>
+    <p>Set your trigger to "Watch Responses" in the Tally module. Every new form submission fires the scenario immediately. You do not need to check anything.</p>
+    <h3>Step 1: Calculate Order Total</h3>
+    <p>Use a "Set Variable" module to build the order total: item price(s) + delivery fee (based on the zone field) + gift packaging if selected. Store as a variable called {{order_total}}.</p>
     <h3>Step 2: Log to Google Sheets</h3>
     <p>Add a row to your Orders sheet. Map every Tally field to the corresponding column. Add a timestamp using Make.com's built-in date functions. Set payment_status to "Pending" and order_status to "Received" by default.</p>
     <h3>Step 3: Send WhatsApp Confirmation</h3>
-    <p>Use the WhatsApp Business API module (or a third-party integration like Twilio) to send a structured confirmation message to the phone number captured in the form. Include the order summary, total, and payment instructions.</p>
+    <p>Use the HTTP module with your WhatsApp Business Cloud API credentials to send a structured message to the customer's number captured in the form. Include the order summary, total, and payment instructions. The message should feel personal, not automated.</p>
     <h3>Step 4: Owner Notification</h3>
-    <p>Send a brief summary to your own number or email. Keep it short: customer name, items ordered, total value. You need to know an order came in. You do not need to process it.</p>
+    <p>Send a brief summary to your own number via Gmail or a second HTTP call. Keep it short: customer name, items ordered, total value, and the order ID for reference. You need to know an order came in — not process it.</p>
 
-    <h2>What This Framework Does Not Cover</h2>
-    <p>This framework handles the order intake and confirmation loop. It does not cover: inventory management (you will need a separate stock tracking system), delivery logistics (that requires its own layer), or customer payment verification (that still requires a human step). Those are solvable — they just require additional systems built on top of this foundation.</p>
+    <h2>Tally Form Field Specification</h2>
+    <ul>
+      <li><strong>Full Name</strong> — Short text, required. Used in confirmation message and order log.</li>
+      <li><strong>WhatsApp Number</strong> — Phone, required. Make.com uses this to send the automated confirmation.</li>
+      <li><strong>What would you like to order?</strong> — Long text, required. Customer types product name(s) and quantity.</li>
+      <li><strong>Pickup or Delivery?</strong> — Multiple choice, required. Options: "Self-pickup (Free)" / "Delivery (fees apply)".</li>
+      <li><strong>Delivery Location</strong> — Multiple choice, conditional (shows only if Delivery selected). Each option shows the fee.</li>
+      <li><strong>Gift packaging?</strong> — Multiple choice, optional. "Yes — add gift bag (₦1,500 extra)" / "No thanks". Built-in upsell.</li>
+      <li><strong>Anything else we should know?</strong> — Long text, optional. Catches special instructions and custom requests.</li>
+    </ul>
 
-    <h2>How Long Does It Take to Build?</h2>
-    <p>With this framework as a reference, a solo builder with basic Make.com knowledge can set up the full system in 3–5 hours. The Tally form takes 20 minutes. The Google Sheet structure takes 30 minutes. The Make.com scenario takes 1–2 hours. Testing and refinement takes another hour. If you have never used Make.com before, double every estimate. If you want it built for you, I can deliver the full system in 5–7 days.</p>
+    <h2>Build Time Estimate</h2>
+    <p>With this framework as reference, a solo builder with basic Make.com knowledge can set up the full system in 3–5 hours. The Tally form takes 20 minutes. The Google Sheet structure takes 30 minutes. The Make.com scenario takes 1–2 hours. Testing and refinement takes another hour. If you have never used Make.com before, double every estimate. If you want it built for you, I deliver the full system in 5–7 days.</p>
 
-    <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--g5);display:flex;gap:16px;flex-wrap:wrap;">
+    <div class="article-actions">
       <a href="/#contact" data-anchor="contact" class="btn-fill">Build This For Me</a>
       <a href="/frameworks" data-route="/frameworks" class="btn-ghost">← All Frameworks</a>
     </div>
   </div>
-
   <div class="fw-download-bar">
-    <span class="fw-download-label">The WhatsApp Sales System Framework — AI Center</span>
+    <span class="fw-download-label">WhatsApp Sales System Framework — AI Center</span>
     <button class="fw-download-btn" onclick="window.print()">Save as PDF &#8594;</button>
   </div>`;
 }
 
-/* ── DATA PROTECTION ── */
+/* ═══════════════════════════════════════════════
+   FRAMEWORK 2 — DISCOVERY FRAMEWORK (NEW)
+═══════════════════════════════════════════════ */
+function renderDiscoveryFramework() {
+  return `
+  <div class="page-hero">
+    <div class="inner">
+      <div class="back-link" onclick="navigate('/frameworks')">All Frameworks</div>
+      <div class="sec-label">Framework 02 — Free</div>
+      <h1 class="page-title">The Automation<br><em>Discovery</em><br>Framework</h1>
+      <div class="page-meta">
+        <span>Abdullah Ishaq</span><span class="page-meta-dot"></span>
+        <span>AI Center</span><span class="page-meta-dot"></span>
+        <span>Use before any automation project</span>
+      </div>
+    </div>
+  </div>
+  <div class="fw-doc">
+    <p>Before building any automation system, I run every client through the same discovery process. This is that process, documented completely. It is a structured set of questions and a mapping methodology that surfaces exactly what is worth automating, what the system needs to do, and what success looks like before a single tool is opened.</p>
+    <p>Use this before you start any automation project — whether you are building yourself or commissioning someone to build for you. The clarity it creates is worth the time it takes. Every failed automation project I have seen failed because this conversation never happened.</p>
+
+    <h2>Phase 1 — Business Snapshot (15 minutes)</h2>
+    <p>The goal of this phase is to understand the business at a high level — what it does, who it serves, and how it currently operates. Do not skip this phase because it seems obvious. The answers reveal constraints and opportunities that are not visible from the outside.</p>
+
+    <div class="fw-step"><div class="fw-step-num">1</div><div class="fw-step-body"><div class="fw-step-title">Describe your business in one sentence.</div><div class="fw-step-desc">Not what you aspire to be — what you actually do today, for who, and at what price point. This anchors the entire discovery conversation.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">2</div><div class="fw-step-body"><div class="fw-step-title">Walk me through a typical day.</div><div class="fw-step-desc">Hour by hour if possible. Where does your time go? What takes longer than it should? What are you doing at 9pm that you wish was done by noon? This reveals the operational reality that no questionnaire captures.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">3</div><div class="fw-step-body"><div class="fw-step-title">How many customers or transactions do you handle per week?</div><div class="fw-step-desc">Get the actual number, not a range. Volume determines the ROI calculation for any automation investment. Under 10 per week means manual is probably fine. Over 30 per week means automation is urgent.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">4</div><div class="fw-step-body"><div class="fw-step-title">What does your current team look like?</div><div class="fw-step-desc">Is it just you? Do you have assistants? Who touches the operations you are trying to automate? The answer shapes what the system needs to hand off and to whom.</div></div></div>
+
+    <h2>Phase 2 — Pain Mapping (20 minutes)</h2>
+    <p>This is the core of the discovery. The goal is to find the highest-value automation opportunities — the tasks that are costing the most time, causing the most errors, or creating the most friction for customers.</p>
+
+    <ul>
+      <li>What is the single task you do most often that you wish you never had to do again?</li>
+      <li>What is the thing that slips most often — the follow-up that gets forgotten, the record that does not get updated, the message that goes unanswered?</li>
+      <li>What do your customers ask you most often? (These are the FAQ that become quick replies.)</li>
+      <li>At what point in the customer journey do you lose the most people — where do interested customers go silent?</li>
+      <li>If your business doubled in customers tomorrow, what would break first?</li>
+      <li>What are you manually doing that you suspect could be handled by a form, a spreadsheet, or an automated message?</li>
+    </ul>
+
+    <h2>Phase 3 — Process Documentation (30 minutes)</h2>
+    <p>Pick the highest-priority process identified in Phase 2. Map it completely. Do not skip steps because they seem obvious — obvious steps are often the ones that contain the automation opportunity.</p>
+
+    <div class="fw-step"><div class="fw-step-num">A</div><div class="fw-step-body"><div class="fw-step-title">What triggers this process?</div><div class="fw-step-desc">A customer message? A payment? A form submission? A calendar event? The trigger is the automation's entry point. Be specific — "a customer messages me" is not specific enough. "A customer sends a message asking about product availability" is.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">B</div><div class="fw-step-body"><div class="fw-step-title">What information do you need to process this?</div><div class="fw-step-desc">List every piece of data you need. Customer name. Phone number. Product requested. Quantity. Delivery address. Payment amount. Each piece of information you need becomes a field in your intake form.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">C</div><div class="fw-step-body"><div class="fw-step-title">What are all the steps between trigger and completion?</div><div class="fw-step-desc">Write them in order. Every decision, every message, every data entry, every check. Include the steps that happen when things go wrong — customer does not pay, item is out of stock, address is unclear. These edge cases need to be handled by the system or escalated to a human.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">D</div><div class="fw-step-body"><div class="fw-step-title">What does a successful outcome look like?</div><div class="fw-step-desc">Be specific. "The order is delivered" is not enough. "The customer receives a WhatsApp confirmation, the order is logged in the Google Sheet, the stock count updates, and the rider is notified" — that is a success state an automated system can be measured against.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">E</div><div class="fw-step-body"><div class="fw-step-title">Which steps genuinely require a human?</div><div class="fw-step-desc">Be honest. Usually it is: verifying payment (in Nigeria's cash-first economy), making judgment calls on unusual requests, and handling complaints. Everything else — sending messages, logging data, calculating totals, sending confirmations — is automatable.</div></div></div>
+
+    <h2>Phase 4 — Tool Selection (10 minutes)</h2>
+    <p>Once the process is documented, tool selection is straightforward. Match the process components to the right tools:</p>
+    <ul>
+      <li><strong>Intake and data capture</strong> → Tally.so or Google Forms</li>
+      <li><strong>Automation logic and connections</strong> → Make.com</li>
+      <li><strong>Data storage and tracking</strong> → Google Sheets or Notion</li>
+      <li><strong>Customer communication</strong> → WhatsApp Business quick replies + Make.com HTTP module</li>
+      <li><strong>Content and documents</strong> → Google Docs + Canva</li>
+      <li><strong>Custom bot logic</strong> → Python + Telegram Bot API (for more complex flows)</li>
+    </ul>
+    <p>Do not choose tools before the process is documented. Tools chosen without a documented process are almost always the wrong tools, used the wrong way, for the wrong problem.</p>
+
+    <h2>Phase 5 — Defining Success (5 minutes)</h2>
+    <p>Before building anything, agree on what success looks like. Be specific and measurable.</p>
+    <ul>
+      <li>How many hours per week should the owner save after this system is live?</li>
+      <li>What is the acceptable error rate for the automated process? (For most order systems: zero.)</li>
+      <li>What does the handoff look like — what will the owner still do manually, and what will the system handle?</li>
+      <li>What is the threshold at which the system needs to escalate to a human?</li>
+    </ul>
+    <p>These answers become your acceptance criteria. When the system is delivered, you measure it against these answers — not against how impressive the technology looks.</p>
+
+    <h2>Using This Framework With a Client</h2>
+    <p>Run Phases 1–3 in a single 60-minute conversation. Record it if you have permission. Take the recording and build the process map from it — you will catch things the client did not consciously mention. Share the process map back to the client for review before building anything. Phase 4 and 5 can happen asynchronously via message once the map is confirmed.</p>
+    <p>This framework is what separates a system that gets used from a system that sits in a folder somewhere. Every minute spent in discovery saves hours in rework. Every hour spent in rework costs client trust. Do the discovery. Always.</p>
+
+    <div class="article-actions">
+      <a href="/#contact" data-anchor="contact" class="btn-fill">Start a Discovery Session</a>
+      <a href="/frameworks" data-route="/frameworks" class="btn-ghost">← All Frameworks</a>
+    </div>
+  </div>
+  <div class="fw-download-bar">
+    <span class="fw-download-label">Automation Discovery Framework — AI Center</span>
+    <button class="fw-download-btn" onclick="window.print()">Save as PDF &#8594;</button>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   DATA PROTECTION
+═══════════════════════════════════════════════ */
 function renderDataProtection() {
   return `
   <div class="page-hero dark">
     <div class="inner">
       <div class="back-link" onclick="navigate('/')">Home</div>
-      <div class="sec-label" style="color:var(--g3)">Data Protection & AI Governance</div>
+      <div class="sec-label" style="color:var(--g3)">Data Protection &amp; AI Governance</div>
       <h1 class="page-title" style="color:var(--w)">The intersection of<br><em>AI automation</em><br>and Nigerian law.</h1>
-      <p style="font-size:15px;line-height:1.75;color:var(--g4);max-width:540px;margin-top:20px;">I am a Nigerian law student building specialised expertise in data protection compliance, AI governance, and what the NDPA 2023 means for the automation systems I build and the businesses that use them.</p>
+      <p style="font-size:15px;line-height:1.75;color:var(--g4);max-width:540px;margin-top:20px;">A Nigerian law student building specialised expertise in data protection compliance, AI governance, and what the NDPA 2023 means for the automation systems I build and the businesses that use them.</p>
     </div>
   </div>
-
   <div class="article-body">
-
     <h2>Why This Matters</h2>
     <p>Every AI automation system I build processes personal data. A WhatsApp bot captures customer names and phone numbers. A Google Sheet stores order histories and delivery addresses. A Telegram bot logs user IDs and purchase behaviour. Every one of these systems sits inside Nigeria's data protection framework — whether the business owner knows it or not.</p>
     <p>Most small businesses in Nigeria are unknowing data controllers. They collect personal data, they process it, they store it — and they have no privacy policy, no data retention schedule, no lawful basis documented, and no awareness that any of this is regulated. The Nigeria Data Protection Act 2023 changed the compliance landscape significantly. The question is whether the businesses it covers know that yet.</p>
-    <p>I am building at that intersection — not as a regulator, but as a practitioner who understands both sides. I know how the systems are built. I know what data they process. And I am learning the legal framework that governs them. That combination is rare. It is the combination that will matter as Nigeria's digital economy scales.</p>
 
     <div class="dp-grid">
       <div class="dp-card">
         <div class="dp-card-label">Core Framework</div>
         <div class="dp-card-title">Nigeria Data Protection Act 2023</div>
-        <div class="dp-card-desc">The NDPA 2023 is Nigeria's comprehensive data protection legislation. It established the Nigeria Data Protection Commission (NDPC), defined the rights of data subjects, and imposed obligations on data controllers and processors operating in Nigeria or processing the data of Nigerians.</div>
+        <div class="dp-card-desc">Nigeria's comprehensive data protection legislation. Established the NDPC, defined data subject rights, and imposed obligations on data controllers and processors operating in Nigeria or processing the data of Nigerians.</div>
       </div>
       <div class="dp-card">
         <div class="dp-card-label">The Regulator</div>
         <div class="dp-card-title">Nigeria Data Protection Commission (NDPC)</div>
-        <div class="dp-card-desc">The NDPC is the statutory body responsible for enforcing the NDPA 2023. It has powers to investigate complaints, issue compliance orders, impose administrative sanctions, and accredit Data Protection Compliance Organisations (DPCOs) that assess compliance for businesses.</div>
+        <div class="dp-card-desc">The statutory body responsible for enforcing the NDPA 2023. Has powers to investigate complaints, issue compliance orders, impose administrative sanctions, and accredit Data Protection Compliance Organisations.</div>
       </div>
       <div class="dp-card">
         <div class="dp-card-label">Key Obligations</div>
         <div class="dp-card-title">What Automation Builders Must Know</div>
-        <div class="dp-card-desc">Data controllers must have a lawful basis for processing. They must implement appropriate technical and organisational measures to protect data. They must respect data subject rights — including access, correction, and deletion requests. They must notify the NDPC of data breaches within 72 hours. These obligations apply to every system I build.</div>
+        <div class="dp-card-desc">Data controllers must have a lawful basis for processing, implement appropriate technical safeguards, respect data subject rights — access, correction, deletion — and notify the NDPC of data breaches within 72 hours. These obligations apply to every system I build.</div>
       </div>
       <div class="dp-card">
-        <div class="dp-card-label">The Gap I Am Filling</div>
+        <div class="dp-card-label">The Gap</div>
         <div class="dp-card-title">Compliance for Small Business Automation</div>
-        <div class="dp-card-desc">Large corporations have legal teams and DPOs. Small businesses have WhatsApp chats and Google Sheets. The compliance infrastructure for micro and small enterprises is almost entirely absent. Building practical, affordable compliance frameworks for the businesses I serve is the work I am positioning for.</div>
+        <div class="dp-card-desc">Large corporations have legal teams and DPOs. Small businesses have WhatsApp chats and Google Sheets. The compliance infrastructure for micro and small enterprises is almost entirely absent. Building practical, affordable frameworks for the businesses I serve is the work I am positioning for.</div>
       </div>
     </div>
 
     <h2>Areas of Focus</h2>
-
     <h3>NDPA 2023 Compliance for Automated Systems</h3>
-    <p>When a Make.com scenario captures customer data from a Tally form and logs it to Google Sheets, at least three parties are processing that data: the business (controller), Make.com (processor), and Google (sub-processor). Under the NDPA 2023, that chain of processing requires appropriate legal agreements and safeguards. Most businesses building these systems have no idea this obligation exists. I am building the knowledge to advise them.</p>
+    <p>When a Make.com scenario captures customer data from a Tally form and logs it to Google Sheets, at least three parties are processing that data: the business (controller), Make.com (processor), and Google (sub-processor). Under the NDPA 2023, that chain of processing requires appropriate legal agreements and safeguards. Most businesses building these systems have no idea this obligation exists.</p>
 
     <h3>AI Governance in the Nigerian Context</h3>
-    <p>Nigeria does not yet have a standalone AI governance framework, but the NDPA 2023 intersects significantly with AI systems that process personal data. Automated decision-making, profiling, and AI-generated outputs that affect individuals are areas where legal exposure is real and underappreciated. Understanding how existing data protection law applies to AI outputs is the immediate practical frontier.</p>
+    <p>Nigeria does not yet have a standalone AI governance framework, but the NDPA 2023 intersects significantly with AI systems that process personal data. Automated decision-making, profiling, and AI-generated outputs that affect individuals are areas where legal exposure is real and underappreciated.</p>
 
     <h3>Data Subject Rights in Practice</h3>
-    <p>The NDPA 2023 grants data subjects the right to access their personal data, correct inaccuracies, withdraw consent, and request deletion. For a business running a WhatsApp bot and a Google Sheet CRM — what does honouring these rights actually look like operationally? These are the questions that require both technical and legal understanding to answer. I am developing answers to them.</p>
-
-    <h2>Current Work</h2>
-    <p>I am a third-year law student developing a specialisation at the intersection of Nigerian data protection law and AI automation. My current focus includes: deep study of the NDPA 2023 and its subsidiary regulations, analysis of NDPC enforcement activity and guidance documents, and building practical compliance checklists for small businesses operating automated systems.</p>
-    <p>I am also working toward formal recognition as a data protection practitioner — studying the compliance landscape, analysing the NDPC's regulatory approach, and documenting what compliance looks like for the specific systems I build. This is not a side interest. It is the professional direction that makes my automation work legally coherent and trustworthy at scale.</p>
+    <p>The NDPA 2023 grants data subjects the right to access their personal data, correct inaccuracies, withdraw consent, and request deletion. For a business running a WhatsApp bot and a Google Sheet CRM — what does honouring these rights actually look like operationally? These are the questions that require both technical and legal understanding to answer.</p>
 
     <div class="article-callout">Every business that processes Nigerian customer data is a regulated entity — whether they know it or not. The NDPA 2023 does not exempt small businesses. The question is not whether the law applies to you. It is whether you are meeting your obligations.</div>
 
-    <h2>Want to Talk About Compliance?</h2>
-    <p>If you are building an automated system and want to understand your data protection obligations, or if you are a business owner who has taken on a WhatsApp bot or CRM system and want to know what that means legally — get in touch. I am not practising law, but I can share what I know and connect you with the right resources.</p>
-
-    <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--g5);display:flex;gap:16px;flex-wrap:wrap;">
+    <div class="article-actions">
       <a href="/#contact" data-anchor="contact" class="btn-fill">Get in Touch</a>
       <a href="/" data-route="/" class="btn-ghost">← Back to AI Center</a>
     </div>
   </div>`;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════
    SHARED UI
-═══════════════════════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════════ */
 function initReveal() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 }
 
 function closeMobileMenu() {
@@ -1830,51 +1920,47 @@ function closeMobileMenu() {
   document.body.style.overflow = '';
 }
 
-/* Hamburger */
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('hamburger').classList.toggle('open');
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
   document.getElementById('mobileMenu').classList.toggle('open');
   document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
 });
 
-/* Scroll progress */
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-  document.getElementById('spb').style.width = Math.min(pct, 100) + '%';
+window.addEventListener('scroll', function() {
+  var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('spb').style.width = Math.min(pct,100) + '%';
 }, { passive: true });
 
-/* Custom cursor */
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+/* Cursor */
+var cursor = document.getElementById('cursor');
+var ring   = document.getElementById('cursorRing');
+var mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', function(e) {
+  mx=e.clientX; my=e.clientY;
+  cursor.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';
 });
 (function animRing() {
-  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+  ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';
   requestAnimationFrame(animRing);
 })();
-document.addEventListener('mouseover', e => {
-  if (e.target.closest('a,button,.lab-card,.service-card,.blog-card,.quiz-option,.blog-listing-item')) {
-    cursor.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%) scale(2)`;
-    ring.style.width = '48px'; ring.style.height = '48px'; ring.style.opacity = '0.8';
+document.addEventListener('mouseover', function(e) {
+  if (e.target.closest('a,button,.lab-card,.service-card,.blog-card,.quiz-option,.fw-card,.blog-listing-item')) {
+    cursor.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%) scale(2)';
+    ring.style.width='48px'; ring.style.height='48px'; ring.style.opacity='0.8';
   }
 });
-document.addEventListener('mouseout', e => {
-  if (e.target.closest('a,button,.lab-card,.service-card,.blog-card,.quiz-option,.blog-listing-item')) {
-    cursor.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%) scale(1)`;
-    ring.style.width = '32px'; ring.style.height = '32px'; ring.style.opacity = '0.5';
+document.addEventListener('mouseout', function(e) {
+  if (e.target.closest('a,button,.lab-card,.service-card,.blog-card,.quiz-option,.fw-card,.blog-listing-item')) {
+    cursor.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%) scale(1)';
+    ring.style.width='32px'; ring.style.height='32px'; ring.style.opacity='0.5';
   }
 });
 if ('ontouchstart' in window) {
-  cursor.style.display = 'none'; ring.style.display = 'none'; document.body.style.cursor = 'auto';
+  cursor.style.display='none'; ring.style.display='none'; document.body.style.cursor='auto';
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   BOOT
-═══════════════════════════════════════════════════════════════════════════ */
+/* Boot */
 navigate(window.location.pathname, false);
 </script>
 </body>
