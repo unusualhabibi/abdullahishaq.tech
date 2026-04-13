@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Center — Abdullah Ishaq</title>
+  <script>
+    // GitHub Pages SPA redirect fix
+    // Saves the current path to sessionStorage then redirects to index.html
+    // index.html reads sessionStorage on boot and navigates to the correct route
+    var path = window.location.pathname;
+    sessionStorage.setItem('spa_redirect', path);
+    window.location.replace('/');
+  </script>
+</head>
+<body>
+  <p style="font-family:sans-serif;text-align:center;padding:80px;color:#666;">
+    Redirecting to AI Center...
+  </p>
+</body>
+</html>
