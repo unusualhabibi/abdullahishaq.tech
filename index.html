@@ -1907,8 +1907,8 @@ function renderNotionBusinessOS() {
     <ul>
       <li><strong>Clients — Status:</strong> Select. Options: Lead (yellow), Active (green), Paused (orange), Closed (grey). Use colour-coding — it turns a table into a quick visual status board.</li>
       <li><strong>Revenue — Month:</strong> Formula. <code>formatDate(prop("Date Received"), "MMMM YYYY")</code>. This single formula enables the monthly grouping view without any manual categorisation.</li>
-      <li><strong>Revenue — Status:</strong> Select. Options: Pending (yellow), Paid (green), Overdue (red). Change to Overdue manually if payment has not arrived within your agreed terms. Red rows demand attention.</li>
-      <li><strong>Tasks — Priority:</strong> Select. Options: High (red), Medium (yellow), Low (grey). Use High sparingly. If everything is high priority, nothing is. A task is High only if it blocks client work or has a same-day deadline.</li>
+      <li><strong>Revenue — Status:</strong> Select. Options: Pending (yellow), Paid (green), Overdue (red). Change to Overdue manually when payment has not arrived within 3 days of your agreed due date. Red rows demand attention.</li>
+      <li><strong>Tasks — Priority:</strong> Select. Options: High (red), Medium (yellow), Low (grey). Use High sparingly. If everything is high priority, nothing is. A task is High only if it blocks client work or its Due Date is today.</li>
       <li><strong>Content Calendar — Status:</strong> Select. Options: Idea (grey), In Progress (blue), Ready (yellow), Published (green). The Ready status is what most people skip — it means the piece is complete and approved but not yet posted. Having a Ready queue means you always have content to post even on low-energy days.</li>
     </ul>
 
@@ -1919,7 +1919,7 @@ function renderNotionBusinessOS() {
     <p>It does not automate anything by itself. Notion is a database. It does not send reminders or trigger actions. If you want to add automation — for example, a WhatsApp message when a follow-up date arrives — that requires a Make.com integration layered on top. The OS works without automation. Automation is the upgrade, not the foundation.</p>
 
     <h2>Build Time Estimate</h2>
-    <p>Building this system from scratch in Notion takes 2–3 hours if you follow this framework in order. The four databases take about 45 minutes total. The dashboard page with six linked views takes another 45 minutes. The remaining time goes to setting up your initial data — importing existing clients, logging outstanding tasks, adding content ideas you have been sitting on. Do not try to import historical revenue going back years. Start from the current month. The system earns its value from what you put into it going forward, not from a complete historical record.</p>
+    <p>Building this system from scratch in Notion takes 2–3 hours if you follow this framework in order. The four databases take about 45 minutes total. The dashboard page with six linked views takes another 45 minutes. The remaining 30–90 minutes goes to initial data entry — adding your current clients, logging outstanding tasks, and capturing content ideas you have been sitting on. Do not try to import historical revenue going back years. Start from the current month. The system earns its value from what you put into it going forward, not from a complete historical record.</p>
 
     <div class="article-actions">
       <a href="/#contact" data-anchor="contact" class="btn-fill">Build This With Me</a>
