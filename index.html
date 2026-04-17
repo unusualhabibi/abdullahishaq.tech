@@ -634,7 +634,7 @@ function updateNav(path) {
 }
 
 function initReadingBar(path) {
-  const articlePaths = ['/blog/automation-readiness', '/blog/make-vs-zapier', '/cushy-cuisine', '/flora-scents', '/framework-whatsapp', '/framework-discovery'];
+  const articlePaths = ['/blog/automation-readiness', '/blog/make-vs-zapier', '/cushy-cuisine', '/flora-scents', '/framework-whatsapp', '/framework-discovery', '/framework-notion-os'];
   if (articlePaths.includes(path)) {
     const bar = document.createElement('div');
     bar.id = 'reading-bar';
@@ -703,6 +703,7 @@ function renderPage(path) {
     '/frameworks':              renderFrameworks,
     '/framework-whatsapp':      renderWhatsAppFramework,
     '/framework-discovery':     renderDiscoveryFramework,
+    '/framework-notion-os':     renderNotionBusinessOS,
     '/data-protection':         renderDataProtection,
   };
   var fn = pages[path] || renderHome;
@@ -967,7 +968,7 @@ function renderHome() {
           <div class="fw-desc">The exact questionnaire and process I use in every client discovery session — adapted for anyone to use when mapping a business for automation.</div>
           <span class="fw-link">Read framework &#8594;</span>
         </a>
-        <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Notion Business OS Template</div><div class="fw-desc">A complete Notion workspace covering client management, revenue tracking, content calendar, and task management.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
+        <a href="/framework-notion-os" data-route="/framework-notion-os" class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Notion Business OS Template</div><div class="fw-desc">A complete Notion workspace covering client management, revenue tracking, content calendar, and task management.</div><span class="fw-link">Read framework &#8594;</span></a>
         <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The AI Content Pipeline Blueprint</div><div class="fw-desc">End-to-end workflow for building an AI content system — from prompt engineering to scheduling.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
         <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Google Sheets Business Tracker</div><div class="fw-desc">A zero-formula-knowledge spreadsheet system covering order tracking, inventory, customer records, and income logging.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
         <div class="fw-card"><span class="fw-badge premium">Premium</span><div class="fw-title">The Make.com Starter Scenario Pack</div><div class="fw-desc">Five production-ready Make.com scenarios covering order intake, payment confirmation, inventory update, customer logging, and follow-up.</div><a href="/#contact" data-anchor="contact" class="fw-link">Get Access &#8594;</a></div>
@@ -1666,7 +1667,7 @@ function renderFrameworks() {
         <div class="fw-desc">The exact questionnaire and process I use in every client discovery session — adapted for anyone to use when mapping a business for automation.</div>
         <span class="fw-link">Read framework &#8594;</span>
       </a>
-      <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Notion Business OS Template</div><div class="fw-desc">A complete Notion workspace covering client management, revenue tracking, content calendar, and task management.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
+      <a href="/framework-notion-os" data-route="/framework-notion-os" class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Notion Business OS Template</div><div class="fw-desc">A complete Notion workspace covering client management, revenue tracking, content calendar, and task management.</div><span class="fw-link">Read framework &#8594;</span></a>
       <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The AI Content Pipeline Blueprint</div><div class="fw-desc">End-to-end workflow for building an AI content system — from prompt engineering to scheduling.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
       <div class="fw-card"><span class="fw-badge free">Free</span><div class="fw-title">The Google Sheets Business Tracker</div><div class="fw-desc">A zero-formula-knowledge spreadsheet covering order tracking, inventory management, customer records, and income logging.</div><span class="fw-link" style="color:var(--g4)">Coming Soon</span></div>
       <div class="fw-card"><span class="fw-badge premium">Premium</span><div class="fw-title">The Make.com Starter Scenario Pack</div><div class="fw-desc">Five production-ready Make.com scenarios covering order intake, payment confirmation, inventory update, customer logging, and follow-up.</div><a href="/#contact" data-anchor="contact" class="fw-link">Get Access &#8594;</a></div>
@@ -1838,6 +1839,95 @@ function renderDiscoveryFramework() {
   </div>
   <div class="fw-download-bar">
     <span class="fw-download-label">Automation Discovery Framework — AI Center</span>
+    <button class="fw-download-btn" onclick="window.print()">Save as PDF &#8594;</button>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   FRAMEWORK 3 — NOTION BUSINESS OS
+═══════════════════════════════════════════════ */
+function renderNotionBusinessOS() {
+  return `
+  <div class="page-hero">
+    <div class="inner">
+      <div class="back-link" onclick="navigate('/frameworks')">All Frameworks</div>
+      <div class="sec-label">Framework 03 — Free</div>
+      <h1 class="page-title">The Notion<br><em>Business OS</em><br>Template</h1>
+      <div class="page-meta">
+        <span>Abdullah Ishaq</span><span class="page-meta-dot"></span>
+        <span>AI Center</span><span class="page-meta-dot"></span>
+        <span>Tools: Notion</span>
+      </div>
+    </div>
+  </div>
+  <div class="fw-doc">
+    <p>Most small business owners manage their operations across five different places: a WhatsApp thread for client messages, a notebook for tasks, a mental note for revenue, a Google Doc for content ideas, and a prayer for nothing falling through the cracks. This template is the single workspace that replaces all of it.</p>
+    <p>I built the first version of this for myself. Then a client asked how I kept track of everything. I showed her the system. She replicated it in a weekend and told me two weeks later that she had stopped losing track of follow-ups for the first time in three years. That conversation is what turned a personal tool into a documented framework.</p>
+    <p>This is not a productivity aesthetic. It is not a collection of beautiful Notion pages that you screenshot and never actually use. It is a working system with four linked databases, each doing one job, and a homepage dashboard that shows you what matters right now every time you open it.</p>
+
+    <h2>The Four Databases</h2>
+    <p>The entire OS is built on four databases. Every other view, every dashboard property, every relation — all of it derives from these four. Build them correctly and the rest assembles itself.</p>
+
+    <div class="fw-step"><div class="fw-step-num">1</div><div class="fw-step-body"><div class="fw-step-title">Clients</div><div class="fw-step-desc">One row per client. Properties: Name, Status (Lead / Active / Paused / Closed), Service Type, Monthly Value (₦), Start Date, Last Contact, Next Follow-Up, and a relation to the Revenue and Tasks databases. This is your CRM. Every client-related piece of information lives here and nowhere else.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">2</div><div class="fw-step-body"><div class="fw-step-title">Revenue</div><div class="fw-step-desc">One row per transaction. Properties: Client (relation to Clients), Amount (₦), Type (Invoice / Retainer / One-off), Date Received, Month (formula), Status (Paid / Pending / Overdue), and Notes. This replaces every ad hoc payment screenshot and WhatsApp confirmation. Every naira that enters the business has a row.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">3</div><div class="fw-step-body"><div class="fw-step-title">Content Calendar</div><div class="fw-step-desc">One row per content piece. Properties: Title, Platform (Instagram / LinkedIn / WhatsApp / Blog), Format (Reel / Carousel / Post / Article), Status (Idea / In Progress / Ready / Published), Publish Date, and Notes. This is not a planning document. It is a production board. Every piece of content you intend to make has a row here from the moment it is an idea.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">4</div><div class="fw-step-body"><div class="fw-step-title">Tasks</div><div class="fw-step-desc">One row per task. Properties: Task Name, Client (relation to Clients), Priority (High / Medium / Low), Status (To Do / In Progress / Done), Due Date, and Notes. Every outstanding action — client deliverable, admin task, follow-up, personal errand that touches the business — lives here. Nothing gets tracked in your head or in a separate to-do app.</div></div></div>
+
+    <h2>The Dashboard Homepage</h2>
+    <p>The dashboard is a single Notion page with six linked views — one for each thing you need to see when you open your workspace in the morning. Build it with these six blocks:</p>
+    <ul>
+      <li><strong>Active Clients</strong> — a filtered gallery view of the Clients database showing only Status = Active. Quick visual confirmation of who you are currently serving.</li>
+      <li><strong>Pending Revenue</strong> — a filtered table view of the Revenue database showing only Status = Pending or Overdue, sorted by Date Received ascending. The oldest unpaid invoice is always at the top.</li>
+      <li><strong>This Week's Tasks</strong> — a filtered table view of the Tasks database showing Due Date within the current week and Status ≠ Done, sorted by Priority descending. Your week, at a glance, before you open a single chat.</li>
+      <li><strong>Content Due This Week</strong> — a filtered calendar or table view of the Content Calendar database showing Publish Date within the current week and Status ≠ Published. Nothing should be a surprise.</li>
+      <li><strong>Follow-Ups Due Today</strong> — a filtered table view of the Clients database showing Next Follow-Up = Today. This view is either empty (good) or has names in it (action required). No grey area.</li>
+      <li><strong>Monthly Revenue Summary</strong> — a grouped table view of the Revenue database grouped by Month, showing sum of Amount. One number per month. Your financial reality in a single scroll.</li>
+    </ul>
+
+    <h2>The Client Lifecycle in This System</h2>
+    <p>Here is how the system works end-to-end for a single client engagement. This is the path every client record takes from the moment you have a conversation with them:</p>
+
+    <div class="fw-step"><div class="fw-step-num">A</div><div class="fw-step-body"><div class="fw-step-title">Lead Enters the System</div><div class="fw-step-desc">As soon as you have a real conversation with a potential client — not a cold inquiry, a real conversation — they get a row in the Clients database. Status: Lead. You log their service interest, a note on what they need, and set a Next Follow-Up date. This is the step most people skip. Do not skip it. The follow-up you forget is the revenue you lose.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">B</div><div class="fw-step-body"><div class="fw-step-title">Proposal and Agreement</div><div class="fw-step-desc">When you send a proposal, you create the first task linked to this client: "Send proposal — [Client Name]". Status: In Progress. When they accept, you change the client status to Active, update Monthly Value with the agreed amount, and log the first expected payment in the Revenue database as Status: Pending.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">C</div><div class="fw-step-body"><div class="fw-step-title">Active Engagement</div><div class="fw-step-desc">Every deliverable, every call, every task for this client gets a row in the Tasks database linked to their Clients record. You never open a chat to remember what you owe a client. You open the Tasks database, filter by client name, and see every outstanding item in one place.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">D</div><div class="fw-step-body"><div class="fw-step-title">Payment Received</div><div class="fw-step-desc">When payment lands, you find the pending row in the Revenue database, change Status from Pending to Paid, and note the date received. The Monthly Revenue Summary on the dashboard updates automatically. You know your month-to-date revenue at any moment without opening a bank app or doing arithmetic.</div></div></div>
+    <div class="fw-step"><div class="fw-step-num">E</div><div class="fw-step-body"><div class="fw-step-title">Engagement Ends</div><div class="fw-step-desc">When a project closes, you update client Status to Closed, archive outstanding tasks, and log the final payment. The client record stays in the database forever. When they return — and clients who were served well return — you have the full history of what you did for them, what you charged, and when you last spoke. You do not start from zero.</div></div></div>
+
+    <h2>The Content Workflow</h2>
+    <p>The Content Calendar database does not replace a strategy. It enforces one. Here is how to use it so that it actually produces content rather than just cataloguing intentions:</p>
+    <ul>
+      <li><strong>Sunday review (15 minutes):</strong> Open the Content Calendar filtered to the current week. Every piece with Status = Ready needs to have a Publish Date assigned. Every piece still In Progress needs a realistic completion date or it gets pushed to next week. Nothing stays ambiguous. Sunday is when you see the week clearly and make decisions.</li>
+      <li><strong>Capture ideas immediately:</strong> When an idea comes — in a client call, in the shower, at 11pm — add a row with Title and Platform. Status: Idea. Date: blank. Takes 20 seconds. Ideas captured in Notion get made. Ideas captured in your Notes app get forgotten.</li>
+      <li><strong>Move, don't delete:</strong> If a piece does not get made on its intended date, change the Publish Date and keep it in the system. Deleting it creates the illusion of a cleaner calendar. Rescheduling it keeps you honest about your actual output.</li>
+      <li><strong>One platform at a time:</strong> When you are starting this system, filter the Content Calendar to a single platform. Build the habit for Instagram first, or LinkedIn first, or WhatsApp first. A calendar full of every platform that produces nothing on any of them is worse than a focused calendar for one platform that posts consistently.</li>
+    </ul>
+
+    <h2>Property Specifications</h2>
+    <p>These are the exact property types to use in Notion when building each database. Do not add more properties than these until the system has been in use for at least 30 days. Extra properties are friction. Friction means the system does not get used.</p>
+    <ul>
+      <li><strong>Clients — Status:</strong> Select. Options: Lead (yellow), Active (green), Paused (orange), Closed (grey). Use colour-coding — it turns a table into a quick visual status board.</li>
+      <li><strong>Revenue — Month:</strong> Formula. <code>formatDate(prop("Date Received"), "MMMM YYYY")</code>. This single formula enables the monthly grouping view without any manual categorisation.</li>
+      <li><strong>Revenue — Status:</strong> Select. Options: Pending (yellow), Paid (green), Overdue (red). Change to Overdue manually if payment has not arrived within your agreed terms. Red rows demand attention.</li>
+      <li><strong>Tasks — Priority:</strong> Select. Options: High (red), Medium (yellow), Low (grey). Use High sparingly. If everything is high priority, nothing is. A task is High only if it blocks client work or has a same-day deadline.</li>
+      <li><strong>Content Calendar — Status:</strong> Select. Options: Idea (grey), In Progress (blue), Ready (yellow), Published (green). The Ready status is what most people skip — it means the piece is complete and approved but not yet posted. Having a Ready queue means you always have content to post even on low-energy days.</li>
+    </ul>
+
+    <h2>What This System Does Not Do</h2>
+    <p>This is as important as what it does. Understanding the limits of the system prevents you from over-engineering it and breaking what makes it work.</p>
+    <p>It does not replace your invoicing tool. If you use a dedicated invoicing tool or send PDF invoices, keep doing that. The Revenue database tracks receipt of payment — it is not an invoicing system. The row goes in when money lands, not when you request it.</p>
+    <p>It does not replace your communication tool. Your client conversations still happen on WhatsApp or email. This system logs the state of a relationship — last contact, next follow-up — but the relationship itself lives in your communication tool. Do not try to bring messages into Notion. That is not what this is for.</p>
+    <p>It does not automate anything by itself. Notion is a database. It does not send reminders or trigger actions. If you want to add automation — for example, a WhatsApp message when a follow-up date arrives — that requires a Make.com integration layered on top. The OS works without automation. Automation is the upgrade, not the foundation.</p>
+
+    <h2>Build Time Estimate</h2>
+    <p>Building this system from scratch in Notion takes 2–3 hours if you follow this framework in order. The four databases take about 45 minutes total. The dashboard page with six linked views takes another 45 minutes. The remaining time goes to setting up your initial data — importing existing clients, logging outstanding tasks, adding content ideas you have been sitting on. Do not try to import historical revenue going back years. Start from the current month. The system earns its value from what you put into it going forward, not from a complete historical record.</p>
+
+    <div class="article-actions">
+      <a href="/#contact" data-anchor="contact" class="btn-fill">Build This With Me</a>
+      <a href="/frameworks" data-route="/frameworks" class="btn-ghost">← All Frameworks</a>
+    </div>
+  </div>
+  <div class="fw-download-bar">
+    <span class="fw-download-label">Notion Business OS Template — AI Center</span>
     <button class="fw-download-btn" onclick="window.print()">Save as PDF &#8594;</button>
   </div>`;
 }
