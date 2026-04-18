@@ -466,6 +466,69 @@
     .fw-download-btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; padding: 12px 24px; background: var(--gold); color: var(--b); border: none; cursor: pointer; transition: background 0.2s; }
     .fw-download-btn:hover { background: var(--gold-lt); }
 
+    /* ── EBOOK COVER (print only) ── */
+    .ebook-cover { display: none; }
+    @media print {
+      .ebook-cover {
+        display: flex; flex-direction: column;
+        width: 100%; height: 100vh; min-height: 100vh;
+        background: #0C0C0B; color: #FAFAF8;
+        page-break-after: always; break-after: page;
+        padding: 80px 72px; box-sizing: border-box;
+        justify-content: space-between;
+      }
+      .ebook-cover-top { display: flex; flex-direction: column; gap: 0; }
+      .ebook-cover-logo {
+        font-family: 'Syne', sans-serif; font-size: 11px;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: #C8960C; display: flex; align-items: center; gap: 10px;
+        margin-bottom: 80px;
+      }
+      .ebook-cover-logo-dot {
+        width: 7px; height: 7px; background: #C8960C; border-radius: 50%; display: inline-block;
+      }
+      .ebook-cover-label {
+        font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em;
+        text-transform: uppercase; color: #C8960C;
+        border: 1px solid #C8960C; display: inline-block;
+        padding: 5px 14px; margin-bottom: 40px;
+      }
+      .ebook-cover-title {
+        font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800;
+        letter-spacing: -0.04em; line-height: 1.0; color: #FAFAF8;
+        margin-bottom: 32px;
+      }
+      .ebook-cover-title em { color: #C8960C; font-style: normal; }
+      .ebook-cover-subtitle {
+        font-family: 'DM Mono', monospace; font-size: 15px; line-height: 1.7;
+        color: #A0A09B; max-width: 560px; margin-bottom: 0;
+      }
+      .ebook-cover-divider {
+        width: 48px; height: 2px; background: #C8960C; margin: 48px 0;
+      }
+      .ebook-cover-bottom {
+        display: flex; justify-content: space-between; align-items: flex-end;
+        border-top: 1px solid #2A2A27; padding-top: 32px;
+      }
+      .ebook-cover-author-block { display: flex; flex-direction: column; gap: 6px; }
+      .ebook-cover-author-name {
+        font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
+        letter-spacing: -0.03em; color: #FAFAF8;
+      }
+      .ebook-cover-author-title {
+        font-family: 'DM Mono', monospace; font-size: 11px;
+        letter-spacing: 0.1em; color: #5A5A56; text-transform: uppercase;
+      }
+      .ebook-cover-brand {
+        font-family: 'DM Mono', monospace; font-size: 11px;
+        letter-spacing: 0.14em; color: #5A5A56; text-transform: uppercase;
+        text-align: right;
+      }
+      .ebook-cover-brand strong { color: #C8960C; font-weight: 400; }
+      nav, .fw-download-bar, .ebook-download-bar, #spb, .cursor, .cursor-ring { display: none !important; }
+      .article-body { padding: 48px 0 !important; }
+    }
+
     /* ── BLOG LISTING ── */
     .blog-listing-grid { display: grid; grid-template-columns: 1fr; gap: 0; border: 1px solid var(--g5); margin-top: 64px; }
     .blog-listing-item { padding: 36px 40px; border-bottom: 1px solid var(--g5); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; transition: background 0.2s; cursor: pointer; }
@@ -634,7 +697,7 @@ function updateNav(path) {
 }
 
 function initReadingBar(path) {
-  const articlePaths = ['/blog/automation-readiness', '/blog/make-vs-zapier', '/cushy-cuisine', '/flora-scents', '/framework-whatsapp', '/framework-discovery', '/framework-notion-os'];
+  const articlePaths = ['/blog/automation-readiness', '/blog/make-vs-zapier', '/blog/notion-os', '/cushy-cuisine', '/flora-scents', '/framework-whatsapp', '/framework-discovery', '/framework-notion-os'];
   if (articlePaths.includes(path)) {
     const bar = document.createElement('div');
     bar.id = 'reading-bar';
@@ -697,6 +760,7 @@ function renderPage(path) {
     '/blog':                    renderBlog,
     '/blog/automation-readiness': renderAutomationReadiness,
     '/blog/make-vs-zapier':     renderMakeVsZapier,
+    '/blog/notion-os':          renderNotionOSBlog,
     '/labs':                    renderLabs,
     '/lab-readiness-score':     renderReadinessScore,
     '/lab-content-audit':       renderContentAudit,
@@ -884,12 +948,12 @@ function renderHome() {
           <div class="blog-excerpt">A step-by-step breakdown of the exact tools and logic behind a WhatsApp automation system that runs without the owner touching their phone.</div>
           <div class="blog-meta"><span class="blog-time">8 min read</span><span class="blog-arrow" style="color:var(--g5)">&#8594;</span></div>
         </div>
-        <div class="blog-card reveal reveal-d1" style="opacity:0.6;pointer-events:none;">
-          <div class="blog-cat" style="color:var(--g4)">Guide — Coming Soon</div>
+        <a href="/blog/notion-os" data-route="/blog/notion-os" class="blog-card reveal reveal-d1">
+          <div class="blog-cat">Guide</div>
           <div class="blog-title">The Notion Operating System: How to Run Your Entire Business From One Page</div>
           <div class="blog-excerpt">Clients, revenue, content, tasks, SOPs — all in one place, all connected. This is how I build Notion workspaces that people actually use.</div>
-          <div class="blog-meta"><span class="blog-time">7 min read</span><span class="blog-arrow" style="color:var(--g5)">&#8594;</span></div>
-        </div>
+          <div class="blog-meta"><span class="blog-time">7 min read</span><span class="blog-arrow">&#8594;</span></div>
+        </a>
         <div class="blog-card reveal reveal-d2" style="opacity:0.6;pointer-events:none;">
           <div class="blog-cat" style="color:var(--g4)">Playbook — Coming Soon</div>
           <div class="blog-title">The African Business Automation Playbook: Start Here</div>
@@ -1267,13 +1331,13 @@ function renderBlog() {
         </div>
         <div class="blog-listing-meta">8 min read</div>
       </div>
-      <div class="blog-listing-item disabled">
+      <div class="blog-listing-item" onclick="navigate('/blog/notion-os')">
         <div>
-          <div class="blog-listing-cat" style="color:var(--g4)">Guide — Coming Soon</div>
-          <div class="blog-listing-title" style="color:var(--g3)">The Notion Operating System: How to Run Your Entire Business From One Page</div>
-          <div class="blog-listing-excerpt">Clients, revenue, content, tasks, SOPs — all in one place, all connected.</div>
+          <div class="blog-listing-cat">Guide</div>
+          <div class="blog-listing-title">The Notion Operating System: How to Run Your Entire Business From One Page</div>
+          <div class="blog-listing-excerpt">Clients, revenue, content, tasks, SOPs — all in one place, all connected. This is how I build Notion workspaces that people actually use.</div>
         </div>
-        <div class="blog-listing-meta">7 min read</div>
+        <div class="blog-listing-meta">7 min read<span class="blog-listing-arrow">&#8594;</span></div>
       </div>
       <div class="blog-listing-item disabled">
         <div>
@@ -1413,6 +1477,127 @@ function renderMakeVsZapier() {
       <a href="/blog" data-route="/blog" class="btn-ghost">← All Articles</a>
     </div>
   </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   BLOG ARTICLE 3 — THE NOTION OPERATING SYSTEM
+═══════════════════════════════════════════════ */
+function renderNotionOSBlog() {
+  return `
+  <div class="ebook-cover">
+    <div class="ebook-cover-top">
+      <div class="ebook-cover-logo"><span class="ebook-cover-logo-dot"></span>Abdullah Ishaq — AI Center</div>
+      <div class="ebook-cover-label">Guide · Notion · Operations</div>
+      <div class="ebook-cover-title">The Notion<br><em>Operating System</em></div>
+      <div class="ebook-cover-subtitle">How to Run Your Entire Business From One Page. Clients, revenue, content, tasks, SOPs — all in one place, all connected.</div>
+      <div class="ebook-cover-divider"></div>
+    </div>
+    <div class="ebook-cover-bottom">
+      <div class="ebook-cover-author-block">
+        <div class="ebook-cover-author-name">Abdullah Ishaq</div>
+        <div class="ebook-cover-author-title">AI Systems Builder · abdullahishaq.tech</div>
+      </div>
+      <div class="ebook-cover-brand">AI Center<br><strong>abdullahishaq.tech</strong></div>
+    </div>
+  </div>
+  <div class="page-hero">
+    <div class="inner">
+      <div class="back-link" onclick="navigate('/blog')">All Articles</div>
+      <div class="sec-label">Guide</div>
+      <h1 class="page-title">The Notion<br><em>Operating System:</em><br>One Page to Run<br>Your Business.</h1>
+      <div class="page-meta">
+        <span>Abdullah Ishaq</span><span class="page-meta-dot"></span>
+        <span>7 min read</span><span class="page-meta-dot"></span>
+        <span>AI Center</span>
+      </div>
+    </div>
+  </div>
+  <div class="article-body">
+    <p>Most small business owners are running their operations across five or six different places at the same time. WhatsApp for client conversations. A notebook or sticky note for tasks. A mental tally for outstanding payments. A Google Doc they opened once for content ideas. A separate spreadsheet for — something. And through all of this, things fall through the cracks. Not because the owner is disorganised. Because the system is.</p>
+    <p>The Notion Operating System is a single workspace that replaces all of it. One page. Four databases. Six dashboard views. Everything you need to know about your business, visible in under sixty seconds, every single day.</p>
+    <p>This is not a productivity aesthetic. You have seen those — beautiful Notion screenshots with colour-coded databases and elaborate emoji headers that nobody actually uses past the first week. This is a working system designed around how a small service business actually operates: clients come in, work gets done, money moves, content gets made, and nothing should fall through the cracks.</p>
+
+    <h2>Why Most Business Owners Abandon Notion After a Week</h2>
+    <p>Before I walk you through the system, you need to understand why most Notion setups fail — because building it wrong is worse than not building it at all.</p>
+    <p>The first mistake is over-engineering on day one. A business owner discovers Notion, watches three YouTube tutorials, and builds a workspace with twelve databases, forty properties per database, seven different views per database, and a colour scheme that took longer to design than their last client project. By week two, updating it feels like a job. So they stop.</p>
+    <p>The second mistake is building it for how they wish they operated rather than how they actually operate. A database for "Learning Resources" when they have not read a book in eight months. A "Personal Goals" section when what they actually need is to stop missing client follow-ups. Systems need to match behaviour, not aspirations.</p>
+    <p>The third mistake is treating Notion as a filing cabinet rather than a decision tool. A filing cabinet stores things you already know. A decision tool shows you what requires action right now. The OS I am going to describe is a decision tool. Every view on the dashboard answers one question: <strong>what do I need to do today?</strong></p>
+
+    <div class="article-callout">The question your workspace should answer every morning is not "where is that document?" It is "what needs my attention right now?" Build for that question and the system will get used. Build for everything else and it will not.</div>
+
+    <h2>The Four Databases</h2>
+    <p>The entire OS runs on four databases. Not seven. Not twelve. Four. Each database does exactly one job. The power of the system comes from the relations between them — the way they talk to each other — not from the number of properties in any single one.</p>
+
+    <h3>1. Clients — Your CRM</h3>
+    <p>One row per client. Every person or organisation you are currently working with, have worked with, or are in conversation with about working with. The properties that matter: Name, Status (Lead / Active / Paused / Closed), Service Type, Monthly Value, Start Date, Last Contact, and Next Follow-Up. Plus a relation field connecting to both the Revenue database and the Tasks database.</p>
+    <p>That last part is the most important. When you link a revenue entry to a client, and link a task to a client, those databases start working together. You can open a client record and see every payment they have made and every outstanding task associated with them — without cross-referencing anything manually. That is the system working as a system, not as a collection of unrelated spreadsheets.</p>
+
+    <h3>2. Revenue — Your Financial Reality</h3>
+    <p>One row per transaction. Not per client, per transaction. Properties: Client (relation to Clients database), Amount, Type (Invoice / Retainer / One-off), Date Received, Status (Paid / Pending / Overdue), and Month (a formula that extracts the month and year from the date received automatically).</p>
+    <p>That Month formula is a small thing that changes everything. It means you can group your Revenue database by Month and see a total for every month at a glance. No pivot tables. No manual summing. The number is there, correct, every time you open it.</p>
+    <p>The row goes in when you invoice — not when you get paid. Status starts as Pending. When the money lands, you change it to Paid. When it is three days past due, you change it to Overdue. Overdue entries get red highlighting in Notion. Red rows demand attention. That is the system creating urgency rather than waiting for you to remember to chase payments.</p>
+
+    <h3>3. Tasks — Your Operational Brain</h3>
+    <p>One row per task. Everything you need to do that touches the business lives here. Client deliverable? A row. Admin task you keep forgetting? A row. Follow-up call you have been putting off? A row. Properties: Task Name, Client (relation), Priority (High / Medium / Low), Status (To Do / In Progress / Done), and Due Date.</p>
+    <p>The discipline this database requires is simple: if it is not in here, it does not exist. Nothing lives in your head. Nothing lives in a chat thread. If a task comes out of a client call, you add a row before you close your laptop. If someone messages you asking for something, you add a row before you reply. The system only works if it is the single source of truth for what is outstanding.</p>
+
+    <h3>4. Content Calendar — Your Publishing Machine</h3>
+    <p>One row per piece of content. Not per week. Not per theme. Per piece. A single Instagram post, a LinkedIn article, a WhatsApp broadcast, a blog draft — each gets its own row. Properties: Title, Platform, Format, Status (Idea / In Progress / Ready / Published), and Publish Date.</p>
+    <p>The Ready status is the one most people skip. It means the piece is finished and approved but not yet posted. Having a Ready queue means that on a low-energy Tuesday when you do not feel like creating, you can still post — because something is already finished and waiting. The system rewards preparation by making the act of posting require zero creative energy in that moment.</p>
+
+    <h2>The Dashboard: What You See Every Morning</h2>
+    <p>The dashboard is a single Notion page — your homepage — with six linked database views embedded in it. Each view is filtered and sorted to show only what is immediately relevant. You are not looking at everything. You are looking at what matters right now.</p>
+    <p>The six views, and what they answer:</p>
+    <ul>
+      <li><strong>Active Clients</strong> — filtered gallery view of Clients where Status = Active. Answers: "Who am I currently serving?" A visual reminder of who your business belongs to right now.</li>
+      <li><strong>Pending Revenue</strong> — filtered table of Revenue where Status = Pending or Overdue, sorted oldest first. Answers: "Who owes me money, and for how long?" The oldest invoice at the top creates automatic pressure to follow up.</li>
+      <li><strong>This Week's Tasks</strong> — filtered table of Tasks where Due Date is within the current week and Status is not Done, sorted by Priority descending. Answers: "What do I actually have to do this week?"</li>
+      <li><strong>Content Due This Week</strong> — filtered view of Content Calendar where Publish Date is this week and Status is not Published. Answers: "What content needs to go out before Friday?"</li>
+      <li><strong>Follow-Ups Due Today</strong> — filtered table of Clients where Next Follow-Up = today. Answers: "Who am I supposed to contact today?" This view is either empty — great — or has names in it — action required. No ambiguity.</li>
+      <li><strong>Monthly Revenue Summary</strong> — grouped table of Revenue grouped by Month, showing sum of Amount per month. Answers: "How much did I make this month, and how does it compare to last month?" One scroll. No arithmetic. Just the number.</li>
+    </ul>
+
+    <div class="article-callout">Six views. Six questions answered before you open a single chat, email, or DM. That is what a working system does: it replaces the mental overhead of trying to remember everything with the mechanical clarity of seeing it all at once.</div>
+
+    <h2>How the System Handles a Real Client Engagement</h2>
+    <p>Let me walk you through what this looks like in practice, from the first conversation to the final payment. This is the path a real client takes through the system.</p>
+    <p>You have a discovery call with someone interested in your services. Before you close your laptop, you add a row to the Clients database. Name, service interest, a note about what they need, and a Next Follow-Up date set three days from now. Status: Lead. The system has captured this person. They cannot be forgotten because forgetting them would require actively deleting the row.</p>
+    <p>Three days later, the Follow-Ups Due Today view has their name in it. You message them. They are ready to move forward. You update their status to Active, add their agreed monthly value, and log the first expected payment in Revenue as Pending. You create the first Task: "Kick-off call — [Client Name]." Linked to their record. Due date: this week.</p>
+    <p>Over the course of the engagement, every deliverable, every meeting, every "I should send them an update" becomes a Task row linked to their record. When you want to know where things stand with this client, you open their record in the Clients database, and you see every open task and every payment entry associated with them. The full picture, in one place.</p>
+    <p>When the engagement ends, you update their status to Closed. Their record stays in the database. When they return — and clients who were served well return — you have the complete history of what you did for them, what you charged, and when you last spoke. You do not start from zero. You start from context.</p>
+
+    <h2>The Content Workflow That Actually Produces Content</h2>
+    <p>The Content Calendar only works if you have one discipline: capture everything, commit to nothing until Sunday.</p>
+    <p>Ideas do not wait for convenient moments. They arrive during client calls, during a commute, at eleven at night. The rule is simple: when an idea arrives, add a row immediately. Title, platform, format. Status: Idea. Date: blank. Takes twenty seconds. Ideas captured in Notion get made. Ideas left in your Notes app, your voice memos, or your memory get forgotten. You have already proven this to yourself.</p>
+    <p>Sunday is when you plan the week. Open the Content Calendar filtered to the current week. Assign Publish Dates to everything that is Ready. Move In Progress pieces to their realistic completion dates. Push anything Idea that you are actually going to execute this week into In Progress. The rest stays where it is. You are not deleting ideas. You are just being honest about when they will happen.</p>
+    <p>The Ready queue is your safety net. On any day when you have no time or energy to create, something Ready can be posted in under five minutes. You did the creative work earlier. Posting it today is just logistics.</p>
+
+    <h2>What This System Does Not Do</h2>
+    <p>This is as important as what it does. The clearest way to break a working system is to ask it to do something it was not designed for.</p>
+    <p>It does not replace your invoicing tool. If you send PDF invoices or use a dedicated billing platform, keep doing that. The Revenue database tracks received payments — when money lands in your account, you log it. It is not a quote-generation or invoice-sending tool. Do not make it one.</p>
+    <p>It does not replace your communication tools. Client conversations still happen on WhatsApp, email, or wherever they happen. The Clients database tracks the state of relationships — last contact, next follow-up, current status — but the relationship itself lives in your communication tool. Do not try to route messages through Notion. That is friction in the wrong place.</p>
+    <p>It does not automate anything by itself. Notion is a database. It does not send reminders, trigger WhatsApp messages, or move rows based on time. If you want to add automation — for example, an alert when a follow-up date arrives — that requires a Make.com integration layered on top. The OS functions perfectly without automation. Automation is the upgrade you earn after the system is running smoothly, not the foundation.</p>
+
+    <h2>How Long It Takes to Build</h2>
+    <p>If you follow the structure above: the four databases take about 45 minutes if you build them one at a time, in order, without adding extra properties. The dashboard page with six linked views takes another 45 minutes. Initial data entry — your current clients, outstanding tasks, content ideas you have been carrying around in your head — takes 30 to 90 minutes depending on your current volume.</p>
+    <p>Do not import historical revenue data going back years. Start from the current month. The system earns its value from what you put into it going forward, not from a complete historical record that you will spend three hours entering and never look at again.</p>
+    <p>That is 2 to 3 hours total to go from no system to a functioning operating system for your business. Most people spend longer than that every week dealing with the consequences of not having one.</p>
+
+    <h2>The One Rule That Makes It Work</h2>
+    <p>Every system has one rule — the rule that, if broken, causes the whole thing to collapse. For this OS, the rule is: <strong>if it is in your head, it is not in the system.</strong></p>
+    <p>A task you remember but have not added is not tracked. A client follow-up you intend to do but have not logged is not scheduled. A content idea you "definitely won't forget" is not captured. The moment you start trusting your memory instead of the database, you have stopped using the system. And the moment you stop using the system, you are back to managing five places at once.</p>
+    <p>The discipline is not the system. The system removes the need for discipline by making it easier to log something than to remember it. But it only does that if you actually log things. That part is on you.</p>
+
+    <div class="article-actions">
+      <a href="/framework-notion-os" data-route="/framework-notion-os" class="btn-fill">Get the Full Framework & Template</a>
+      <button class="btn-ghost" onclick="downloadEbook()">Download as eBook &#8594;</button>
+      <a href="/blog" data-route="/blog" class="btn-ghost">← All Articles</a>
+    </div>
+  </div>`;
+}
+
+function downloadEbook() {
+  window.print();
 }
 
 /* ═══════════════════════════════════════════════
