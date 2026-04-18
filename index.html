@@ -697,7 +697,7 @@ function updateNav(path) {
 }
 
 function initReadingBar(path) {
-  const articlePaths = ['/blog/automation-readiness', '/blog/make-vs-zapier', '/blog/notion-os', '/cushy-cuisine', '/flora-scents', '/framework-whatsapp', '/framework-discovery', '/framework-notion-os'];
+  const articlePaths = ['/blog/automation-readiness', '/blog/make-vs-zapier', '/blog/whatsapp-automation', '/blog/notion-os', '/cushy-cuisine', '/flora-scents', '/framework-whatsapp', '/framework-discovery', '/framework-notion-os'];
   if (articlePaths.includes(path)) {
     const bar = document.createElement('div');
     bar.id = 'reading-bar';
@@ -760,6 +760,7 @@ function renderPage(path) {
     '/blog':                    renderBlog,
     '/blog/automation-readiness': renderAutomationReadiness,
     '/blog/make-vs-zapier':     renderMakeVsZapier,
+    '/blog/whatsapp-automation': renderWhatsAppAutomation,
     '/blog/notion-os':          renderNotionOSBlog,
     '/labs':                    renderLabs,
     '/lab-readiness-score':     renderReadinessScore,
@@ -942,12 +943,12 @@ function renderHome() {
           <div class="blog-excerpt">Both tools promise automation. Only one is built for the budget, the workflow, and the constraints of a small business in Nigeria.</div>
           <div class="blog-meta"><span class="blog-time">6 min read</span><span class="blog-arrow">&#8594;</span></div>
         </a>
-        <div class="blog-card reveal reveal-d2" style="opacity:0.6;pointer-events:none;">
-          <div class="blog-cat" style="color:var(--g4)">Guide — Coming Soon</div>
+        <a href="/blog/whatsapp-automation" data-route="/blog/whatsapp-automation" class="blog-card reveal reveal-d2">
+          <div class="blog-cat">Guide</div>
           <div class="blog-title">The WhatsApp Automation Stack: How to Turn Your DMs Into a Sales Machine</div>
           <div class="blog-excerpt">A step-by-step breakdown of the exact tools and logic behind a WhatsApp automation system that runs without the owner touching their phone.</div>
-          <div class="blog-meta"><span class="blog-time">8 min read</span><span class="blog-arrow" style="color:var(--g5)">&#8594;</span></div>
-        </div>
+          <div class="blog-meta"><span class="blog-time">8 min read</span><span class="blog-arrow">&#8594;</span></div>
+        </a>
         <a href="/blog/notion-os" data-route="/blog/notion-os" class="blog-card reveal reveal-d1">
           <div class="blog-cat">Guide</div>
           <div class="blog-title">The Notion Operating System: How to Run Your Entire Business From One Page</div>
@@ -1323,13 +1324,13 @@ function renderBlog() {
         </div>
         <div class="blog-listing-meta">6 min read<span class="blog-listing-arrow">&#8594;</span></div>
       </div>
-      <div class="blog-listing-item disabled">
+      <div class="blog-listing-item" onclick="navigate('/blog/whatsapp-automation')">
         <div>
-          <div class="blog-listing-cat" style="color:var(--g4)">Guide — Coming Soon</div>
-          <div class="blog-listing-title" style="color:var(--g3)">The WhatsApp Automation Stack: How to Turn Your DMs Into a Sales Machine</div>
+          <div class="blog-listing-cat">Guide</div>
+          <div class="blog-listing-title">The WhatsApp Automation Stack: How to Turn Your DMs Into a Sales Machine</div>
           <div class="blog-listing-excerpt">A step-by-step breakdown of the exact tools and logic behind a WhatsApp automation system that runs without the owner touching their phone.</div>
         </div>
-        <div class="blog-listing-meta">8 min read</div>
+        <div class="blog-listing-meta">8 min read<span class="blog-listing-arrow">&#8594;</span></div>
       </div>
       <div class="blog-listing-item" onclick="navigate('/blog/notion-os')">
         <div>
@@ -1480,7 +1481,144 @@ function renderMakeVsZapier() {
 }
 
 /* ═══════════════════════════════════════════════
-   BLOG ARTICLE 3 — THE NOTION OPERATING SYSTEM
+   BLOG ARTICLE 3 — THE WHATSAPP AUTOMATION STACK
+═══════════════════════════════════════════════ */
+function renderWhatsAppAutomation() {
+  return `
+  <div class="ebook-cover">
+    <div class="ebook-cover-top">
+      <div class="ebook-cover-logo"><span class="ebook-cover-logo-dot"></span>Abdullah Ishaq — AI Center</div>
+      <div class="ebook-cover-label">Guide · WhatsApp · Automation · Sales</div>
+      <div class="ebook-cover-title">The WhatsApp<br><em>Automation Stack</em></div>
+      <div class="ebook-cover-subtitle">How to Turn Your DMs Into a Sales Machine. A step-by-step breakdown of the exact tools and logic behind a WhatsApp automation system that runs without the owner touching their phone.</div>
+      <div class="ebook-cover-divider"></div>
+    </div>
+    <div class="ebook-cover-bottom">
+      <div class="ebook-cover-author-block">
+        <div class="ebook-cover-author-name">Abdullah Ishaq</div>
+        <div class="ebook-cover-author-title">AI Systems Builder · abdullahishaq.tech</div>
+      </div>
+      <div class="ebook-cover-brand">AI Center<br><strong>abdullahishaq.tech</strong></div>
+    </div>
+  </div>
+  <div class="page-hero">
+    <div class="inner">
+      <div class="back-link" onclick="navigate('/blog')">All Articles</div>
+      <div class="sec-label">Guide</div>
+      <h1 class="page-title">The WhatsApp<br><em>Automation Stack:</em><br>How to Turn Your<br>DMs Into a<br>Sales Machine.</h1>
+      <div class="page-meta">
+        <span>Abdullah Ishaq</span><span class="page-meta-dot"></span>
+        <span>8 min read</span><span class="page-meta-dot"></span>
+        <span>AI Center</span>
+      </div>
+    </div>
+  </div>
+  <div class="article-body">
+    <p>WhatsApp is where African business happens. Not email. Not a website contact form. WhatsApp. Customers send voice notes about their orders, negotiate prices in group chats, and expect a response within minutes. And for most small business owners, managing this is a full-time job inside a full-time job.</p>
+    <p>The problem is not the volume. The problem is that almost none of it is automated. Every "How much does it cost?" is answered manually. Every "Is my order ready?" requires you to check a spreadsheet, remember something, and type back a reply. Every new customer has to be logged somewhere — and usually isn't. You are not running a business. You are staffing a customer service desk with an audience of one: yourself.</p>
+    <p>This guide is the exact stack I build for clients who want WhatsApp to run itself. No bots that feel like bots. No confusing setup. Just a logical system that captures enquiries, responds intelligently, logs data, and notifies you when something actually needs your attention — without you touching your phone every five minutes.</p>
+
+    <h2>The Five Layers of a Working WhatsApp Automation System</h2>
+    <p>Before we go tool-by-tool, understand the architecture. A WhatsApp automation system has five layers. Each one does a distinct job. Skip a layer and the system breaks at that point. Build all five and you have something that genuinely runs without you.</p>
+    <ul>
+      <li><strong>Layer 1 — Capture:</strong> Getting information from customers into a structured format you can work with.</li>
+      <li><strong>Layer 2 — Route:</strong> Deciding what kind of enquiry this is and what response it needs.</li>
+      <li><strong>Layer 3 — Respond:</strong> Sending the right reply without you typing it.</li>
+      <li><strong>Layer 4 — Log:</strong> Recording the interaction in your backend so nothing falls through the cracks.</li>
+      <li><strong>Layer 5 — Notify:</strong> Alerting you only when something genuinely requires a human decision.</li>
+    </ul>
+    <p>Most businesses try to automate Layer 3 (the response) without building Layers 1 and 2 first. That is why their bots feel broken — they are sending responses without understanding what was asked. Build in order. The sequence matters.</p>
+
+    <div class="article-callout">The goal is not to replace conversation. The goal is to automate every part of the conversation that does not require a human — so that when a human is needed, you have the full context and the energy to actually show up for that conversation.</div>
+
+    <h2>Layer 1 — Capture: The Tally Form as Your Front Door</h2>
+    <p>The single most important shift in building a WhatsApp automation system is this: stop taking orders and enquiries by free-form message. Direct every new enquiry to a Tally form.</p>
+    <p>A Tally form (tally.so) is a free, beautifully designed form builder that generates a clean link you can share anywhere — including your WhatsApp status, your pinned message, and your link-in-bio. When a customer clicks the link and fills in the form, you receive structured data instead of a voice note you have to decipher. Name. Phone number. Order details. Delivery address. Payment preference. Everything in the right field, every time.</p>
+    <p>This is the foundation. Without it, everything downstream has to guess at what the customer actually wants. With it, every submission is identical in structure — which means it can be processed automatically.</p>
+    <p>Your Tally form should capture exactly what you need to fulfil an order or respond to an enquiry — nothing more. For a product business: Name, Phone, Item, Quantity, Delivery Location. For a service business: Name, Phone, Service of Interest, Budget, Availability. Keep it under seven fields. Longer forms get abandoned. Short forms get completed.</p>
+
+    <h2>Layer 2 — Route: Make.com as the Automation Brain</h2>
+    <p>Once a form is submitted, the data needs to go somewhere and do something. That is where Make.com comes in. Make.com (make.com) is the automation platform that connects your tools and runs the logic of what happens next.</p>
+    <p>In Make.com, you build Scenarios — visual flowcharts that define: when this happens, do that. The trigger for your WhatsApp automation scenario is a new Tally form submission. Everything else flows from there.</p>
+    <p>The routing logic is where most of the intelligence lives. A Router module in Make.com lets you define branches: if the customer selected Product A, go down this path. If they selected Service B, go down that path. If their budget is above a certain threshold, route to a premium follow-up sequence. If they are in Lagos, calculate one delivery fee. If they are in Abuja, calculate another. This is conditional logic — and it is what separates a smart automation from a simple one.</p>
+    <p>Make.com's free tier gives you 1,000 operations per month, which covers 250 four-step order flows. For most businesses starting out, that is more than enough. When you outgrow it, the Core plan is $9/month — roughly ₦14,000 at current rates. For the operational capacity it gives you, it is the best ₦14,000 you will spend on your business.</p>
+
+    <h2>Layer 3 — Respond: Automatic WhatsApp Messages Without Coding</h2>
+    <p>This is the part people most want — and it requires the most careful setup. There are two tools worth knowing here, depending on your volume and budget.</p>
+
+    <h3>Option A: WhatsApp Business + CallMeBot (Free, simple, low-volume)</h3>
+    <p>For businesses handling under 50 messages a day, CallMeBot (callmebot.com) is a free WhatsApp messaging API that works by sending a GET request to a URL. Make.com can trigger that request after every form submission, sending a pre-written confirmation message to the customer's WhatsApp number automatically. No coding. No monthly fee. Just a free API key and a one-module addition to your Make.com scenario.</p>
+    <p>The limitation: CallMeBot messages come from CallMeBot's own number, not yours. The customer receives a message from an unfamiliar number. For some businesses and some customers, this is fine. For businesses where the personal relationship is important, it feels off. Know your audience before choosing this route.</p>
+
+    <h3>Option B: WhatsApp Business API via Wati or Twilio (Paid, professional, scalable)</h3>
+    <p>Wati (wati.io) is a WhatsApp Business API platform built for small and medium businesses. It connects your actual WhatsApp Business number to an API, which means messages come from your number, with your business name and profile picture. Make.com has a native Wati module — you connect your Wati account, set the message template, and it sends automatically after every trigger.</p>
+    <p>The cost: Wati starts at approximately $49/month, which includes a number of outgoing messages. For businesses processing more than 100 enquiries per month, this is worth every dollar. The professionalism of the experience — branded messages, read receipts, conversation history — is materially different from the free option.</p>
+    <p>Twilio is the deeper technical alternative — more control, lower per-message cost at scale, but requires more configuration. For most small businesses, Wati is the right starting point. Move to Twilio when you have enough volume to justify the additional setup complexity.</p>
+
+    <div class="article-callout">A WhatsApp confirmation message that arrives within 90 seconds of a form submission tells the customer one thing: this business is organised. It builds trust before the first conversation. That trust is worth more than the cost of the tool that sends it.</div>
+
+    <h2>Layer 4 — Log: Google Sheets as Your Order Backbone</h2>
+    <p>Every form submission should create a row in a Google Sheet. Not eventually — automatically, as part of the same Make.com scenario that sends the WhatsApp message. This is your operational log. Your CRM. The single place where every customer, every order, and every interaction is recorded without anyone typing a single thing.</p>
+    <p>The Google Sheets module in Make.com takes data from the Tally submission and maps it to columns in your spreadsheet: Column A gets the timestamp, Column B gets the customer name, Column C gets their phone number, Column D gets the order details, Column E gets the delivery location, Column F gets the calculated total (using Make.com's built-in math functions), and Column G gets a Status field that starts as "New." One row. Zero manual entry. Every order, captured correctly, every time.</p>
+    <p>The Status column is critical. As an order moves through your process — confirmed, paid, in preparation, dispatched, delivered — you or your team updates this single column. Every person who needs to know the status of an order looks at the sheet. No one calls or messages you to ask. The sheet is the answer. This is not a small thing. This is how you stop being the bottleneck in your own business.</p>
+    <p>For more sophisticated setups, you can add a second Make.com scenario that watches for Status changes and triggers downstream actions: when Status changes to "Dispatched", automatically send a WhatsApp message to the customer with their order status. You have built a mini order management system without writing a line of code.</p>
+
+    <h2>Layer 5 — Notify: Smart Alerts That Respect Your Time</h2>
+    <p>The final layer is the most personal: deciding what actually needs to come to you, and how. The goal is zero unnecessary interruptions and zero missed urgent things. This requires intentional configuration.</p>
+    <p>In Make.com, you can set up notification triggers for specific conditions. Examples: if a new order comes in above a certain value, send yourself a WhatsApp notification immediately. If a customer's form submission includes the word "urgent," flag it with a Slack or email alert. If more than ten orders arrive in a single hour — an unusual spike — send yourself a summary so you know something interesting is happening.</p>
+    <p>Everything else — standard orders, routine enquiries, low-value submissions — goes directly into the sheet and gets the auto-response. You see them on your own schedule when you review the sheet. Not when they arrive. You choose when to look. The system handles everything else in between.</p>
+    <p>This inversion — where you check the system rather than the system checking on you — is the deepest change that automation creates. You stop being reactive to your WhatsApp and start being intentional about when and how you engage with your business operations.</p>
+
+    <h2>The Full Stack at a Glance</h2>
+    <p>Here is the complete tool list for a production-ready WhatsApp automation system:</p>
+    <ul>
+      <li><strong>Tally.so</strong> — Free form builder. Your customer-facing intake layer.</li>
+      <li><strong>Make.com</strong> — Free up to 1,000 ops/month, then $9/month. Your automation engine.</li>
+      <li><strong>Google Sheets</strong> — Free. Your order log and operational dashboard.</li>
+      <li><strong>WhatsApp Business</strong> — Free. The channel your customers already use.</li>
+      <li><strong>Wati (optional)</strong> — From $49/month. For branded, professional auto-responses from your own number.</li>
+      <li><strong>CallMeBot (alternative)</strong> — Free. For auto-responses at low volume when branding is less critical.</li>
+    </ul>
+    <p>Total cost for a lean version: $0/month (Tally free, Make.com free, Sheets free, CallMeBot free). Total cost for a professional version: ~$58/month (Make.com Core + Wati starter). For a business processing 50 to 200 orders per month, the time saved at that cost is not a close comparison.</p>
+
+    <h2>Building It: The Sequence That Works</h2>
+    <p>Do not try to build all five layers at once. Build in sequence and test at each step before moving to the next. Here is the order that eliminates the most confusion:</p>
+    <p><strong>Week 1:</strong> Build your Tally form. Test it by submitting a real order yourself. Make sure you receive the data correctly. Share the link with five customers and see if they complete it without questions. If they have questions, the form is too confusing — simplify it.</p>
+    <p><strong>Week 2:</strong> Connect Tally to Google Sheets via Make.com. Build the simplest possible scenario: new Tally submission → add row to Sheets. Test it ten times with fake submissions. Check that every column maps correctly. Add the Status column and agree with your team on what the statuses will be.</p>
+    <p><strong>Week 3:</strong> Add the auto-response layer. Start with CallMeBot if cost is a concern, or go straight to Wati if you want professional branding from day one. Test the response from a customer's perspective — is the message clear? Does it arrive quickly? Does it set the right expectations?</p>
+    <p><strong>Week 4:</strong> Add routing logic and smart notifications. Define the conditions that matter to your business and configure the Router module in Make.com. Set up the alerts that should come to you directly. Then run the full system for one week and note everything that breaks or needs adjustment.</p>
+    <p>By week four, you have a functioning WhatsApp automation stack. Not a perfect one — no system is perfect at four weeks. But a working one that is capturing orders, sending confirmations, logging data, and notifying you about what matters, every single day, without you manually managing a single message in that flow.</p>
+
+    <h2>The Three Mistakes That Break Every WhatsApp Automation</h2>
+
+    <h3>1. Trying to automate free-form WhatsApp messages directly</h3>
+    <p>WhatsApp message content is unpredictable. Customers write in different ways, use different languages, include irrelevant information, and make spelling errors. Building automation that tries to parse free-form messages — extracting order details from "hi pls I want 2 bags of rice n 1 tin oil tnx" — is a path to constant failure. The form is the fix. Route customers to a structured intake and the automation becomes reliable. Fight the urge to automate chaos. Systematise first, then automate the system.</p>
+
+    <h3>2. Building too much complexity too early</h3>
+    <p>The first version of your automation should be embarrassingly simple. One form. One scenario. One spreadsheet. One message. Businesses that try to build a ten-branch routing system in week one spend three weeks debugging something that nobody is using yet. Simple works. Ship it, use it, then add complexity only when the simple version reveals a specific need.</p>
+
+    <h3>3. Not training customers to use the new system</h3>
+    <p>The system only works if customers use the form instead of sending you a voice note. This requires deliberate behaviour change on their part — and deliberate communication on yours. Update your WhatsApp status. Pin a message at the top of your chats. Add the form link to your Instagram bio. When someone messages you directly to place an order, respond warmly but redirect them: "I process all orders through my order form now — it helps me make sure I get your details exactly right. Here's the link: [link]." Do this consistently for two weeks. Most customers will switch. The ones who do not are telling you something about the relationship — which is useful information on its own.</p>
+
+    <h2>What This System Does Not Replace</h2>
+    <p>This automation stack handles the transactional layer of your WhatsApp — the part that is the same every time. It does not replace the relationship layer. A customer who has been with you for two years and wants to discuss something unusual should still get you, personally, responding thoughtfully. The system handles the routine so you have the bandwidth to show up well for the exceptional.</p>
+    <p>It also does not replace a proper CRM for businesses with complex sales cycles. If you are running discovery calls, sending proposals, and managing multi-month client relationships, the Google Sheet approach is a starting point, not a destination. The automation logic transfers to more sophisticated tools as you scale — but starting with Sheets means you understand the data before you start paying for a tool to manage it.</p>
+
+    <h2>Where to Start Today</h2>
+    <p>If you read this and feel ready: open Tally, build your intake form, and share it with your next ten customers. Do not build the Make.com scenario yet. Do not connect anything. Just see if customers will use a form instead of messaging you directly. That is the hypothesis that determines whether the rest of the stack is worth building for your business. The answer is almost always yes — but proving it with real customers before spending a week on setup is how you build with confidence rather than hope.</p>
+    <p>If the form gets used, build the Sheets connection. Then the auto-response. Then the routing. Each step delivers value. Each step is reversible if it does not work. By the time you have built all five layers, you will have a WhatsApp automation system that did not require you to learn to code, hire a developer, or spend more than ₦15,000 per month to run.</p>
+    <p>Your DMs do not have to run you. Build the stack and let the stack handle them.</p>
+
+    <div class="article-actions">
+      <a href="/framework-whatsapp" data-route="/framework-whatsapp" class="btn-fill">See the WhatsApp Framework</a>
+      <button class="btn-ghost" onclick="downloadEbook()">Download as eBook &#8594;</button>
+      <a href="/blog" data-route="/blog" class="btn-ghost">← All Articles</a>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   BLOG ARTICLE 4 — THE NOTION OPERATING SYSTEM
 ═══════════════════════════════════════════════ */
 function renderNotionOSBlog() {
   return `
