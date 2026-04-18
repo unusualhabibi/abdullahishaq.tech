@@ -568,6 +568,54 @@
     .dp-event-meta { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
     .dp-event-desc { font-size: 13px; line-height: 1.7; color: var(--g3); }
 
+    /* ── DATA PROTECTION — INFOGRAPHICS ── */
+    .dp-pull-quote { border-left: 2px solid var(--gold); padding: 20px 28px; margin: 40px 0; background: var(--g6); }
+    .dp-pull-quote p { font-size: 17px !important; line-height: 1.7 !important; color: var(--b) !important; font-style: italic; margin: 0 !important; }
+    .dp-rights-card { background: #eef5f0; border: 1px solid #b8d4c0; padding: 28px 32px; margin: 40px 0; }
+    .dp-rights-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #2d5a3d; margin-bottom: 18px; }
+    .dp-rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .dp-rights-item { display: flex; align-items: flex-start; gap: 10px; }
+    .dp-rights-icon { width: 18px; height: 18px; background: #2d5a3d; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .dp-rights-icon svg { width: 9px; height: 9px; stroke: white; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; display: block; }
+    .dp-rights-text { font-size: 13px; color: var(--g2); line-height: 1.4; }
+    .dp-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--g5); border: 1px solid var(--g5); margin: 40px 0; }
+    .dp-info-card { background: var(--w); padding: 24px; position: relative; overflow: hidden; }
+    .dp-info-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+    .dp-info-card.gold::before { background: var(--gold); }
+    .dp-info-card.green::before { background: #2d5a3d; }
+    .dp-info-card.blue::before { background: #1a3a5c; }
+    .dp-info-card.amber::before { background: #8a5a00; }
+    .dp-info-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--g3); margin-bottom: 10px; }
+    .dp-info-stat { font-family: var(--syne); font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+    .dp-info-stat.gold { color: var(--gold); }
+    .dp-info-stat.green { color: #2d5a3d; }
+    .dp-info-stat.blue { color: #1a3a5c; }
+    .dp-info-stat.amber { color: #8a5a00; }
+    .dp-info-card p { font-size: 12px !important; line-height: 1.65 !important; color: var(--g3) !important; margin: 0 !important; }
+    .dp-fines-list { display: flex; flex-direction: column; gap: 1px; background: var(--g5); border: 1px solid var(--g5); margin: 40px 0; }
+    .dp-fine-row { background: var(--w); display: flex; align-items: center; gap: 20px; padding: 16px 20px; }
+    .dp-fine-org { font-family: var(--syne); font-size: 13px; font-weight: 700; letter-spacing: -0.01em; color: var(--b); min-width: 160px; }
+    .dp-fine-amount { font-family: var(--mono); font-size: 18px; color: var(--gold); }
+    .dp-fine-detail { font-family: var(--mono); font-size: 11px; color: var(--g4); margin-left: auto; }
+    .dp-tl-wrap { margin: 40px 0; }
+    .dp-tl-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--g4); margin-bottom: 16px; }
+    .dp-tl-items { display: flex; flex-direction: column; position: relative; }
+    .dp-tl-items::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--g5); }
+    .dp-tl-item { display: flex; gap: 16px; align-items: flex-start; padding: 8px 0; }
+    .dp-tl-dot { width: 15px; height: 15px; border-radius: 50%; border: 2px solid var(--gold); background: var(--w); flex-shrink: 0; margin-top: 3px; position: relative; z-index: 1; }
+    .dp-tl-dot.filled { background: var(--gold); }
+    .dp-tl-year { font-family: var(--mono); font-size: 11px; color: var(--gold); min-width: 44px; margin-top: 2px; }
+    .dp-tl-body { font-size: 13px; color: var(--g2); line-height: 1.6; }
+    .dp-tl-body strong { color: var(--b); }
+    .dp-learning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--g5); border: 1px solid var(--g5); margin: 28px 0; }
+    .dp-learning-block { background: var(--w); padding: 24px; }
+    .dp-learning-block-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .dp-learning-block p { font-size: 13px !important; line-height: 1.7 !important; color: var(--g2) !important; margin: 0 !important; }
+    .dp-digest-list { display: flex; flex-direction: column; gap: 1px; background: var(--g5); border: 1px solid var(--g5); margin: 28px 0; }
+    .dp-digest-entry { background: var(--w); padding: 20px 24px; border-left: 3px solid var(--b); }
+    .dp-digest-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g4); margin-bottom: 8px; }
+    .dp-digest-entry p { font-size: 13px !important; line-height: 1.7 !important; color: var(--g2) !important; margin: 0 !important; }
+
     /* ── READING PROGRESS (articles) ── */
     .reading-bar { position: fixed; top: 58px; left: 0; right: 0; height: 2px; background: var(--g5); z-index: 800; }
     .reading-bar-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.1s linear; }
@@ -601,6 +649,11 @@
       .case-metric:nth-child(2) { border-right: none; }
       .dp-grid { grid-template-columns: 1fr; }
       .dp-timeline-entry { grid-template-columns: 1fr; gap: 8px; }
+      .dp-info-grid { grid-template-columns: 1fr; }
+      .dp-rights-grid { grid-template-columns: 1fr; }
+      .dp-learning-grid { grid-template-columns: 1fr; }
+      .dp-fine-row { flex-wrap: wrap; }
+      .dp-fine-detail { margin-left: 0; width: 100%; }
       .cushy-visual-inner { grid-template-columns: 1fr; }
       .blog-listing-item { grid-template-columns: 1fr; }
       .blog-listing-meta { text-align: left; }
@@ -2368,77 +2421,200 @@ function renderDPPost1() {
       <div class="page-meta">
         <span style="color:var(--g4)">Abdullah Ishaq</span><span class="page-meta-dot"></span>
         <span style="color:var(--g4)">12 min read</span><span class="page-meta-dot"></span>
-        <span style="color:var(--g4)">Data Protection &amp; AI Governance</span>
+        <span style="color:var(--g4)">Data Protection &amp; AI Governance &nbsp;·&nbsp; April 2026</span>
       </div>
     </div>
   </div>
   <div class="article-body">
 
-    <p>One sunny Tuesday afternoon, my commercial law class got cancelled.</p>
-    <p>This was not unusual. In Nigerian law school, cancelled classes are part of the experience — right alongside Sales of Goods Act revision, the peculiar smell of old case books, and trying to figure out what exactly <em>nemo dat quod non habet</em> has to do with your actual future.</p>
-    <p>I had decided to walk to the library. Catch up on some reading. Get ahead. On my way there, my phone rang. It was my dad.</p>
-    <p>After we exchanged greetings, his first question stopped me mid-stride:</p>
-    <div class="article-callout">"What area of law do you want to specialise in?"</div>
-    <p>I was in my third year. <em>Third year.</em> Still wrestling with hire purchase, still trying to remember the difference between a condition and a warranty under the Sale of Goods Act. The thought of specialising had not seriously crossed my mind. My vague plan — if you could call it that — was something "tech-related," because that is what you say in 2024 when you want to sound thoughtful without actually committing to anything.</p>
-    <p>I told him I would think about it. We talked a bit more — he gave me his usual lecture, the kind that sounds like pressure but is really just concern — and we said goodbye. I walked back to my apartment. The library was forgotten.</p>
-    <p>I sat with the question.</p>
+    <p>One sunny Tuesday afternoon, my commercial law class got cancelled. I had been planning to walk to the library, catch up on some reading, get ahead on a topic I had been putting off.</p>
+    <p>I did not make it to the library.</p>
+    <p>On the way there, my dad called. We exchanged greetings and then, without any preamble, he asked: <em>"What area of law do you want to specialise in?"</em></p>
+    <p>I was in my third year. Still trying to understand the difference between a condition and a warranty under the Sale of Goods Act. Still confused about <em>nemo dat</em> and whether I would ever actually need to explain it to a real person. The idea of choosing a specialisation had not seriously crossed my mind.</p>
+    <p>I told him I would think about it. He gave me his usual talk — the kind that sounds like pressure but is really just a father trying to make sure his son is not floating. We said goodbye and I turned back toward my apartment instead of the library.</p>
+    <p>I sat down with the question.</p>
 
-    <h2>The Research</h2>
-    <p>I did what any third-year law student would do: opened my laptop and started searching. "Best areas of law to specialise in Nigeria." "Emerging legal practice areas 2024." "Highest paying legal specialisations in Africa." The results were predictable. Corporate law. Oil and gas. Litigation. Intellectual property. Infrastructure and project finance. Same names I had been hearing since first year.</p>
-    <p>I read through about ten articles. Most of them felt like they had been written for someone whose entire ambition was to join a top-tier firm and spend thirty years drafting shareholders' agreements. Not that there is anything wrong with that — but it was not where my head was.</p>
-    <p>Then I came across something that made me read the same paragraph twice. An article mentioned Nigeria had passed a comprehensive data protection law in 2023. I had seen the headlines somewhere but never thought seriously about what it meant for legal practice. I clicked through. Then I opened the actual text of the Nigeria Data Protection Act.</p>
-    <p>I did not look up for two hours.</p>
+    <h2>What I Actually Did Next</h2>
+    <p>I did what any law student would do. Opened my laptop and started searching. Best areas of law to specialise in Nigeria. Emerging legal practice areas. Highest paying legal specialisations in Africa. The results came back predictable: corporate law, oil and gas, litigation, IP, project finance. Same names I had been hearing since year one.</p>
+    <p>I read through maybe ten articles. Most of them felt like they were written for someone who already knew they wanted to spend thirty years drafting shareholders' agreements. That was not me. My vague plan — if you could call it a plan — was something tech-related. That was as far as I had gotten.</p>
+    <p>Then I came across something that made me read a paragraph twice. One article mentioned that Nigeria had passed a comprehensive data protection law in 2023. I had seen the headlines but never thought seriously about what it meant for legal practice. I clicked through. Then I opened the actual text of the Nigeria Data Protection Act 2023.</p>
+    <p>I did not look up for a long time.</p>
 
-    <h2>What I Found</h2>
-    <p>The Nigeria Data Protection Act 2023 is not a minor piece of legislation. It creates real obligations for every organisation — large or small — that collects, stores, or processes the personal data of Nigerian residents. It established the Nigeria Data Protection Commission as a dedicated regulator. It created a framework of data subject rights. It mandated data protection impact assessments for high-risk processing activities. It set a 72-hour breach notification deadline. It created a class of accredited compliance professionals — Data Protection Compliance Organisations — who must be licensed to offer compliance services commercially.</p>
-    <p>The thing that struck me most: <strong>almost nobody around me seemed ready for any of this.</strong></p>
-    <p>I started thinking about the businesses I see every day — campus vendors, online sellers, food businesses, service providers. Every single one of them collects personal data. Names. Phone numbers. Addresses. Purchase histories. Payment records. Every WhatsApp group used as a makeshift CRM, every Google Form intake sheet, every Tally order form — all of it sits squarely inside Nigeria's data protection framework. Whether the business owner knows it or not.</p>
-    <p>Most do not know it. And — this is the part that genuinely surprised me — from what I could tell, most lawyers did not know it either.</p>
+    <h2>So What Is Data Protection Actually About</h2>
+    <p>Here is the thing about data that I did not fully understand before I started reading this law.</p>
+    <p>Your data is not just your name and phone number. Your data is your location history at 2am, your spending patterns, your health conditions, your contact list, your browsing behaviour, what you search for when nobody is watching. It is the profile that gets built about you through hundreds of small digital interactions every day. And the people holding that profile have real power over you — whether you know it or not.</p>
+    <p>Let me give you an example that is not hypothetical.</p>
+    <p>Between 2019 and 2023, multiple Nigerian loan apps were doing this: you open the app, you need money, you click through the terms without reading them properly because the text is tiny and you are in a hurry. The app gets access to your contacts, your location, your transaction history. Somewhere down the line — through a sale, a breach, a third party the app was sharing data with — that information ends up somewhere you never intended.</p>
+    <p>Now you are getting calls from lenders you never approached. Debt collectors are calling your family members. People who know you are financially vulnerable are targeting you with products designed specifically for people who are financially vulnerable.</p>
 
-    <h2>Why I Think It Is Worth Specialising In</h2>
-    <p>I am not going to dress this up as a grand call-to-arms. But here is honestly how I see it.</p>
-    <p>The NDPA 2023 exists. The NDPC exists. The obligations are real. But the lawyers who actually understand this law — who can translate it into something operational for a business, who can write a privacy policy that genuinely complies rather than just performs compliance — are hard to find. This is not a crowded market yet. The gap between what the law demands and what the legal profession can currently deliver is substantial, and that gap does not close on its own.</p>
-    <p>There is also the scope of it. Unlike oil and gas law, which serves one industry, or maritime law, which covers one type of transaction — data protection touches every single organisation that processes personal data. That is effectively every business in Nigeria. Your potential client is not a niche. It is the whole economy.</p>
-    <p>There is an international dimension too. The GDPR applies to any organisation processing the personal data of EU residents, regardless of where the organisation is located. Nigerian businesses with European customers, investors, or partners have GDPR exposure they are often not accounting for. Similar frameworks exist in California, Brazil, South Africa, and across Asia. A data protection practice does not have to stop at the Nigerian border.</p>
-    <p>And then there is the technology angle, which is probably what draws me in the most. I build AI automation systems — have been doing this for about a year alongside my law studies. And in that time, one thing has become obvious: every system I build processes personal data. Every WhatsApp bot, every automated order management pipeline, every CRM integration — all of it sits inside a data protection framework. The lawyer who understands both the legal obligations and the technical realities is useful in a way that goes beyond drafting a compliance document after the fact.</p>
-    <p>Data protection practitioners are also in demand outside Nigeria. There are fellowships, research positions, and advisory roles that specifically require this expertise. The IAPP runs one of the most recognised certification programmes in the field, with practitioners in over 180 countries. The NDPC itself will need more practitioners and policy advisors as it matures. There is room here for people who start building expertise now.</p>
+    <div class="dp-pull-quote">
+      <p>Your personal crisis became someone else's business model. That is a data protection problem. And it took a data protection law to address it properly.</p>
+    </div>
 
-    <h2>Where I Am Now</h2>
-    <p>I am still in law school. I have not practised a day of law professionally. I want to be clear about that — I am not presenting this as expertise. It is a direction I have chosen deliberately, and I am building toward it with what I have.</p>
-    <p>What I have done so far: I have read the NDPA 2023 in full, more than once. I have worked through the implementing regulations. I have started reading the GDPR — not because Nigeria is bound by it, but because reading it alongside the NDPA sharpens your understanding of both. I have begun documenting my learning publicly. And I have started applying the framework to the AI systems I build, thinking through what compliance actually looks like in practice, not just on paper.</p>
-    <p>This blog is part of that process. Not a finished product. A learning journal that happens to be public.</p>
+    <p>The Central Bank of Nigeria eventually moved on the harassment side of this. But the underlying problem — personal data being collected, shared and weaponised with no legal accountability — that is a data protection problem. And it took a data protection law to address it properly.</p>
+    <p>That law is the Nigeria Data Protection Act 2023. It says personal data can only be processed with a lawful basis. It gives every Nigerian real rights over their information. It places binding obligations on every organisation that collects and uses personal data. It established the Nigeria Data Protection Commission as a dedicated regulator with the power to investigate, fine and sanction.</p>
 
-    <h2>What This Blog Will Be</h2>
-    <p>Every entry in this series will have the main piece — an essay, analysis, case study, or something about data protection law, global privacy frameworks, or the intersection of law and technology — plus four recurring sections:</p>
-    <ul>
-      <li><strong>Learning Timeline</strong> — what I studied that week, what confused me, what clicked, and what I am exploring next.</li>
-      <li><strong>Resource Recommendations</strong> — books, articles, primary sources, and courses worth reading.</li>
-      <li><strong>Events</strong> — data protection and privacy events in Nigeria and internationally, online and in-person.</li>
-      <li><strong>Weekly Digest</strong> — notable developments in data protection and privacy from the week.</li>
-    </ul>
-    <p>If you are a law student curious about this space, a lawyer thinking about where to build your expertise, or a business owner trying to understand what your obligations under the NDPA 2023 actually look like — hopefully something here is useful.</p>
-    <p>The journey is just starting. Come along.</p>
+    <div class="dp-rights-card">
+      <div class="dp-rights-card-label">Your rights under the NDPA 2023</div>
+      <div class="dp-rights-grid">
+        <div class="dp-rights-item">
+          <div class="dp-rights-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span class="dp-rights-text">Know what personal data is held about you</span>
+        </div>
+        <div class="dp-rights-item">
+          <div class="dp-rights-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span class="dp-rights-text">Correct inaccurate data</span>
+        </div>
+        <div class="dp-rights-item">
+          <div class="dp-rights-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span class="dp-rights-text">Request deletion of your data</span>
+        </div>
+        <div class="dp-rights-item">
+          <div class="dp-rights-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span class="dp-rights-text">Restrict how your data is used</span>
+        </div>
+        <div class="dp-rights-item">
+          <div class="dp-rights-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span class="dp-rights-text">Receive your data in a portable format</span>
+        </div>
+        <div class="dp-rights-item">
+          <div class="dp-rights-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span class="dp-rights-text">Object to how your data is being processed</span>
+        </div>
+      </div>
+    </div>
+
+    <h2>What Is Actually Happening in Nigeria Right Now</h2>
+    <p>This is the part that made the research feel urgent rather than just interesting.</p>
+    <p>The NDPC is no longer building awareness. It is enforcing. And the numbers are real.</p>
+
+    <div class="dp-info-grid">
+      <div class="dp-info-card gold">
+        <div class="dp-info-label">NDPC Enforcement · August 2025</div>
+        <div class="dp-info-stat gold">1,368</div>
+        <p>Organisations received compliance notices across banking, insurance, pensions and gaming sectors. 21 days to demonstrate compliance or face sanctions.</p>
+      </div>
+      <div class="dp-info-card amber">
+        <div class="dp-info-label">Audit Deadline · 2026</div>
+        <div class="dp-info-stat amber">30 May</div>
+        <p>Deadline for 2025 data protection compliance audit returns. The NDPC extended this but has signalled stricter enforcement going forward.</p>
+      </div>
+    </div>
+
+    <div class="dp-fines-list">
+      <div class="dp-fine-row">
+        <div class="dp-fine-org">MultiChoice Nigeria</div>
+        <div class="dp-fine-amount">&#8358;766.2M</div>
+        <div class="dp-fine-detail">July 2025 · Illegal cross-border data transfers</div>
+      </div>
+      <div class="dp-fine-row">
+        <div class="dp-fine-org">Meta Platforms</div>
+        <div class="dp-fine-amount">$220M</div>
+        <div class="dp-fine-detail">Ongoing · WhatsApp data practices · largest fine by a Global South regulator</div>
+      </div>
+      <div class="dp-fine-row">
+        <div class="dp-fine-org">Maximum penalty</div>
+        <div class="dp-fine-amount">2% revenue</div>
+        <div class="dp-fine-detail">or &#8358;10 million, whichever is higher · per violation</div>
+      </div>
+    </div>
+
+    <div class="dp-tl-wrap">
+      <div class="dp-tl-label">How Nigeria Got Here</div>
+      <div class="dp-tl-items">
+        <div class="dp-tl-item">
+          <div class="dp-tl-dot filled"></div>
+          <div class="dp-tl-year">2019</div>
+          <div class="dp-tl-body"><strong>NDPR issued by NITDA.</strong> Nigeria's first data protection framework. Subsidiary legislation, limited enforcement.</div>
+        </div>
+        <div class="dp-tl-item">
+          <div class="dp-tl-dot filled"></div>
+          <div class="dp-tl-year">2023</div>
+          <div class="dp-tl-body"><strong>NDPA signed into law.</strong> Primary legislation. Independent regulator — the NDPC — established.</div>
+        </div>
+        <div class="dp-tl-item">
+          <div class="dp-tl-dot filled"></div>
+          <div class="dp-tl-year">March '25</div>
+          <div class="dp-tl-body"><strong>GAID issued.</strong> General Application and Implementation Directive. The new implementing framework.</div>
+        </div>
+        <div class="dp-tl-item">
+          <div class="dp-tl-dot filled"></div>
+          <div class="dp-tl-year">Sept '25</div>
+          <div class="dp-tl-body"><strong>GAID comes into force.</strong> NDPR 2019 ceases to apply. NDPC begins active enforcement.</div>
+        </div>
+        <div class="dp-tl-item">
+          <div class="dp-tl-dot filled"></div>
+          <div class="dp-tl-year">August '25</div>
+          <div class="dp-tl-body"><strong>1,368 organisations probed.</strong> Banking, insurance, pensions, gaming — sector-by-sector enforcement begins.</div>
+        </div>
+        <div class="dp-tl-item">
+          <div class="dp-tl-dot"></div>
+          <div class="dp-tl-year">2026</div>
+          <div class="dp-tl-body"><strong>Enforcement intensifies.</strong> Audit deadline 30 May. Penalties up to 2% gross revenue. More sectors incoming.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Why This Matters for Every Lawyer — Not Just the Tech Ones</h2>
+    <p>I want to address this directly because a lot of law students look at data protection and think it is someone else's field. The tech people, the legaltech crowd, the people who understand how apps work.</p>
+    <p>It is not.</p>
+    <p>Think about what an employment lawyer does. Employee records, performance data, health information, surveillance at work — all of that sits inside a data protection framework. Think about family law — digital evidence, surveillance, the privacy of children online. Think about criminal law and how evidence obtained through data collection gets challenged in court. Think about corporate law and the contracts that have to be drafted between data controllers and the processors who handle their data. Think about health law and the obligations around patient records as hospitals go digital.</p>
+
+    <div class="dp-info-grid">
+      <div class="dp-info-card blue">
+        <div class="dp-info-label">Employment Law</div>
+        <div class="dp-info-stat blue" style="font-size:20px;margin-bottom:10px;">Employee Records</div>
+        <p>Performance data, health information, workplace surveillance — all regulated under the NDPA.</p>
+      </div>
+      <div class="dp-info-card green">
+        <div class="dp-info-label">Health Law</div>
+        <div class="dp-info-stat green" style="font-size:20px;margin-bottom:10px;">Patient Data</div>
+        <p>Digital health systems, hospital records, telemedicine — highest category of sensitive data under the Act.</p>
+      </div>
+      <div class="dp-info-card amber">
+        <div class="dp-info-label">Corporate Law</div>
+        <div class="dp-info-stat amber" style="font-size:20px;margin-bottom:10px;">DPA Contracts</div>
+        <p>Every contract between a data controller and a processor must now include specific data protection clauses.</p>
+      </div>
+      <div class="dp-info-card gold">
+        <div class="dp-info-label">Criminal Law</div>
+        <div class="dp-info-stat gold" style="font-size:20px;margin-bottom:10px;">Digital Evidence</div>
+        <p>Evidence obtained through unlawful data processing is increasingly challenged in courts across jurisdictions.</p>
+      </div>
+    </div>
+
+    <p>Data protection is not a niche inside technology law. It is the legal infrastructure underneath every area of practice that touches information about people. And every area of practice touches information about people.</p>
+    <p>The lawyers who understand that early are the ones who will be genuinely useful to organisations trying to figure this out. And most organisations are still trying to figure this out. The gap between what the NDPA requires and what Nigerian businesses are actually doing is enormous.</p>
+    <p>That gap is not a problem for lawyers who know this field. It is a market.</p>
+
+    <h2>Where I Am and Where I Am Going</h2>
+    <p>I am a third-year law student. I have not practised a day of law professionally. I want to be clear about that because I am not presenting expertise I do not have.</p>
+    <p>What I am is someone who has looked at where the legal profession is going and made a deliberate choice about where to build. I have read the NDPA 2023 and started working through the GAID. I have started studying the GDPR for comparative context. I am documenting my learning publicly and studying real enforcement decisions to understand what this law looks like in practice — not just on paper.</p>
+    <p>I am building toward a career as a Data Protection Officer. This blog is part of that process — a learning journal that is public. Every entry will have the main piece plus four recurring sections: what I studied that week, resource recommendations, upcoming events in the privacy space, and the weekly digest of notable developments.</p>
+    <p>If you are a law student figuring out your lane, I hope this helps. If you already work in this space, I would genuinely like to hear how you got there.</p>
 
     <hr class="dp-section-divider">
 
     <div class="dp-recurring-section">
       <div class="dp-recurring-label">Learning Timeline</div>
       <div class="dp-recurring-title">Week 1 — The Beginning</div>
-      <div class="dp-timeline-entry">
-        <div class="dp-timeline-badge">Studied</div>
-        <div class="dp-timeline-text">Nigeria Data Protection Act 2023 — full text, first read-through. Focused on Part I (Preliminary), Part II (Establishment of the NDPC), and Part III (Data Subject Rights). The rights framework is more comprehensive than I expected for a first-generation Nigerian data protection law — access, rectification, erasure, restriction of processing, data portability, and the right to object.</div>
-      </div>
-      <div class="dp-timeline-entry">
-        <div class="dp-timeline-badge">Exciting</div>
-        <div class="dp-timeline-text">The provision on automated decision-making. The idea that a data subject has the right not to be subject to a decision based solely on automated processing that produces legal or similarly significant effects is fascinating in the context of AI systems. This is going to be one of the most litigated provisions in the coming years.</div>
-      </div>
-      <div class="dp-timeline-entry">
-        <div class="dp-timeline-badge">Confusing</div>
-        <div class="dp-timeline-text">The definition of "lawful basis" and how consent interacts with legitimate interest in practice. The NDPA lists both as valid bases, but the boundary between them — especially for small businesses — is not as clear as the statute makes it seem. Need to read more regulatory guidance from the NDPC.</div>
-      </div>
-      <div class="dp-timeline-entry">
-        <div class="dp-timeline-badge">Next</div>
-        <div class="dp-timeline-text">Reading the Nigeria Data Protection Regulation (NDPR) 2019 — the predecessor framework — to understand the evolution and what changed with the 2023 Act. Also starting GDPR Chapters I and II for comparative context.</div>
+      <div class="dp-learning-grid">
+        <div class="dp-learning-block">
+          <div class="dp-learning-block-label">What I Studied</div>
+          <p>Nigeria Data Protection Act 2023 — full first read-through. Part I (Preliminary), Part II (NDPC establishment) and Part III (data subject rights). Also started the GAID which replaced the NDPR in September 2025.</p>
+        </div>
+        <div class="dp-learning-block">
+          <div class="dp-learning-block-label">What Excited Me</div>
+          <p>The automated decision-making provision. Data subjects have the right not to be subject to decisions based solely on automated processing that produce legal or significant effects. In a world of AI credit scoring and hiring algorithms, this is going to be one of the most contested provisions in years ahead.</p>
+        </div>
+        <div class="dp-learning-block">
+          <div class="dp-learning-block-label">What Confused Me</div>
+          <p>The interaction between consent and legitimate interest as lawful bases. Both are valid under the NDPA but the boundary between them in practice — especially for small Nigerian businesses — is not as clear as the statute makes it look.</p>
+        </div>
+        <div class="dp-learning-block">
+          <div class="dp-learning-block-label">What I Am Studying Next</div>
+          <p>The GAID in full — it introduces new obligations including specific requirements for data protection impact assessments and compliance audit returns. Also starting GDPR Chapters I and II for comparative context.</p>
+        </div>
       </div>
     </div>
 
@@ -2449,24 +2625,46 @@ function renderDPPost1() {
       <div class="dp-recurring-title">Start Here</div>
       <div class="dp-resource-item">
         <div class="dp-resource-title">Nigeria Data Protection Act 2023 — Full Text</div>
-        <div class="dp-resource-desc">The primary source. Read it yourself. Do not rely on summaries — the nuances matter and most secondary commentary gets at least something wrong. Available on the NDPC website and as a Federal Government Gazette publication.</div>
-        <div class="dp-resource-tag">Primary Source &nbsp;·&nbsp; Free</div>
+        <div class="dp-resource-desc">The primary source. Read it yourself before reading any summary about it. Available on the NDPC website (ndpc.gov.ng) and as a Federal Government Gazette publication.</div>
+        <div class="dp-resource-tag">Free &nbsp;·&nbsp; Primary Source</div>
       </div>
       <div class="dp-resource-item">
-        <div class="dp-resource-title">GDPR — Full Text (EUR-Lex)</div>
-        <div class="dp-resource-desc">The European Union's General Data Protection Regulation. Read it alongside the NDPA 2023 to understand what Nigeria borrowed, what it adapted, and where it diverged. The recitals — the introductory paragraphs — explain the legislative intent behind each provision and are invaluable for interpretation.</div>
-        <div class="dp-resource-tag">Primary Source &nbsp;·&nbsp; Free</div>
+        <div class="dp-resource-title">GAID 2025 — General Application and Implementation Directive</div>
+        <div class="dp-resource-desc">In force since September 2025. Replaces the NDPR 2019 entirely. Start here if you are advising any Nigerian organisation on compliance right now.</div>
+        <div class="dp-resource-tag">Free &nbsp;·&nbsp; ndpc.gov.ng</div>
+      </div>
+      <div class="dp-resource-item">
+        <div class="dp-resource-title">GDPR Full Text with Recitals (EUR-Lex)</div>
+        <div class="dp-resource-desc">Read alongside the NDPA to understand what Nigeria borrowed, what it adapted and where it diverged. The recitals explain the intent behind every provision — they are invaluable for interpretation.</div>
+        <div class="dp-resource-tag">Free &nbsp;·&nbsp; gdpr-info.eu</div>
       </div>
       <div class="dp-resource-item">
         <div class="dp-resource-title">IAPP Privacy Tracker</div>
         <div class="dp-resource-desc">The International Association of Privacy Professionals maintains a tracker of global privacy legislation, regulatory developments, and enforcement actions. Essential for keeping up with international developments across jurisdictions.</div>
-        <div class="dp-resource-tag">Online Resource &nbsp;·&nbsp; Free</div>
+        <div class="dp-resource-tag">Free &nbsp;·&nbsp; iapp.org</div>
       </div>
-      <div class="dp-resource-item">
-        <div class="dp-resource-title">NDPC Official Website — ndpc.gov.ng</div>
-        <div class="dp-resource-desc">Regulatory guidance, compliance circulars, enforcement notices, and official publications from Nigeria's data protection authority. If the NDPC has said something officially, it should be your first reference before any secondary commentary.</div>
-        <div class="dp-resource-tag">Official Source &nbsp;·&nbsp; Free</div>
+    </div>
+
+    <hr class="dp-section-divider">
+
+    <div class="dp-recurring-section">
+      <div class="dp-recurring-label">Weekly Digest</div>
+      <div class="dp-recurring-title">What Happened in Data Protection This Week</div>
+      <div class="dp-digest-list">
+        <div class="dp-digest-entry">
+          <div class="dp-digest-label">NDPC · April 2026</div>
+          <p><strong>NDPC extends 2025 audit return deadline to 30 May 2026.</strong> The commission gave organisations additional time to file compliance audit returns but signalled stricter enforcement going forward. The extension is not a reprieve — it is a window that closes.</p>
+        </div>
+        <div class="dp-digest-entry">
+          <div class="dp-digest-label">NDPC Enforcement · August 2025</div>
+          <p><strong>1,368 organisations probed across banking, insurance, pensions and gaming.</strong> All received 21-day ultimatums to demonstrate NDPA compliance. The NDPC described this as the beginning of sector-by-sector enforcement across the entire economy.</p>
+        </div>
+        <div class="dp-digest-entry">
+          <div class="dp-digest-label">Regulatory Update · September 2025</div>
+          <p><strong>GAID now in force. NDPR 2019 no longer applies.</strong> Any organisation still running a compliance programme built around the old NDPR needs to update it immediately against the GAID 2025.</p>
+        </div>
       </div>
+      <p style="font-size:13px;color:var(--g4);margin-top:16px;font-style:italic;">This is Issue 001 — the digest section will grow from here. Each week I will document notable developments in Nigerian data protection enforcement, NDPC regulatory activity and international privacy law updates.</p>
     </div>
 
     <hr class="dp-section-divider">
@@ -2485,15 +2683,6 @@ function renderDPPost1() {
         <div class="dp-event-desc">The Nigeria Data Protection Commission regularly holds sensitisation events, stakeholder forums, and public engagement sessions. Following their official channels is the best way to stay updated on upcoming engagements in Nigeria.</div>
       </div>
       <p style="font-size:13px;color:var(--g4);margin-top:24px;font-style:italic;">This section is updated regularly. If you know of a data protection or privacy event — in Nigeria or internationally — that belongs here, <a href="https://www.linkedin.com/in/abdullahishaq01?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:underline;">message me on LinkedIn</a>.</p>
-    </div>
-
-    <hr class="dp-section-divider">
-
-    <div class="dp-recurring-section">
-      <div class="dp-recurring-label">Weekly Digest</div>
-      <div class="dp-recurring-title">What Happened in Data Protection This Week</div>
-      <p>This is Issue 001 — the first entry. The digest section will grow from here. Each week, I will document notable developments in Nigerian data protection enforcement, NDPC regulatory activity, international privacy law updates, and anything else worth knowing for practitioners and students in this space.</p>
-      <p style="font-size:13px;color:var(--g4);margin-top:16px;font-style:italic;">Have a development worth including in next week's digest? Connect with me on LinkedIn.</p>
     </div>
 
     <div class="article-actions">
