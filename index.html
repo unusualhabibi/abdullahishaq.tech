@@ -113,7 +113,6 @@
       font-family: var(--syne); font-size: 16px; font-weight: 700;
       letter-spacing: -0.03em; color: var(--b); display: flex; align-items: center; gap: 7px;
     }
-    nav.dark .nav-logo { color: var(--b); }
     .nav-logo-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: blink 3s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
     .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
@@ -331,10 +330,6 @@
     .work-link:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
     .work-link-arrow { display: inline-block; transition: transform 0.2s var(--ease); }
     .work-link:hover .work-link-arrow { transform: translateX(4px); }
-    /* Keep old card styles for compatibility */
-    .work-card { background: var(--g1); padding: 48px 40px; transition: background 0.25s; position: relative; overflow: hidden; }
-    .work-card:hover { background: var(--g2); }
-    .work-card-full { grid-column: 1 / -1; }
 
     /* ── BLOG — MAGAZINE GRID ── */
     #blog { border-bottom: 1px solid var(--g5); }
@@ -485,17 +480,6 @@
     .timeline-role { font-family: var(--syne); font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: var(--w); margin-bottom: 2px; }
     .timeline-org { font-size: 12px; color: var(--gold-lt); margin-bottom: 4px; }
     .timeline-note { font-size: 12px; color: var(--g4); line-height: 1.5; }
-    /* Old portrait compat */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 64px; }
-    .about-portrait { position: relative; height: 440px; }
-    .portrait-frame { position: absolute; border: 1px solid var(--g5); border-radius: 16px; }
-    .portrait-frame:nth-child(1) { inset: 0; background: var(--g6); }
-    .portrait-frame:nth-child(2) { top: 32px; left: 32px; right: -32px; bottom: -32px; border-color: var(--gold); opacity: 0.3; z-index: -1; }
-    .portrait-initials { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-    .portrait-ai { font-family: var(--syne); font-size: 80px; font-weight: 700; letter-spacing: -0.06em; color: var(--b); line-height: 1; }
-    .portrait-name { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--g3); }
-    .portrait-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
-
     /* ── CONTACT ── */
     #contact { background: var(--b); border-bottom: none; }
     #contact .sec-label { color: var(--g3); }
@@ -809,8 +793,6 @@
       .fw-grid { grid-template-columns: 1fr 1fr; }
       .about-split { grid-template-columns: 1fr; }
       .about-split-left { border-right: none; border-bottom: 1px solid var(--g5); }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-portrait { height: 280px; }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       footer { padding: 24px; flex-direction: column; align-items: flex-start; }
       .page-hero { padding: 120px 24px 60px; }
@@ -2955,12 +2937,14 @@ function initReveal() {
 }
 
 /* ── MAGNETIC BUTTONS ── */
+var MAGNETIC_STRENGTH = 0.28;
+
 function initMagneticButtons() {
   document.querySelectorAll('.btn-magnetic').forEach(function(btn) {
     btn.addEventListener('mousemove', function(e) {
       var r = btn.getBoundingClientRect();
-      var x = (e.clientX - r.left - r.width / 2) * 0.28;
-      var y = (e.clientY - r.top - r.height / 2) * 0.28;
+      var x = (e.clientX - r.left - r.width / 2) * MAGNETIC_STRENGTH;
+      var y = (e.clientY - r.top - r.height / 2) * MAGNETIC_STRENGTH;
       btn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
     });
     btn.addEventListener('mouseleave', function() {
@@ -2970,6 +2954,9 @@ function initMagneticButtons() {
 }
 
 /* ── BEFORE/AFTER SLIDER ── */
+var MIN_SLIDER_PERCENT = 10; /* prevent slider reaching edges */
+var MAX_SLIDER_PERCENT = 90;
+
 function initBeforeAfterSliders() {
   document.querySelectorAll('.before-after-wrap').forEach(function(wrap) {
     var isDragging = false;
@@ -2980,7 +2967,7 @@ function initBeforeAfterSliders() {
 
     function updateSlider(clientX) {
       var rect = wrap.getBoundingClientRect();
-      var pct = Math.max(10, Math.min(90, ((clientX - rect.left) / rect.width) * 100));
+      var pct = Math.max(MIN_SLIDER_PERCENT, Math.min(MAX_SLIDER_PERCENT, ((clientX - rect.left) / rect.width) * 100));
       var pctStr = pct.toFixed(1) + '%';
       if (divider) divider.style.left = pctStr;
       if (handle) handle.style.left = pctStr;
