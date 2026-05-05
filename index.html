@@ -1806,7 +1806,7 @@ function renderHome() {
         <div class="process-step">
           <div class="process-num-ring"><span class="process-step-num">03</span></div>
           <div class="process-step-title">Build</div>
-          <div class="process-step-desc">Fast, focused building in Make.com, Notion, Google Sheets, or whatever tools fit your stack. Most systems are complete in 3&ndash;7 days.</div>
+          <div class="process-step-desc">Fast, focused building in Make.com, Notion, Google Sheets, or whatever tools fit your stack. Most systems are complete in 5 days.</div>
         </div>
         <div class="process-step">
           <div class="process-num-ring"><span class="process-step-num">04</span></div>
@@ -3782,7 +3782,7 @@ function initCounters() {
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.25 });
   counters.forEach(function(c) { obs.observe(c); });
 }
 
@@ -3806,16 +3806,22 @@ function animateCounter(el) {
 /* ══════════════════════════════════════════════
    HERO PARALLAX
 ══════════════════════════════════════════════ */
+var _parallaxRaf = false;
 window.addEventListener('scroll', function() {
-  var hero = document.getElementById('home');
-  if (!hero) return;
-  var inner = hero.querySelector('.hero-inner');
-  if (!inner) return;
-  var y = window.scrollY;
-  if (y < window.innerHeight) {
-    inner.style.transform = 'translateY(' + (y * 0.18) + 'px)';
-    inner.style.opacity   = 1 - (y / (window.innerHeight * 0.7));
-  }
+  if (_parallaxRaf) return;
+  _parallaxRaf = true;
+  requestAnimationFrame(function() {
+    _parallaxRaf = false;
+    var hero = document.getElementById('home');
+    if (!hero) return;
+    var inner = hero.querySelector('.hero-inner');
+    if (!inner) return;
+    var y = window.scrollY;
+    if (y < window.innerHeight) {
+      inner.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+      inner.style.opacity   = 1 - (y / (window.innerHeight * 0.7));
+    }
+  });
 }, { passive: true });
 
 /* Boot */
