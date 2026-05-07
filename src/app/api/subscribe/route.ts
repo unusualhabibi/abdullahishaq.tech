@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const schema = z.object({
-  email: z.email(),
+  email: z.string().email(),
   context: z.string().min(1).max(50),
 });
 
